@@ -12,39 +12,9 @@ header {
     text-align: center;
 }
 
-nav {
-    background: #333;
-    color: white;
-    padding: 0.5rem 0;
-    text-align: center;
-}
-
-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin: 0 1rem;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-}
-
-nav ul li a:hover {
-    text-decoration: underline;
-}
-
 main {
     padding: 2rem;
-}
-
-main h2 {
-    color: #4CAF50;
+    text-align: center;
 }
 
 footer {
@@ -55,4 +25,9 @@ footer {
     position: fixed;
     width: 100%;
     bottom: 0;
+}
+
+label, input, button {
+    display: block;
+    margin: 0.5rem auto;
 }
