@@ -30,8 +30,9 @@
                 const ctx = canvas.getContext('2d');
                 const template = new Image();
                 template.src = 'certificate with simple logo.png';
-
+                
                 template.onload = function() {
+                    console.log("Template loaded successfully.");
                     canvas.width = template.width;
                     canvas.height = template.height;
 
@@ -44,6 +45,9 @@
                     ctx.textAlign = 'center';
                     ctx.fillText(name, canvas.width / 2, canvas.height / 2);
 
+                    // Display the canvas
+                    canvas.style.display = 'block';
+
                     // Generate download link
                     const link = document.createElement('a');
                     link.href = canvas.toDataURL('image/png');
@@ -53,7 +57,13 @@
                     const container = document.getElementById('certificateLinkContainer');
                     container.innerHTML = '';  // Clear previous link if any
                     container.appendChild(link);
-                }
+                };
+
+                template.onerror = function() {
+                    console.error("Failed to load the template image.");
+                };
+            } else {
+                console.error("Name is empty. Please enter a name.");
             }
         }
     </script>
