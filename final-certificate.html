@@ -52,18 +52,18 @@
                     ctx.textAlign = 'center';
                     ctx.fillText(name, canvas.width / 2, 400);
 
+                    // Add the completion text
+                    ctx.font = 'italic 30px "Arial Rounded MT Bold", Verdana';
+                    ctx.fillText("has successfully completed the course", canvas.width / 2, 450);
+
                     // Add the course name
                     ctx.font = 'bold 50px "Arial Rounded MT Bold", Verdana';
-                    ctx.fillText("Introduction to AI and Machine Learning", canvas.width / 2, 480);
-
-                    // Add the course completion text
-                    ctx.font = 'italic 30px "Arial Rounded MT Bold", Verdana';
-                    ctx.fillText("has successfully completed the course", canvas.width / 2, 530);
+                    ctx.fillText("Introduction to AI and Machine Learning", canvas.width / 2, 510);
 
                     // Add the date
                     const date = new Date().toLocaleDateString();
                     ctx.font = 'italic 25px "Arial Rounded MT Bold", Verdana';
-                    ctx.fillText(`Date: ${date}`, canvas.width / 2, 580);
+                    ctx.fillText(`Date: ${date}`, canvas.width / 2, 570);
 
                     // Add additional details
                     ctx.font = '20px "Arial Rounded MT Bold", Verdana';
