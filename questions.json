@@ -214,6 +214,18 @@
         "d": "To determine the number of epochs"
       }
     },
+
+  {
+      "id": "q22",
+      "question": "What does 'PCA' stand for in machine learning?",
+      "options": {
+        "a": "Principal Component Analysis",
+        "b": "Principal Component Algorithm",
+        "c": "Principal Calculation Analysis",
+        "d": "Primary Component Analysis"
+      }
+    },
+    
     {
       "id": "q23",
       "question": "Which of the following is a measure of a model's accuracy?",
