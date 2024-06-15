@@ -39,13 +39,11 @@ main {
 h1, h2 {
     color: #004c99;
     font-weight: 700;
-    font-family: 'Montserrat', sans-serif;
 }
 
 h2 {
     margin-top: 3rem;
     font-weight: 500;
-    font-family: 'Montserrat', sans-serif;
 }
 
 .responsive-image {
@@ -71,7 +69,6 @@ h2 {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    font-family: 'Montserrat', sans-serif;
 }
 
 .search-container .search-button {
@@ -101,8 +98,10 @@ h2 {
     padding: 1rem 2rem;
     border: none;
     border-radius: 15px;
-    background: url('button-oval.png') no-repeat center center;
+    background-image: url('button-oval.png');
+    background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     color: white;
     text-decoration: none;
     font-size: 1rem;
@@ -110,19 +109,16 @@ h2 {
     display: inline-block;
     text-align: center;
     transition: all 0.3s ease;
-    font-family: 'Montserrat', sans-serif;
     width: 200px; /* Adjust width as needed */
     height: 50px; /* Adjust height as needed */
     line-height: 50px; /* Vertically center text */
 }
 
 .category-button:active {
-    background: url('button-clicked.png') no-repeat center center;
-    background-size: cover;
+    background-image: url('button-clicked.png');
 }
 
 .category-button:hover {
-    background-color: rgba(0, 0, 0, 0.2);
     color: #004c99;
 }
 
