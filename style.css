@@ -1,6 +1,18 @@
+/* Importing the custom fonts */
+@font-face {
+    font-family: 'Timeless';
+    src: url('Timeless.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Timeless-Bold';
+    src: url('Timeless-Bold.ttf') format('truetype');
+    font-weight: bold;
+}
+
 /* General styles */
 body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Timeless', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f8f9fa;
@@ -37,8 +49,13 @@ h1, h2 {
     color: #004c99;
 }
 
+h1 {
+    font-family: 'Timeless-Bold', sans-serif;
+}
+
 h2 {
     margin-top: 3rem;
+    font-family: 'Timeless-Bold', sans-serif;
 }
 
 .search-container {
@@ -92,6 +109,7 @@ h2 {
     text-decoration: none;
     font-size: 1rem;
     font-weight: 500;
+    font-family: 'Timeless', sans-serif;
     display: inline-block;
     text-align: center;
     transition: all 0.3s ease;
