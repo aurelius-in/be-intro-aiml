@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 1 Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Module 1 Quiz</h1>
+    </header>
+    <main>
+        <form id="quizForm" onsubmit="return submitQuiz(event)">
+            <div id="quizQuestions">
+                <div class="question">
+                    <p>1. What is Artificial Intelligence?</p>
+                    <label><input type="radio" name="q1" value="a"> A type of natural intelligence</label><br>
+                    <label><input type="radio" name="q1" value="b"> A type of software</label><br>
+                    <label><input type="radio" name="q1" value="c"> The simulation of human intelligence in machines</label><br>
+                    <label><input type="radio" name="q1" value="d"> None of the above</label>
+                </div>
+                <!-- Add more questions here -->
+                <div class="question">
+                    <p>2. Which of the following is an example of supervised learning?</p>
+                    <label><input type="radio" name="q2" value="a"> K-means clustering</label><br>
+                    <label><input type="radio" name="q2" value="b"> Principal component analysis</label><br>
+                    <label><input type="radio" name="q2" value="c"> Linear regression</label><br>
+                    <label><input type="radio" name="q2" value="d"> None of the above</label>
+                </div>
+                <!-- Add more questions up to the desired number -->
+            </div>
+            <button type="submit">Submit Quiz</button>
+        </form>
+        <div id="quizResult"></div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Blue Eagle AI and Robotics. All rights reserved.</p>
+    </footer>
+    <script>
+        function submitQuiz(event) {
+            event.preventDefault();
+            const form = document.getElementById('quizForm');
+            let score = 0;
+            const totalQuestions = 10; // Adjust this based on the actual number of questions
+
+            // Sample answer key
+            const correctAnswers = {
+                q1: 'c',
+                q2: 'c'
+                // Add more answers here
+            };
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionId = `q${i}`;
+                const answer = form[questionId].value;
+                if (answer === correctAnswers[questionId]) {
+                    score++;
+                }
+            }
+
+            const percentage = (score / totalQuestions) * 100;
+            const resultMessage = document.getElementById('quizResult');
+            resultMessage.textContent = `Score: ${percentage.toFixed(2)}%`;
+            if (percentage >= 75) {
+                resultMessage.style.color = 'green';
+                resultMessage.textContent += ' - Passed';
+            } else {
+                resultMessage.style.color = 'red';
+                resultMessage.textContent += ' - Failed';
+            }
+        }
+    </script>
+</body>
+</html>
