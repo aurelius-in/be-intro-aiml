@@ -113,19 +113,19 @@ h2 {
     padding: 1rem 2rem;
     border: 1px solid #d6d6d6;
     border-radius: 15px;
-    background: #ffffff;
-    color: #333;
+    background: url('button.jpg') no-repeat center center;
+    background-size: cover;
+    color: white;
     text-decoration: none;
     font-size: 1rem;
     font-weight: 500;
     display: inline-block;
     text-align: center;
     transition: all 0.3s ease;
-    border: 2px solid #004c99;
 }
 
 .category-button:hover {
-    background-color: #e9ecef;
+    background-color: rgba(0, 0, 0, 0.2);
     color: #004c99;
 }
 
