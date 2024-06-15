@@ -48,23 +48,23 @@
 
                     // Add the name
                     ctx.fillStyle = '#000000';
-                    ctx.font = 'bold 35px Arial';
+                    ctx.font = 'bold 35px "Arial Rounded MT Bold", Verdana';
                     ctx.textAlign = 'center';
                     ctx.fillText(name, canvas.width / 2, 350);
 
                     // Add the course name
-                    ctx.font = 'italic 30px Arial';
+                    ctx.font = 'italic 30px "Arial Rounded MT Bold", Verdana';
                     ctx.fillText("has successfully completed the course", canvas.width / 2, 400);
-                    ctx.font = 'bold 30px Arial';
+                    ctx.font = 'bold 30px "Arial Rounded MT Bold", Verdana';
                     ctx.fillText("Introduction to AI and Machine Learning", canvas.width / 2, 450);
 
                     // Add the date
                     const date = new Date().toLocaleDateString();
-                    ctx.font = 'italic 25px Arial';
+                    ctx.font = 'italic 25px "Arial Rounded MT Bold", Verdana';
                     ctx.fillText(`Date: ${date}`, canvas.width / 2, 500);
 
                     // Add additional details
-                    ctx.font = '20px Arial';
+                    ctx.font = '20px "Arial Rounded MT Bold", Verdana';
                     ctx.fillText("This certifies that the above individual has successfully", canvas.width / 2, 550);
                     ctx.fillText("completed the course requirements, demonstrating proficiency", canvas.width / 2, 580);
                     ctx.fillText("in fundamental AI and Machine Learning concepts, including supervised", canvas.width / 2, 610);
