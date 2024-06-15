@@ -111,6 +111,9 @@ h2 {
     text-align: center;
     transition: all 0.3s ease;
     font-family: 'Montserrat', sans-serif;
+    width: 200px; /* Adjust width as needed */
+    height: 50px; /* Adjust height as needed */
+    line-height: 50px; /* Vertically center text */
 }
 
 .category-button:active {
