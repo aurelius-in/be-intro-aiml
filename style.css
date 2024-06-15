@@ -36,3 +36,8 @@ label, input, button {
     color: red;
     margin-top: 1rem;
 }
+
+canvas {
+    border: 1px solid black;
+    margin-top: 20px;
+}
