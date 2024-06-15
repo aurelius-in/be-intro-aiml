@@ -92,7 +92,7 @@
             const explanationsContainer = document.getElementById('explanationsContainer');
 
             submitButton.style.display = 'none';
-            resultMessage.textContent = `Score: ${percentage}%`;
+            resultMessage.textContent = `Score: ${percentage.toFixed(2)}%`;
             resultMessage.style.color = percentage >= 75 ? 'green' : 'red';
             explanationsContainer.style.display = 'block';
 
@@ -110,7 +110,7 @@
             questionElements.forEach(element => {
                 if (element.value === correctAnswer) {
                     element.parentElement.style.color = 'green';
-                } else {
+                } else if (element.checked) {
                     element.parentElement.style.color = 'red';
                 }
             });
