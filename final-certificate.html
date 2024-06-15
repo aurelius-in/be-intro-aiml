@@ -50,25 +50,27 @@
                     ctx.fillStyle = '#000000';
                     ctx.font = 'bold 35px "Arial Rounded MT Bold", Verdana';
                     ctx.textAlign = 'center';
-                    ctx.fillText(name, canvas.width / 2, 350);
+                    ctx.fillText(name, canvas.width / 2, 400);
 
                     // Add the course name
+                    ctx.font = 'bold 50px "Arial Rounded MT Bold", Verdana';
+                    ctx.fillText("Introduction to AI and Machine Learning", canvas.width / 2, 480);
+
+                    // Add the course completion text
                     ctx.font = 'italic 30px "Arial Rounded MT Bold", Verdana';
-                    ctx.fillText("has successfully completed the course", canvas.width / 2, 400);
-                    ctx.font = 'bold 30px "Arial Rounded MT Bold", Verdana';
-                    ctx.fillText("Introduction to AI and Machine Learning", canvas.width / 2, 450);
+                    ctx.fillText("has successfully completed the course", canvas.width / 2, 530);
 
                     // Add the date
                     const date = new Date().toLocaleDateString();
                     ctx.font = 'italic 25px "Arial Rounded MT Bold", Verdana';
-                    ctx.fillText(`Date: ${date}`, canvas.width / 2, 500);
+                    ctx.fillText(`Date: ${date}`, canvas.width / 2, 580);
 
                     // Add additional details
                     ctx.font = '20px "Arial Rounded MT Bold", Verdana';
-                    ctx.fillText("This certifies that the above individual has successfully", canvas.width / 2, 550);
-                    ctx.fillText("completed the course requirements, demonstrating proficiency", canvas.width / 2, 580);
-                    ctx.fillText("in fundamental AI and Machine Learning concepts, including supervised", canvas.width / 2, 610);
-                    ctx.fillText("and unsupervised learning, neural networks, and data preprocessing.", canvas.width / 2, 640);
+                    ctx.fillText("This certifies that the above individual has successfully", canvas.width / 2, 630);
+                    ctx.fillText("completed the course requirements, demonstrating proficiency", canvas.width / 2, 660);
+                    ctx.fillText("in fundamental AI and Machine Learning concepts, including supervised", canvas.width / 2, 690);
+                    ctx.fillText("and unsupervised learning, neural networks, and data preprocessing.", canvas.width / 2, 720);
 
                     // Display the canvas
                     canvas.style.display = 'block';
