@@ -37,6 +37,70 @@ h1, h2 {
     color: #004c99;
 }
 
+h2 {
+    margin-top: 3rem;
+}
+
+.search-container {
+    margin: 2rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+.search-container input[type="text"] {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.2rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-container .search-button {
+    position: absolute;
+    right: 10px;
+    background: white;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 4px;
+}
+
+.search-container .search-button img {
+    width: 16px;
+    height: 16px;
+}
+
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.category-button {
+    padding: 1rem 2rem;
+    border: 1px solid #d6d6d6;
+    border-radius: 15px;
+    background: #ffffff;
+    color: #333;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    display: inline-block;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.category-button:hover {
+    background-color: #e9ecef;
+}
+
 .certificate-list {
     display: flex;
     flex-wrap: wrap;
@@ -79,38 +143,6 @@ h1, h2 {
 .certificate-button:hover {
     background: #004c99;
     color: white;
-}
-
-.search-container {
-    margin: 2rem 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    max-width: 600px;
-    margin: 2rem auto;
-}
-
-.search-container input[type="text"] {
-    width: 100%;
-    padding: 1rem;
-    font-size: 1.2rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.search-container .search-button {
-    position: absolute;
-    right: 10px;
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-search-container .search-button img {
-    width: 24px;
-    height: 24px;
 }
 
 footer {
