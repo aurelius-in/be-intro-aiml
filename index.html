@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blue Eagle School of Technology (BEST)</title>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -13,43 +12,43 @@
     <main>
         <h1>Welcome to Blue Eagle School of Technology (BEST)</h1>
         <p>
-            At Blue Eagle School of Technology (BEST), we offer a comprehensive range of courses focused on Artificial Intelligence (AI), Machine Learning (ML), AI Leadership, and other related fields. Our curriculum is designed to cater to students of all levels, from beginners to advanced practitioners, and aims to equip you with the knowledge and skills needed to excel in the rapidly evolving field of AI.
+            At Blue Eagle School of Technology (BEST), we offer a comprehensive range of professional certificates focused on Artificial Intelligence (AI), Machine Learning (ML), AI Leadership, and other related fields. Our programs are designed to cater to professionals at all levels, from beginners to advanced practitioners, and aim to equip you with the knowledge and skills needed to excel in the rapidly evolving field of AI.
         </p>
         <div class="search-container">
-            <input type="text" id="searchInput" onkeyup="filterCourses()" placeholder="Search for courses..">
+            <input type="text" id="searchInput" onkeyup="filterCertificates()" placeholder="Search for certificates...">
             <button class="search-button">
                 <img src="magnifying-glass.png" alt="Search">
             </button>
         </div>
-        <h2>Our Courses</h2>
-        <div id="courseList" class="course-list">
-            <div class="course-category">
+        <h2>Our Professional Certificates</h2>
+        <div id="certificateList" class="certificate-list">
+            <div class="certificate-category">
                 <ul>
-                    <li><a href="course.html?file=module1.json" class="course-button">AI 101: Introduction to Artificial Intelligence</a></li>
-                    <li><a href="course.html?file=module2.json" class="course-button">ML 201: Machine Learning Basics</a></li>
-                    <li><a href="course.html?file=module3.json" class="course-button">NN 301: Neural Networks and Deep Learning</a></li>
-                    <li><a href="course.html?file=module4.json" class="course-button">NLP 401: Natural Language Processing</a></li>
-                    <li><a href="course.html?file=module5.json" class="course-button">AI 501: AI in Robotics</a></li>
-                    <li><a href="course.html?file=module6.json" class="course-button">AI 601: AI Ethics and Governance</a></li>
-                    <li><a href="course.html?file=module7.json" class="course-button">AI 701: Advanced AI Topics</a></li>
+                    <li><a href="certificate.html?file=certificate1.json" class="certificate-button">Certificate in AI Fundamentals</a></li>
+                    <li><a href="certificate.html?file=certificate2.json" class="certificate-button">Certificate in Machine Learning</a></li>
+                    <li><a href="certificate.html?file=certificate3.json" class="certificate-button">Certificate in Deep Learning</a></li>
+                    <li><a href="certificate.html?file=certificate4.json" class="certificate-button">Certificate in Natural Language Processing</a></li>
+                    <li><a href="certificate.html?file=certificate5.json" class="certificate-button">Certificate in AI for Robotics</a></li>
+                    <li><a href="certificate.html?file=certificate6.json" class="certificate-button">Certificate in AI Ethics</a></li>
+                    <li><a href="certificate.html?file=certificate7.json" class="certificate-button">Advanced Certificate in AI</a></li>
                 </ul>
             </div>
-            <div class="course-category">
+            <div class="certificate-category">
                 <ul>
-                    <li><a href="course.html?file=module8.json" class="course-button">AL 101: Fundamentals of AI Leadership</a></li>
-                    <li><a href="course.html?file=module9.json" class="course-button">AL 201: Strategic AI Implementation</a></li>
-                    <li><a href="course.html?file=module10.json" class="course-button">AL 301: Leading AI-Driven Innovation</a></li>
-                    <li><a href="course.html?file=module11.json" class="course-button">AL 401: AI Governance and Ethics</a></li>
-                    <li><a href="course.html?file=module12.json" class="course-button">AL 501: AI in Business Strategy</a></li>
+                    <li><a href="certificate.html?file=certificate8.json" class="certificate-button">Certificate in AI Leadership</a></li>
+                    <li><a href="certificate.html?file=certificate9.json" class="certificate-button">Certificate in Strategic AI Implementation</a></li>
+                    <li><a href="certificate.html?file=certificate10.json" class="certificate-button">Certificate in AI-Driven Innovation</a></li>
+                    <li><a href="certificate.html?file=certificate11.json" class="certificate-button">Certificate in AI Governance</a></li>
+                    <li><a href="certificate.html?file=certificate12.json" class="certificate-button">Certificate in AI Business Strategy</a></li>
                 </ul>
             </div>
-            <div class="course-category">
+            <div class="certificate-category">
                 <ul>
-                    <li><a href="course.html?file=module13.json" class="course-button">DS 101: Introduction to Data Science</a></li>
-                    <li><a href="course.html?file=module14.json" class="course-button">BD 201: Big Data Analytics</a></li>
-                    <li><a href="course.html?file=module15.json" class="course-button">CV 301: Computer Vision</a></li>
-                    <li><a href="course.html?file=module16.json" class="course-button">RL 401: Reinforcement Learning</a></li>
-                    <li><a href="course.html?file=module17.json" class="course-button">HCI 501: Human-Computer Interaction</a></li>
+                    <li><a href="certificate.html?file=certificate13.json" class="certificate-button">Certificate in Data Science</a></li>
+                    <li><a href="certificate.html?file=certificate14.json" class="certificate-button">Certificate in Big Data Analytics</a></li>
+                    <li><a href="certificate.html?file=certificate15.json" class="certificate-button">Certificate in Computer Vision</a></li>
+                    <li><a href="certificate.html?file=certificate16.json" class="certificate-button">Certificate in Reinforcement Learning</a></li>
+                    <li><a href="certificate.html?file=certificate17.json" class="certificate-button">Certificate in Human-Computer Interaction</a></li>
                 </ul>
             </div>
         </div>
@@ -58,23 +57,23 @@
         <p>&copy; 2024 Blue Eagle School of Technology. All rights reserved.</p>
     </footer>
     <script>
-        function filterCourses() {
+        function filterCertificates() {
             const input = document.getElementById('searchInput');
             const filter = input.value.toLowerCase();
-            const courseList = document.getElementById('courseList');
-            const categories = courseList.getElementsByClassName('course-category');
+            const certificateList = document.getElementById('certificateList');
+            const categories = certificateList.getElementsByClassName('certificate-category');
 
             Array.from(categories).forEach(category => {
-                const courses = category.getElementsByTagName('li');
+                const certificates = category.getElementsByTagName('li');
                 let displayCategory = false;
 
-                Array.from(courses).forEach(course => {
-                    const text = course.textContent || course.innerText;
+                Array.from(certificates).forEach(certificate => {
+                    const text = certificate.textContent || certificate.innerText;
                     if (text.toLowerCase().includes(filter)) {
-                        course.style.display = '';
+                        certificate.style.display = '';
                         displayCategory = true;
                     } else {
-                        course.style.display = 'none';
+                        certificate.style.display = 'none';
                     }
                 });
 
