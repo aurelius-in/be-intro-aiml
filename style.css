@@ -39,11 +39,13 @@ main {
 h1, h2 {
     color: #004c99;
     font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
 }
 
 h2 {
     margin-top: 3rem;
     font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .responsive-image {
@@ -69,6 +71,7 @@ h2 {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: 'Montserrat', sans-serif;
 }
 
 .search-container .search-button {
@@ -107,6 +110,7 @@ h2 {
     display: inline-block;
     text-align: center;
     transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .category-button:active {
@@ -156,6 +160,7 @@ h2 {
     transition: background 0.3s, color 0.3s;
     display: inline-block;
     text-align: center;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .certificate-button:hover {
@@ -170,6 +175,7 @@ footer {
     padding: 1rem 0;
     position: relative;
     width: 100%;
+    font-family: 'Montserrat', sans-serif;
 }
 
 footer p {
