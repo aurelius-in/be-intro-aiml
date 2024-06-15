@@ -46,6 +46,11 @@ h2 {
     font-weight: 500;
 }
 
+.responsive-image {
+    width: 100%;
+    height: auto;
+}
+
 .search-container {
     margin: 2rem 0;
     display: flex;
