@@ -111,9 +111,9 @@ h2 {
 
 .category-button {
     padding: 1rem 2rem;
-    border: 1px solid #d6d6d6;
+    border: none;
     border-radius: 15px;
-    background: url('button.jpg') no-repeat center center;
+    background: url('button.png') no-repeat center center;
     background-size: cover;
     color: white;
     text-decoration: none;
@@ -122,6 +122,11 @@ h2 {
     display: inline-block;
     text-align: center;
     transition: all 0.3s ease;
+}
+
+.category-button:active {
+    background: url('button-clicked.png') no-repeat center center;
+    background-size: cover;
 }
 
 .category-button:hover {
