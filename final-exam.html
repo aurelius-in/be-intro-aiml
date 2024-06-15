@@ -16,6 +16,7 @@
             <button type="submit" id="submitButton">Submit for Grading</button>
         </form>
         <div id="resultMessage"></div>
+        <div id="explanationsContainer" style="display: none;"></div>
         <button id="retakeButton" style="display: none;" onclick="retakeExam()">Retake Exam</button>
         <button id="certificateButton" style="display: none;" onclick="redirectToCertificate()">Print Certificate</button>
     </main>
@@ -25,7 +26,9 @@
     <script>
         const questionsUrl = 'questions.json';
         const answersUrl = 'answers.json';
+        const explanationsUrl = 'explanations.json';
         let correctAnswers = {};
+        let explanations = {};
 
         async function loadQuestions() {
             const response = await fetch(questionsUrl);
@@ -52,9 +55,16 @@
             correctAnswers = data.answers;
         }
 
+        async function loadExplanations() {
+            const response = await fetch(explanationsUrl);
+            const data = await response.json();
+            explanations = data.explanations;
+        }
+
         async function initializeExam() {
             await loadQuestions();
             await loadAnswers();
+            await loadExplanations();
         }
 
         function submitExam(event) {
@@ -71,6 +81,7 @@
                 } else {
                     markIncorrect(questionId, correctAnswers[questionId]);
                 }
+                lockQuestion(questionId);
             }
 
             const percentage = (score / totalQuestions) * 100;
@@ -78,19 +89,20 @@
             const submitButton = document.getElementById('submitButton');
             const retakeButton = document.getElementById('retakeButton');
             const certificateButton = document.getElementById('certificateButton');
+            const explanationsContainer = document.getElementById('explanationsContainer');
 
-            submitButton.textContent = `Score: ${percentage}%`;
-            submitButton.disabled = true;
+            submitButton.style.display = 'none';
+            resultMessage.textContent = `Score: ${percentage}%`;
+            resultMessage.style.color = percentage >= 75 ? 'green' : 'red';
+            explanationsContainer.style.display = 'block';
 
             if (percentage >= 75) {
-                resultMessage.textContent = `Congratulations! You passed the exam with a score of ${percentage}%.`;
-                resultMessage.style.color = 'green';
                 certificateButton.style.display = 'block';
             } else {
-                resultMessage.textContent = `You scored ${percentage}%. You need at least 75% to pass.`;
-                resultMessage.style.color = 'red';
                 retakeButton.style.display = 'block';
             }
+
+            displayExplanations();
         }
 
         function markIncorrect(questionId, correctAnswer) {
@@ -102,6 +114,24 @@
                     element.parentElement.style.color = 'red';
                 }
             });
+        }
+
+        function lockQuestion(questionId) {
+            const questionElements = document.getElementsByName(questionId);
+            questionElements.forEach(element => {
+                element.disabled = true;
+            });
+        }
+
+        function displayExplanations() {
+            const explanationsContainer = document.getElementById('explanationsContainer');
+            explanationsContainer.innerHTML = '<h2>Explanations</h2>';
+
+            for (let i = 1; i <= Object.keys(explanations).length; i++) {
+                const explanation = document.createElement('p');
+                explanation.innerHTML = `<strong>${i}. </strong>${explanations[`q${i}`]}`;
+                explanationsContainer.appendChild(explanation);
+            }
         }
 
         function retakeExam() {
