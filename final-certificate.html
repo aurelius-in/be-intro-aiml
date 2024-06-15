@@ -66,11 +66,13 @@
                     ctx.fillText(`Date: ${date}`, canvas.width / 2, 570);
 
                     // Add additional details
+                    const leftMargin = 100;  // One inch margin assuming 96 DPI
+                    ctx.textAlign = 'left';
                     ctx.font = '20px "Arial Rounded MT Bold", Verdana';
-                    ctx.fillText("This certifies that the above individual has successfully", canvas.width / 2, 630);
-                    ctx.fillText("completed the course requirements, demonstrating proficiency", canvas.width / 2, 660);
-                    ctx.fillText("in fundamental AI and Machine Learning concepts, including supervised", canvas.width / 2, 690);
-                    ctx.fillText("and unsupervised learning, neural networks, and data preprocessing.", canvas.width / 2, 720);
+                    ctx.fillText("This certifies that the above individual has successfully", leftMargin, 630);
+                    ctx.fillText("completed the course requirements, demonstrating proficiency", leftMargin, 660);
+                    ctx.fillText("in fundamental AI and Machine Learning concepts, including supervised", leftMargin, 690);
+                    ctx.fillText("and unsupervised learning, neural networks, and data preprocessing.", leftMargin, 720);
 
                     // Display the canvas
                     canvas.style.display = 'block';
