@@ -108,7 +108,7 @@ h1, h2 {
     cursor: pointer;
 }
 
-.search-container .search-button img {
+search-container .search-button img {
     width: 24px;
     height: 24px;
 }
