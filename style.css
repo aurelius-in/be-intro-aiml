@@ -37,20 +37,20 @@ h1, h2 {
     color: #004c99;
 }
 
-.course-list {
+.certificate-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 2rem;
 }
 
-.course-category {
+.certificate-category {
     flex: 1;
     min-width: 300px;
     margin: 0.5rem;
 }
 
-.course-category ul {
+.certificate-category ul {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -59,11 +59,11 @@ h1, h2 {
     justify-content: center;
 }
 
-.course-category ul li {
+.certificate-category ul li {
     margin: 0.5rem;
 }
 
-.course-button {
+.certificate-button {
     text-decoration: none;
     color: #004c99;
     font-weight: bold;
@@ -76,7 +76,7 @@ h1, h2 {
     text-align: center;
 }
 
-.course-button:hover {
+.certificate-button:hover {
     background: #004c99;
     color: white;
 }
