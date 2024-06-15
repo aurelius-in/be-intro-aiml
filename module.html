@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1 id="moduleTitle">Module Title</h1>
+    </header>
+    <main>
+        <nav>
+            <ul id="chapterList">
+                <!-- Chapter links will be dynamically loaded here -->
+            </ul>
+        </nav>
+        <article id="chapterContent">
+            <!-- Chapter content will be dynamically loaded here -->
+        </article>
+        <nav>
+            <a href="course.html">Back to Course</a>
+        </nav>
+    </main>
+    <footer>
+        <p>&copy; 2024 Blue Eagle AI and Robotics. All rights reserved.</p>
+    </footer>
+    <script>
+        async function loadModule() {
+            const params = new URLSearchParams(window.location.search);
+            const moduleFile = params.get('file');
+            const response = await fetch(moduleFile);
+            const data = await response.json();
+
+            document.getElementById('moduleTitle').textContent = data.title;
+
+            const chapterList = document.getElementById('chapterList');
+            chapterList.innerHTML = '';
+
+            data.chapters.forEach((chapter, index) => {
+                const chapterItem = document.createElement('li');
+                const chapterLink = document.createElement('a');
+                chapterLink.href = `module.html?file=${moduleFile}&chapter=${index}`;
+                chapterLink.textContent = chapter.title;
+                chapterLink.onclick = function() {
+                    loadChapterContent(index, data.chapters);
+                    return false;
+                };
+                chapterItem.appendChild(chapterLink);
+                chapterList.appendChild(chapterItem);
+            });
+
+            // Load the first chapter by default if no specific chapter is selected
+            const selectedChapterIndex = params.get('chapter') || 0;
+            loadChapterContent(selectedChapterIndex, data.chapters);
+        }
+
+        function loadChapterContent(index, chapters) {
+            const chapterContent = document.getElementById('chapterContent');
+            const chapter = chapters[index];
+            chapterContent.innerHTML = `<h2>${chapter.title}</h2>`;
+
+            chapter.sections.forEach(section => {
+                const sectionElement = document.createElement('section');
+                const headingElement = document.createElement('h2');
+                headingElement.textContent = section.heading;
+                sectionElement.appendChild(headingElement);
+
+                const contentParagraph = document.createElement('p');
+                contentParagraph.textContent = section.content;
+                sectionElement.appendChild(contentParagraph);
+
+                if (section.subsections) {
+                    section.subsections.forEach(subsection => {
+                        const subheadingElement = document.createElement('h3');
+                        subheadingElement.textContent = subsection.subheading;
+                        sectionElement.appendChild(subheadingElement);
+
+                        const subcontentParagraph = document.createElement('p');
+                        subcontentParagraph.textContent = subsection.content;
+                        sectionElement.appendChild(subcontentParagraph);
+                    });
+                }
+
+                chapterContent.appendChild(sectionElement);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', loadModule);
+    </script>
+</body>
+</html>
