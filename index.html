@@ -3,65 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Montserrat Font Example</title>
+    <title>Blue Eagle School of Technology (BEST)</title>
+    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #f8f9fa;
-            color: #333;
-            margin: 0;
-            padding: 2rem;
-        }
-
-        h1, h2 {
-            color: #004c99;
-        }
-
-        h1 {
-            font-weight: 700;
-        }
-
-        h2 {
-            font-weight: 500;
-        }
-
-        p {
-            font-weight: 400;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: auto;
-            background: #ffffff;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            margin: 10px 0;
-            background-color: #004c99;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 500;
-        }
-
-        .button:hover {
-            background-color: #003366;
-        }
-    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to the Montserrat Font Example</h1>
-        <h2>Subheading Using Montserrat</h2>
-        <p>This is a paragraph demonstrating the Montserrat font. The font is known for its clean, modern look and is widely used for professional and creative projects. It offers a range of weights from regular to bold, making it versatile for various types of content.</p>
-        <p>You can use different font weights to emphasize different parts of your text. For example, this sentence is using the regular weight.</p>
-        <a href="#" class="button">Click Me</a>
-    </div>
+    <header>
+        <img src="logo-main-sm.png" alt="BEST Logo" class="logo-large">
+    </header>
+    <main>
+        <h1>Welcome to Blue Eagle School of Technology (BEST)</h1>
+        <p>
+            At Blue Eagle School of Technology (BEST), we offer a comprehensive range of professional certificates focused on Artificial Intelligence (AI), Machine Learning (ML), AI Leadership, and other related fields. Our programs are designed to cater to professionals at all levels, from beginners to advanced practitioners, and aim to equip you with the knowledge and skills needed to excel in the rapidly evolving field of AI.
+        </p>
+        <div class="search-container">
+            <input type="text" id="searchInput" onkeyup="filterCertificates()" placeholder="Search for certificates...">
+            <button class="search-button">
+                <img src="search.jpg" alt="Search">
+            </button>
+        </div>
+        <h2>Professional Certificates for:</h2>
+        <div class="button-container">
+            <a href="certificate.html?type=engineers" class="category-button">Engineers</a>
+            <a href="certificate.html?type=leaders" class="category-button">Leaders</a>
+            <a href="certificate.html?type=developers" class="category-button">Developers</a>
+            <a href="certificate.html?type=data-scientists" class="category-button">Data Scientists</a>
+            <a href="certificate.html?type=managers" class="category-button">Managers</a>
+            <a href="certificate.html?type=researchers" class="category-button">Researchers</a>
+        </div>
+        <div id="certificateList" class="certificate-list">
+            <!-- Certificate list will be here -->
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Blue Eagle School of Technology. All rights reserved.</p>
+    </footer>
+    <script>
+        function filterCertificates() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toLowerCase();
+            const certificateList = document.getElementById('certificateList');
+            const categories = certificateList.getElementsByClassName('certificate-category');
+
+            Array.from(categories).forEach(category => {
+                const certificates = category.getElementsByTagName('li');
+                let displayCategory = false;
+
+                Array.from(certificates).forEach(certificate => {
+                    const text = certificate.textContent || certificate.innerText;
+                    if (text.toLowerCase().includes(filter)) {
+                        certificate.style.display = '';
+                        displayCategory = true;
+                    } else {
+                        certificate.style.display = 'none';
+                    }
+                });
+
+                if (displayCategory) {
+                    category.style.display = '';
+                } else {
+                    category.style.display = 'none';
+                }
+            });
+        }
+    </script>
 </body>
 </html>
