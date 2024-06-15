@@ -1,18 +1,9 @@
-/* Importing the custom fonts */
-@font-face {
-    font-family: 'Timeless';
-    src: url('Timeless.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'Timeless-Bold';
-    src: url('Timeless-Bold.ttf') format('truetype');
-    font-weight: bold;
-}
+/* Importing the Montserrat font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
 
 /* General styles */
 body {
-    font-family: 'Timeless', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f8f9fa;
@@ -47,11 +38,12 @@ main {
 
 h1, h2 {
     color: #004c99;
-    font-family: 'Timeless-Bold', sans-serif;
+    font-weight: 700;
 }
 
 h2 {
     margin-top: 3rem;
+    font-weight: 500;
 }
 
 .search-container {
@@ -77,15 +69,15 @@ h2 {
     position: absolute;
     right: 10px;
     background: white;
-    border: none;
+    border: 1px solid #ccc;
     cursor: pointer;
     padding: 0.5rem;
     border-radius: 4px;
 }
 
 .search-container .search-button img {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
 }
 
 .button-container {
@@ -105,14 +97,15 @@ h2 {
     text-decoration: none;
     font-size: 1rem;
     font-weight: 500;
-    font-family: 'Timeless', sans-serif;
     display: inline-block;
     text-align: center;
     transition: all 0.3s ease;
+    border: 2px solid #004c99;
 }
 
 .category-button:hover {
     background-color: #e9ecef;
+    color: #004c99;
 }
 
 .certificate-list {
@@ -152,7 +145,6 @@ h2 {
     transition: background 0.3s, color 0.3s;
     display: inline-block;
     text-align: center;
-    font-family: 'Timeless-Bold', sans-serif;
 }
 
 .certificate-button:hover {
