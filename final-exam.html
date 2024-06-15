@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Exam</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Final Exam: Introduction to AI and Machine Learning</h1>
+    </header>
+    <main>
+        <form id="examForm" onsubmit="return submitExam()">
+            <div class="question">
+                <p>1. What is artificial intelligence?</p>
+                <label><input type="radio" name="q1" value="a"> A: A type of natural intelligence</label><br>
+                <label><input type="radio" name="q1" value="b"> B: A type of software</label><br>
+                <label><input type="radio" name="q1" value="c"> C: The simulation of human intelligence in machines</label><br>
+                <label><input type="radio" name="q1" value="d"> D: None of the above</label>
+            </div>
+            <!-- Repeat for all 50 questions -->
+            <div class="question">
+                <p>50. What is a neural network?</p>
+                <label><input type="radio" name="q50" value="a"> A: A network of neurons in the brain</label><br>
+                <label><input type="radio" name="q50" value="b"> B: A computational model inspired by the way neural networks in the human brain process information</label><br>
+                <label><input type="radio" name="q50" value="c"> C: A type of computer network</label><br>
+                <label><input type="radio" name="q50" value="d"> D: None of the above</label>
+            </div>
+            <button type="submit">Submit Exam</button>
+        </form>
+        <div id="resultMessage"></div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Blue Eagle AI and Robotics. All rights reserved.</p>
+    </footer>
+    <script>
+        const correctAnswers = {
+            q1: 'c',
+            // Add all correct answers for 50 questions
+            q50: 'b'
+        };
+
+        function submitExam() {
+            const form = document.getElementById('examForm');
+            let score = 0;
+            let totalQuestions = 50;
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const answer = form['q' + i].value;
+                if (answer === correctAnswers['q' + i]) {
+                    score++;
+                }
+            }
+
+            const percentage = (score / totalQuestions) * 100;
+            const resultMessage = document.getElementById('resultMessage');
+            if (percentage >= 70) {
+                const name = prompt("Congratulations! You passed the exam. Please enter your name for the certificate:");
+                if (name) {
+                    window.location.href = `final-certificate.html?success=true&name=${encodeURIComponent(name)}`;
+                }
+            } else {
+                resultMessage.textContent = `You scored ${percentage}%. You need at least 70% to pass.`;
+            }
+
+            return false; // Prevent form submission
+        }
+    </script>
+</body>
+</html>
