@@ -1,6 +1,6 @@
 /* General styles */
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f8f9fa;
@@ -28,7 +28,7 @@ main {
     text-align: center;
     max-width: 1200px;
     margin: 2rem auto;
-    background: linear-gradient(to bottom, #ffffff, #f1f1f1);
+    background: #ffffff;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -40,7 +40,7 @@ h1, h2 {
 .course-list {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     margin-top: 2rem;
 }
 
@@ -50,11 +50,13 @@ h1, h2 {
     border-radius: 8px;
     margin-bottom: 1.5rem;
     width: 100%;
+    max-width: 600px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .course-category h3 {
     color: #007bff;
+    text-align: center;
 }
 
 .course-category ul {
@@ -72,17 +74,17 @@ h1, h2 {
     color: #004c99;
     font-weight: bold;
     padding: 0.75rem 1.5rem;
-    background: #007bff;
-    color: white;
+    background: #ffffff;
+    border: 2px solid #004c99;
     border-radius: 4px;
-    transition: background 0.3s;
-    display: inline-block;
-    width: 100%;
-    text-align: left;
+    transition: background 0.3s, color 0.3s;
+    display: block;
+    text-align: center;
 }
 
 .course-category ul li a:hover {
-    background: #0056b3;
+    background: #004c99;
+    color: white;
 }
 
 .search-container {
@@ -91,10 +93,12 @@ h1, h2 {
     justify-content: center;
     align-items: center;
     position: relative;
+    max-width: 600px;
+    margin: 2rem auto;
 }
 
 .search-container input[type="text"] {
-    width: 80%;
+    width: 100%;
     padding: 1rem;
     font-size: 1.2rem;
     border: 1px solid #ccc;
@@ -104,7 +108,7 @@ h1, h2 {
 
 .search-container .search-button {
     position: absolute;
-    right: 10%;
+    right: 10px;
     background: none;
     border: none;
     cursor: pointer;
