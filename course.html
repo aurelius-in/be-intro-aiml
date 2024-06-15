@@ -3,28 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI and Machine Learning Course</title>
+    <title>Course</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <a href="index.html"><img src="logo-tiny.png" alt="BEST Logo" class="logo"></a>
-        <h1>AI and Machine Learning Course</h1>
+        <a href="index.html"><img src="logo-main-sm.png" alt="BEST Logo" class="logo"></a>
     </header>
     <main>
-        <h2>Modules</h2>
-        <div class="module-buttons">
-            <a href="module.html?file=module1.json" class="module-button">Module 1: Introduction to Artificial Intelligence</a>
-            <a href="module.html?file=module2.json" class="module-button">Module 2: Machine Learning Basics</a>
-            <a href="module.html?file=module3.json" class="module-button">Module 3: Neural Networks and Deep Learning</a>
-            <a href="module.html?file=module4.json" class="module-button">Module 4: Natural Language Processing (NLP)</a>
-            <a href="module.html?file=module5.json" class="module-button">Module 5: AI in Robotics</a>
-            <a href="module.html?file=module6.json" class="module-button">Module 6: AI Ethics and Governance</a>
-            <a href="module.html?file=module7.json" class="module-button">Module 7: Advanced AI Topics</a>
+        <div id="course-content">
+            <!-- Course content will be dynamically loaded here -->
         </div>
     </main>
     <footer>
-        <p>&copy; 2024 Blue Eagle AI and Robotics. All rights reserved.</p>
+        <p>&copy; 2024 Blue Eagle School of Technology. All rights reserved.</p>
     </footer>
+    <script>
+        async function loadCourse() {
+            const params = new URLSearchParams(window.location.search);
+            const courseFile = params.get('file');
+            const response = await fetch(courseFile);
+            const data = await response.json();
+
+            const courseContent = document.getElementById('course-content');
+            courseContent.innerHTML = `<h1>${data.title}</h1>`;
+            
+            data.modules.forEach((module, index) => {
+                const moduleElement = document.createElement('div');
+                moduleElement.innerHTML = `<h2>${module.title}</h2>`;
+                
+                module.chapters.forEach((chapter) => {
+                    const chapterElement = document.createElement('section');
+                    chapterElement.innerHTML = `<h3>${chapter.title}</h3>`;
+
+                    chapter.sections.forEach((section) => {
+                        const sectionElement = document.createElement('div');
+                        sectionElement.innerHTML = `
+                            <h4>${section.heading}</h4>
+                            <p>${section.content}</p>
+                        `;
+                        
+                        if (section.subsections) {
+                            section.subsections.forEach((subsection) => {
+                                const subsectionElement = document.createElement('div');
+                                subsectionElement.innerHTML = `
+                                    <h5>${subsection.subheading}</h5>
+                                    <p>${subsection.content}</p>
+                                `;
+                                sectionElement.appendChild(subsectionElement);
+                            });
+                        }
+
+                        chapterElement.appendChild(sectionElement);
+                    });
+
+                    moduleElement.appendChild(chapterElement);
+                });
+
+                courseContent.appendChild(moduleElement);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', loadCourse);
+    </script>
 </body>
 </html>
