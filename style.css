@@ -87,15 +87,32 @@ h1, h2 {
 
 .search-container {
     margin: 2rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
 .search-container input[type="text"] {
-    width: 100%;
+    width: 80%;
     padding: 1rem;
     font-size: 1.2rem;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-container .search-button {
+    position: absolute;
+    right: 10%;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.search-container .search-button img {
+    width: 24px;
+    height: 24px;
 }
 
 footer {
