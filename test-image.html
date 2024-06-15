@@ -7,11 +7,6 @@
 </head>
 <body>
     <h1>Image Load Test</h1>
-    <img src="template.png" alt="Template Image" onerror="console.error('Failed to load the image.');">
-    <script>
-        document.querySelector('img').onload = function() {
-            console.log('Image loaded successfully.');
-        };
-    </script>
+    <img src="template.png" alt="Template Image" onerror="console.error('Failed to load the image.');" onload="console.log('Image loaded successfully.');">
 </body>
 </html>
