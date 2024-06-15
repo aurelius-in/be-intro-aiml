@@ -39,6 +39,7 @@ label {
     font-weight: bold;
     margin-bottom: 0.5rem;
     display: block;
+    font-size: 1.2rem;
 }
 
 input {
@@ -48,6 +49,7 @@ input {
     margin: 0.5rem auto 1rem;
     border: 1px solid #ccc;
     border-radius: 4px;
+    font-size: 1.2rem;
 }
 
 button {
@@ -57,7 +59,7 @@ button {
     padding: 0.7rem 1.5rem;
     cursor: pointer;
     border-radius: 4px;
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 
 button:hover {
@@ -67,6 +69,7 @@ button:hover {
 #statusMessage {
     color: red;
     margin-top: 1rem;
+    font-size: 1.2rem;
 }
 
 canvas {
