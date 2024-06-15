@@ -1,0 +1,503 @@
+{
+  "questions": [
+
+    
+    {
+      "id": "q1",
+      "question": "What is artificial intelligence?",
+      "options": {
+        "a": "A type of natural intelligence",
+        "b": "A type of software",
+        "c": "The simulation of human intelligence in machines",
+        "d": "None of the above"
+      }
+    },
+    {
+      "id": "q2",
+      "question": "Which of the following is an example of supervised learning?",
+      "options": {
+        "a": "K-means clustering",
+        "b": "Principal component analysis",
+        "c": "Linear regression",
+        "d": "None of the above"
+      }
+    },
+    {
+      "id": "q3",
+      "question": "What is a neural network?",
+      "options": {
+        "a": "A network of neurons in the brain",
+        "b": "A computational model inspired by the way neural networks in the human brain process information",
+        "c": "A type of computer network",
+        "d": "None of the above"
+      }
+    },
+    {
+      "id": "q4",
+      "question": "Which of the following is a type of unsupervised learning?",
+      "options": {
+        "a": "Linear regression",
+        "b": "Logistic regression",
+        "c": "Decision trees",
+        "d": "K-means clustering"
+      }
+    },
+    {
+      "id": "q5",
+      "question": "What is overfitting in machine learning?",
+      "options": {
+        "a": "When a model performs well on training data but poorly on new data",
+        "b": "When a model performs well on new data but poorly on training data",
+        "c": "When a model is too simple to capture the underlying pattern of the data",
+        "d": "None of the above"
+      }
+    },
+    {
+      "id": "q6",
+      "question": "What does the term 'supervised learning' imply?",
+      "options": {
+        "a": "The learning algorithm is given labeled data",
+        "b": "The learning algorithm is given unlabeled data",
+        "c": "The learning algorithm is not given any data",
+        "d": "None of the above"
+      }
+    },
+    {
+      "id": "q7",
+      "question": "What is reinforcement learning?",
+      "options": {
+        "a": "A type of learning where the model is trained on labeled data",
+        "b": "A type of learning where the model is trained on unlabeled data",
+        "c": "A type of learning where the model learns by interacting with an environment",
+        "d": "None of the above"
+      }
+    },
+    {
+      "id": "q8",
+      "question": "Which of the following algorithms is used for classification?",
+      "options": {
+        "a": "K-means clustering",
+        "b": "Linear regression",
+        "c": "Support Vector Machine (SVM)",
+        "d": "Principal component analysis"
+      }
+    },
+    {
+      "id": "q9",
+      "question": "What is the purpose of a validation set?",
+      "options": {
+        "a": "To train the model",
+        "b": "To test the model",
+        "c": "To tune the model's hyperparameters",
+        "d": "None of the above"
+      }
+    },
+    {
+      "id": "q10",
+      "question": "Which of the following is a common activation function in neural networks?",
+      "options": {
+        "a": "ReLU (Rectified Linear Unit)",
+        "b": "Sigmoid",
+        "c": "Tanh",
+        "d": "All of the above"
+      }
+    },
+    {
+      "id": "q11",
+      "question": "What is the purpose of cross-validation in machine learning?",
+      "options": {
+        "a": "To improve the model's performance on training data",
+        "b": "To estimate the model's performance on unseen data",
+        "c": "To reduce the size of the training dataset",
+        "d": "To increase the size of the validation set"
+      }
+    },
+    {
+      "id": "q12",
+      "question": "Which of the following is an example of an unsupervised learning algorithm?",
+      "options": {
+        "a": "Decision Tree",
+        "b": "K-means clustering",
+        "c": "Linear regression",
+        "d": "Support Vector Machine"
+      }
+    },
+    {
+      "id": "q13",
+      "question": "What is the main goal of clustering in machine learning?",
+      "options": {
+        "a": "To classify data into predefined categories",
+        "b": "To reduce the dimensionality of the data",
+        "c": "To find groups of similar data points",
+        "d": "To predict future data points"
+      }
+    },
+    {
+      "id": "q14",
+      "question": "What is the main characteristic of supervised learning?",
+      "options": {
+        "a": "The algorithm learns from labeled data",
+        "b": "The algorithm learns from unlabeled data",
+        "c": "The algorithm learns from reinforcement signals",
+        "d": "The algorithm does not learn"
+      }
+    },
+    {
+      "id": "q15",
+      "question": "Which of the following is a key application of reinforcement learning?",
+      "options": {
+        "a": "Natural language processing",
+        "b": "Image classification",
+        "c": "Game playing",
+        "d": "Dimensionality reduction"
+      }
+    },
+    {
+      "id": "q16",
+      "question": "Which of the following is an example of a decision tree algorithm?",
+      "options": {
+        "a": "K-means clustering",
+        "b": "Random Forest",
+        "c": "Principal Component Analysis",
+        "d": "Linear regression"
+      }
+    },
+    {
+      "id": "q17",
+      "question": "What is the primary purpose of using a test set in machine learning?",
+      "options": {
+        "a": "To train the model",
+        "b": "To validate the model",
+        "c": "To evaluate the model's performance on unseen data",
+        "d": "To fine-tune the model's hyperparameters"
+      }
+    },
+    {
+      "id": "q18",
+      "question": "What is the term used for reducing the number of input variables in a dataset?",
+      "options": {
+        "a": "Feature extraction",
+        "b": "Feature selection",
+        "c": "Feature engineering",
+        "d": "Feature reduction"
+      }
+    },
+    {
+      "id": "q19",
+      "question": "Which of the following is an example of a loss function used in regression?",
+      "options": {
+        "a": "Mean squared error",
+        "b": "Cross-entropy loss",
+        "c": "Hinge loss",
+        "d": "Log loss"
+      }
+    },
+    {
+      "id": "q20",
+      "question": "What is the main advantage of using deep learning models?",
+      "options": {
+        "a": "They require less data to train",
+        "b": "They can automatically extract features from raw data",
+        "c": "They are less complex than traditional models",
+        "d": "They are faster to train"
+      }
+    },
+  
+
+    {
+      "id": "q21",
+      "question": "What is the purpose of a learning rate in gradient descent?",
+      "options": {
+        "a": "To determine the size of the steps taken towards the minimum of the loss function",
+        "b": "To determine the number of features in the model",
+        "c": "To determine the size of the training data",
+        "d": "To determine the number of epochs"
+      }
+    },
+    {
+      "id": "q23",
+      "question": "Which of the following is a measure of a model's accuracy?",
+      "options": {
+        "a": "Recall",
+        "b": "Precision",
+        "c": "F1 Score",
+        "d": "All of the above"
+      }
+    },
+    {
+      "id": "q24",
+      "question": "What is 'batch size' in the context of machine learning?",
+      "options": {
+        "a": "The number of training examples used in one iteration",
+        "b": "The total number of training examples",
+        "c": "The number of features in the dataset",
+        "d": "The number of layers in a neural network"
+      }
+    },
+    {
+      "id": "q25",
+      "question": "Which of the following is an example of a generative model?",
+      "options": {
+        "a": "Support Vector Machine",
+        "b": "Linear Regression",
+        "c": "Gaussian Mixture Model",
+        "d": "K-means Clustering"
+      }
+    },
+    {
+      "id": "q26",
+      "question": "What is the 'curse of dimensionality'?",
+      "options": {
+        "a": "The difficulty in managing large datasets",
+        "b": "The increase in computational cost as the number of dimensions grows",
+        "c": "The problem of overfitting in high-dimensional space",
+        "d": "Both b and c"
+      }
+    },
+    {
+      "id": "q27",
+      "question": "Which of the following techniques can be used to prevent overfitting?",
+      "options": {
+        "a": "Cross-validation",
+        "b": "Regularization",
+        "c": "Using a simpler model",
+        "d": "All of the above"
+      }
+    },
+    {
+      "id": "q28",
+      "question": "What is 'dropout' in the context of neural networks?",
+      "options": {
+        "a": "A technique for randomly ignoring some units during training",
+        "b": "A type of activation function",
+        "c": "A method for data preprocessing",
+        "d": "None of the above"
+      }
+    },
+    {
+      "id": "q29",
+      "question": "Which of the following is an application of natural language processing?",
+      "options": {
+        "a": "Spam detection",
+        "b": "Sentiment analysis",
+        "c": "Machine translation",
+        "d": "All of the above"
+      }
+    },
+    {
+      "id": "q30",
+      "question": "What is 'AdaBoost'?",
+      "options": {
+        "a": "A boosting algorithm",
+        "b": "A type of neural network",
+        "c": "A clustering algorithm",
+        "d": "A dimensionality reduction technique"
+      }
+    },
+    {
+      "id": "q31",
+      "question": "Which of the following is a common evaluation metric for regression models?",
+      "options": {
+        "a": "Mean Squared Error (MSE)",
+        "b": "Accuracy",
+        "c": "Precision",
+        "d": "Recall"
+      }
+    },
+    {
+      "id": "q32",
+      "question": "What is the purpose of feature scaling?",
+      "options": {
+        "a": "To standardize the range of independent variables",
+        "b": "To reduce the number of features",
+        "c": "To create new features from existing ones",
+        "d": "To eliminate irrelevant features"
+      }
+    },
+
+    {
+      "id": "q33",
+      "question": "What does the 'R' in 'RNN' stand for?",
+      "options": {
+        "a": "Recursive",
+        "b": "Recurrent",
+        "c": "Random",
+        "d": "Residual"
+      }
+    },
+    {
+      "id": "q34",
+      "question": "What is the main advantage of using ensemble methods?",
+      "options": {
+        "a": "They increase the complexity of the model",
+        "b": "They combine multiple models to improve performance",
+        "c": "They reduce the amount of data needed",
+        "d": "They simplify the interpretation of the model"
+      }
+    },
+    {
+      "id": "q35",
+      "question": "Which of the following is an example of a hyperparameter?",
+      "options": {
+        "a": "Learning rate",
+        "b": "Number of epochs",
+        "c": "Batch size",
+        "d": "All of the above"
+      }
+    },
+    {
+      "id": "q36",
+      "question": "What is the role of the softmax function in neural networks?",
+      "options": {
+        "a": "To activate neurons in the hidden layers",
+        "b": "To convert logits into probabilities",
+        "c": "To regularize the model",
+        "d": "To optimize the loss function"
+      }
+    },
+    {
+      "id": "q37",
+      "question": "What is a 'random forest'?",
+      "options": {
+        "a": "A type of decision tree",
+        "b": "A collection of decision trees",
+        "c": "A clustering algorithm",
+        "d": "A linear regression model"
+      }
+    },
+    {
+      "id": "q38",
+      "question": "Which of the following is a common method for handling missing data?",
+      "options": {
+        "a": "Imputation",
+        "b": "Removing rows with missing values",
+        "c": "Using algorithms that support missing values",
+        "d": "All of the above"
+      }
+    },
+    {
+      "id": "q39",
+      "question": "What is the primary purpose of data augmentation?",
+      "options": {
+        "a": "To create new data points from existing data",
+        "b": "To reduce the dimensionality of the data",
+        "c": "To select the most important features",
+        "d": "To eliminate irrelevant features"
+      }
+    },
+    {
+      "id": "q40",
+      "question": "What does 'GAN' stand for?",
+      "options": {
+        "a": "Generalized Adversarial Network",
+        "b": "Generative Adversarial Network",
+        "c": "Gaussian Adversarial Network",
+        "d": "Graphical Adversarial Network"
+      }
+    },
+    {
+      "id": "q41",
+      "question": "Which of the following is a technique for reducing overfitting in neural networks?",
+      "options": {
+        "a": "L2 regularization",
+        "b": "Dropout",
+        "c": "Early stopping",
+        "d": "All of the above"
+      }
+    },
+    {
+      "id": "q42",
+      "question": "What is the purpose of a confusion matrix?",
+      "options": {
+        "a": "To evaluate the performance of a classification model",
+        "b": "To evaluate the performance of a regression model",
+        "c": "To reduce the dimensionality of the data",
+        "d": "To handle missing data"
+      }
+    },
+  {
+      "id": "q43",
+      "question": "What is the main purpose of a learning rate in training neural networks?",
+      "options": {
+        "a": "To determine the number of layers",
+        "b": "To control the step size during gradient descent",
+        "c": "To decide the number of neurons",
+        "d": "To initialize the weights"
+      }
+    },
+
+
+
+    
+    {
+      "id": "q44",
+      "question": "What is 'bias' in the context of neural networks?",
+      "options": {
+        "a": "A weight associated with each neuron",
+        "b": "A term that allows the activation function to shift",
+        "c": "A hyperparameter",
+        "d": "None of the above"
+      }
+    },
+    {
+      "id": "q45",
+      "question": "Which of the following is an optimization algorithm used for training neural networks?",
+      "options": {
+        "a": "Gradient Descent",
+        "b": "Backpropagation",
+        "c": "Activation Function",
+        "d": "Loss Function"
+      }
+    },
+    {
+      "id": "q46",
+      "question": "What does 'CNN' stand for in machine learning?",
+      "options": {
+        "a": "Convolutional Neural Network",
+        "b": "Cascading Neural Network",
+        "c": "Cognitive Neural Network",
+        "d": "Central Neural Network"
+      }
+    },
+    {
+      "id": "q47",
+      "question": "What is the purpose of the activation function in a neural network?",
+      "options": {
+        "a": "To introduce non-linearity into the network",
+        "b": "To initialize the weights",
+        "c": "To reduce the number of parameters",
+        "d": "To combine input features"
+      }
+    },
+    {
+      "id": "q48",
+      "question": "What is a common use of the sigmoid activation function?",
+      "options": {
+        "a": "In hidden layers of neural networks",
+        "b": "In the output layer for binary classification",
+        "c": "In the input layer",
+        "d": "For weight initialization"
+      }
+    },
+    {
+      "id": "q49",
+      "question": "What is the purpose of the ReLU activation function?",
+      "options": {
+        "a": "To squash input values to the range [0, 1]",
+        "b": "To allow only positive input values to pass through",
+        "c": "To combine input features",
+        "d": "To reduce overfitting"
+      }
+    },
+    {
+      "id": "q50",
+      "question": "Which of the following is a benefit of using dropout in neural networks?",
+      "options": {
+        "a": "It reduces overfitting",
+        "b": "It increases training speed",
+        "c": "It reduces the need for large datasets",
+        "d": "It simplifies model architecture"
+      }
+    }
+  ]
+}
