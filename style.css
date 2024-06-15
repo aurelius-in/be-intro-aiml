@@ -31,3 +31,8 @@ label, input, button {
     display: block;
     margin: 0.5rem auto;
 }
+
+#statusMessage {
+    color: red;
+    margin-top: 1rem;
+}
