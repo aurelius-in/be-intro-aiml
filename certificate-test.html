@@ -33,8 +33,10 @@
                 const canvas = document.getElementById('certificateCanvas');
                 const ctx = canvas.getContext('2d');
                 const template = new Image();
-                template.src = 'certificate with simple logo.png';
+                template.src = './certificate with simple logo.png';  // Ensure correct relative path
                 
+                console.log("Loading template from: " + template.src);
+
                 template.onload = function() {
                     console.log("Template loaded successfully.");
                     statusMessage.textContent = "Template loaded successfully.";
