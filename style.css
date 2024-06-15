@@ -47,15 +47,11 @@ main {
 
 h1, h2 {
     color: #004c99;
-}
-
-h1 {
     font-family: 'Timeless-Bold', sans-serif;
 }
 
 h2 {
     margin-top: 3rem;
-    font-family: 'Timeless-Bold', sans-serif;
 }
 
 .search-container {
@@ -88,8 +84,8 @@ h2 {
 }
 
 .search-container .search-button img {
-    width: 16px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
 }
 
 .button-container {
@@ -156,6 +152,7 @@ h2 {
     transition: background 0.3s, color 0.3s;
     display: inline-block;
     text-align: center;
+    font-family: 'Timeless-Bold', sans-serif;
 }
 
 .certificate-button:hover {
