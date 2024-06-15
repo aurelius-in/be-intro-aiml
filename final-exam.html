@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Final Exam: Introduction to AI and Machine Learning</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://js.stripe.com/v3/"></script>
 </head>
 <body>
     <header>
         <h1>Final Exam: Introduction to AI and Machine Learning</h1>
     </header>
     <main>
-        <form id="examForm" onsubmit="return submitExam()">
+        <form id="examForm" onsubmit="return submitExam(event)">
             <div id="questionsContainer"></div>
             <button type="submit">Submit for Grading</button>
         </form>
@@ -57,7 +56,8 @@
             await loadAnswers();
         }
 
-        function submitExam() {
+        function submitExam(event) {
+            event.preventDefault(); // Prevent form submission
             const form = document.getElementById('examForm');
             let score = 0;
             const totalQuestions = Object.keys(correctAnswers).length;
@@ -77,22 +77,21 @@
             const certificateButton = document.getElementById('certificateButton');
 
             if (percentage >= 75) {
-                const name = prompt("Congratulations! You passed the exam. Please enter your name for the certificate:");
-                if (name) {
-                    window.location.href = `final-certificate.html?success=true&name=${encodeURIComponent(name)}`;
-                }
+                resultMessage.textContent = `Congratulations! You scored ${percentage}%. You passed the exam.`;
+                resultMessage.style.color = 'green';
+                certificateButton.style.display = 'block';
             } else {
                 resultMessage.textContent = `You scored ${percentage}%. You need at least 75% to pass.`;
                 resultMessage.style.color = 'red';
             }
-
-            return false; // Prevent form submission
         }
 
         function markIncorrect(questionId) {
             const questionElements = document.getElementsByName(questionId);
             questionElements.forEach(element => {
-                element.parentElement.style.color = 'red';
+                if (!element.checked) {
+                    element.parentElement.style.color = 'red';
+                }
             });
         }
 
