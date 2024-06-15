@@ -35,21 +35,8 @@ footer {
     box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
 }
 
-label {
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-    display: block;
-    font-size: 1.2rem;
-}
-
-input {
-    display: block;
-    width: 80%;
-    padding: 0.5rem;
-    margin: 0.5rem auto 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1.2rem;
+.question {
+    margin-bottom: 1rem;
 }
 
 button {
@@ -66,15 +53,8 @@ button:hover {
     background: #45a049;
 }
 
-#statusMessage {
-    color: red;
+#resultMessage {
     margin-top: 1rem;
     font-size: 1.2rem;
-}
-
-canvas {
-    border: 2px solid black;
-    margin-top: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    color: red;
 }
