@@ -1,8 +1,9 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Georgia', serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;
+    background-color: #f4f4f4;
 }
 
 header {
@@ -10,11 +11,17 @@ header {
     color: white;
     padding: 1rem 0;
     text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 main {
     padding: 2rem;
     text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
 }
 
 footer {
@@ -25,11 +32,36 @@ footer {
     position: fixed;
     width: 100%;
     bottom: 0;
+    box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
 }
 
-label, input, button {
+label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
     display: block;
-    margin: 0.5rem auto;
+}
+
+input {
+    display: block;
+    width: 80%;
+    padding: 0.5rem;
+    margin: 0.5rem auto 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+button:hover {
+    background: #45a049;
 }
 
 #statusMessage {
@@ -38,6 +70,8 @@ label, input, button {
 }
 
 canvas {
-    border: 1px solid black;
+    border: 2px solid black;
     margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
