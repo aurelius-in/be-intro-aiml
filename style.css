@@ -2,37 +2,37 @@ body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f9f9f9;
+    background-color: #ffffff;
     color: #333;
     line-height: 1.6;
 }
 
 header {
-    background: #007BFF;
+    background: #004c99;
     color: white;
-    padding: 1.5rem 0;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-header h1 {
-    font-size: 2.5rem;
-    margin: 0;
+header .logo {
+    width: 50px;
+    height: auto;
+    margin-right: 1rem;
 }
 
-nav {
-    background: #007BFF;
-    color: white;
-    padding: 0.5rem 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+header h1 {
+    font-size: 2rem;
+    margin: 0;
 }
 
 nav ul {
     list-style: none;
     padding: 0;
+    margin: 0;
     display: flex;
+    align-items: center;
 }
 
 nav ul li {
@@ -43,11 +43,13 @@ nav ul li a {
     text-decoration: none;
     color: white;
     font-weight: bold;
-    transition: color 0.3s;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background 0.3s;
 }
 
 nav ul li a:hover {
-    color: #FFD700;
+    background: #007bff;
 }
 
 main {
@@ -86,20 +88,20 @@ ul li {
 
 ul li a {
     text-decoration: none;
-    color: #007BFF;
+    color: #004c99;
     font-weight: bold;
     transition: color 0.3s;
 }
 
 ul li a:hover {
-    color: #0056b3;
+    color: #007bff;
 }
 
 .quiz-link {
     display: inline-block;
     margin-top: 1rem;
     padding: 0.5rem 1rem;
-    background: #007BFF;
+    background: #004c99;
     color: white;
     text-decoration: none;
     border-radius: 4px;
@@ -107,7 +109,7 @@ ul li a:hover {
 }
 
 .quiz-link:hover {
-    background: #0056b3;
+    background: #007bff;
 }
 
 /* Chapter pages */
@@ -117,19 +119,19 @@ article {
 
 article h2 {
     font-size: 1.75rem;
-    color: #007BFF;
+    color: #004c99;
     margin-top: 0;
 }
 
 nav a {
     text-decoration: none;
-    color: #007BFF;
+    color: #004c99;
     margin: 0 1rem;
     transition: color 0.3s;
 }
 
 nav a:hover {
-    color: #0056b3;
+    color: #007bff;
 }
 
 /* Quiz page */
@@ -148,7 +150,7 @@ nav a:hover {
 }
 
 button[type="submit"] {
-    background: #007BFF;
+    background: #004c99;
     color: white;
     padding: 0.75rem 1.5rem;
     border: none;
@@ -158,7 +160,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background: #0056b3;
+    background: #007bff;
 }
 
 #quizResult {
