@@ -8,7 +8,7 @@ body {
 }
 
 header {
-    background: linear-gradient(135deg, #4CAF50, #388E3C);
+    background: #007BFF;
     color: white;
     padding: 1.5rem 0;
     text-align: center;
@@ -18,6 +18,36 @@ header {
 header h1 {
     font-size: 2.5rem;
     margin: 0;
+}
+
+nav {
+    background: #007BFF;
+    color: white;
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #FFD700;
 }
 
 main {
@@ -56,20 +86,20 @@ ul li {
 
 ul li a {
     text-decoration: none;
-    color: #388E3C;
+    color: #007BFF;
     font-weight: bold;
     transition: color 0.3s;
 }
 
 ul li a:hover {
-    color: #4CAF50;
+    color: #0056b3;
 }
 
 .quiz-link {
     display: inline-block;
     margin-top: 1rem;
     padding: 0.5rem 1rem;
-    background: #388E3C;
+    background: #007BFF;
     color: white;
     text-decoration: none;
     border-radius: 4px;
@@ -77,7 +107,7 @@ ul li a:hover {
 }
 
 .quiz-link:hover {
-    background: #4CAF50;
+    background: #0056b3;
 }
 
 /* Chapter pages */
@@ -87,19 +117,19 @@ article {
 
 article h2 {
     font-size: 1.75rem;
-    color: #388E3C;
+    color: #007BFF;
     margin-top: 0;
 }
 
 nav a {
     text-decoration: none;
-    color: #4CAF50;
+    color: #007BFF;
     margin: 0 1rem;
     transition: color 0.3s;
 }
 
 nav a:hover {
-    color: #388E3C;
+    color: #0056b3;
 }
 
 /* Quiz page */
@@ -118,7 +148,7 @@ nav a:hover {
 }
 
 button[type="submit"] {
-    background: #388E3C;
+    background: #007BFF;
     color: white;
     padding: 0.75rem 1.5rem;
     border: none;
@@ -128,7 +158,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background: #4CAF50;
+    background: #0056b3;
 }
 
 #quizResult {
