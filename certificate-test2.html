@@ -16,9 +16,9 @@
             <input type="text" id="name" name="name">
             <button type="button" onclick="generateCertificate()">Generate Certificate</button>
         </div>
-        <canvas id="certificateCanvas" style="display:none;"></canvas>
-        <div id="certificateLinkContainer"></div>
-        <div id="statusMessage"></div>
+        <canvas id="certificateCanvas" style="border: 1px solid black; margin-top: 20px;"></canvas>
+        <div id="certificateLinkContainer" style="margin-top: 20px;"></div>
+        <div id="statusMessage" style="margin-top: 20px; color: red;"></div>
     </main>
     <footer>
         <p>&copy; 2024 Blue Eagle AI and Robotics. All rights reserved.</p>
@@ -33,12 +33,11 @@
                 const canvas = document.getElementById('certificateCanvas');
                 const ctx = canvas.getContext('2d');
                 const template = new Image();
-                template.src = 'template.png';  // Simplified file name
-                
-                console.log("Loading template from: " + template.src);
+                template.src = 'template.png';  // Ensure correct relative path
+
+                statusMessage.textContent = "Loading template from: " + template.src;
 
                 template.onload = function() {
-                    console.log("Template loaded successfully.");
                     statusMessage.textContent = "Template loaded successfully.";
 
                     canvas.width = template.width;
@@ -68,11 +67,9 @@
                 };
 
                 template.onerror = function() {
-                    console.error("Failed to load the template image.");
                     statusMessage.textContent = "Failed to load the template image.";
                 };
             } else {
-                console.error("Name is empty. Please enter a name.");
                 statusMessage.textContent = "Name is empty. Please enter a name.";
             }
         }
