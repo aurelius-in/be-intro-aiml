@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Final Exam: Introduction to AI and Machine Learning</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://js.stripe.com/v3/"></script>
 </head>
 <body>
     <header>
@@ -13,9 +14,10 @@
     <main>
         <form id="examForm" onsubmit="return submitExam()">
             <div id="questionsContainer"></div>
-            <button type="submit">Submit Exam</button>
+            <button type="submit">Submit for Grading</button>
         </form>
         <div id="resultMessage"></div>
+        <button id="certificateButton" style="display: none;" onclick="redirectToCertificate()">View and Print Certificate</button>
     </main>
     <footer>
         <p>&copy; 2024 Blue Eagle AI and Robotics. All rights reserved.</p>
@@ -58,27 +60,47 @@
         function submitExam() {
             const form = document.getElementById('examForm');
             let score = 0;
-            const totalQuestions = 50;
+            const totalQuestions = Object.keys(correctAnswers).length;
 
             for (let i = 1; i <= totalQuestions; i++) {
-                const answer = form[`q${i}`].value;
-                if (answer === correctAnswers[`q${i}`]) {
+                const questionId = `q${i}`;
+                const answer = form[questionId].value;
+                if (answer === correctAnswers[questionId]) {
                     score++;
+                } else {
+                    markIncorrect(questionId);
                 }
             }
 
             const percentage = (score / totalQuestions) * 100;
             const resultMessage = document.getElementById('resultMessage');
-            if (percentage >= 70) {
+            const certificateButton = document.getElementById('certificateButton');
+
+            if (percentage >= 75) {
                 const name = prompt("Congratulations! You passed the exam. Please enter your name for the certificate:");
                 if (name) {
                     window.location.href = `final-certificate.html?success=true&name=${encodeURIComponent(name)}`;
                 }
             } else {
-                resultMessage.textContent = `You scored ${percentage}%. You need at least 70% to pass.`;
+                resultMessage.textContent = `You scored ${percentage}%. You need at least 75% to pass.`;
+                resultMessage.style.color = 'red';
             }
 
             return false; // Prevent form submission
+        }
+
+        function markIncorrect(questionId) {
+            const questionElements = document.getElementsByName(questionId);
+            questionElements.forEach(element => {
+                element.parentElement.style.color = 'red';
+            });
+        }
+
+        function redirectToCertificate() {
+            const name = prompt("Please enter your name for the certificate:");
+            if (name) {
+                window.location.href = `final-certificate.html?success=true&name=${encodeURIComponent(name)}`;
+            }
         }
 
         document.addEventListener('DOMContentLoaded', initializeExam);
