@@ -13,10 +13,11 @@
     <main>
         <form id="examForm" onsubmit="return submitExam(event)">
             <div id="questionsContainer"></div>
-            <button type="submit">Submit for Grading</button>
+            <button type="submit" id="submitButton">Submit for Grading</button>
         </form>
         <div id="resultMessage"></div>
-        <button id="certificateButton" style="display: none;" onclick="redirectToCertificate()">View and Print Certificate</button>
+        <button id="retakeButton" style="display: none;" onclick="retakeExam()">Retake Exam</button>
+        <button id="certificateButton" style="display: none;" onclick="redirectToCertificate()">Print Certificate</button>
     </main>
     <footer>
         <p>&copy; 2024 Blue Eagle AI and Robotics. All rights reserved.</p>
@@ -31,15 +32,15 @@
             const data = await response.json();
             const questionsContainer = document.getElementById('questionsContainer');
 
-            data.questions.forEach(question => {
+            data.questions.forEach((question, index) => {
                 const questionDiv = document.createElement('div');
                 questionDiv.classList.add('question');
                 questionDiv.innerHTML = `
-                    <p>${question.question}</p>
-                    <label><input type="radio" name="${question.id}" value="a"> ${question.options.a}</label><br>
-                    <label><input type="radio" name="${question.id}" value="b"> ${question.options.b}</label><br>
-                    <label><input type="radio" name="${question.id}" value="c"> ${question.options.c}</label><br>
-                    <label><input type="radio" name="${question.id}" value="d"> ${question.options.d}</label>
+                    <p>${index + 1}. ${question.question}</p>
+                    <label><input type="radio" name="${question.id}" value="a"> a. ${question.options.a}</label><br>
+                    <label><input type="radio" name="${question.id}" value="b"> b. ${question.options.b}</label><br>
+                    <label><input type="radio" name="${question.id}" value="c"> c. ${question.options.c}</label><br>
+                    <label><input type="radio" name="${question.id}" value="d"> d. ${question.options.d}</label>
                 `;
                 questionsContainer.appendChild(questionDiv);
             });
@@ -68,31 +69,43 @@
                 if (answer === correctAnswers[questionId]) {
                     score++;
                 } else {
-                    markIncorrect(questionId);
+                    markIncorrect(questionId, correctAnswers[questionId]);
                 }
             }
 
             const percentage = (score / totalQuestions) * 100;
             const resultMessage = document.getElementById('resultMessage');
+            const submitButton = document.getElementById('submitButton');
+            const retakeButton = document.getElementById('retakeButton');
             const certificateButton = document.getElementById('certificateButton');
 
+            submitButton.textContent = `Score: ${percentage}%`;
+            submitButton.disabled = true;
+
             if (percentage >= 75) {
-                resultMessage.textContent = `Congratulations! You scored ${percentage}%. You passed the exam.`;
+                resultMessage.textContent = `Congratulations! You passed the exam with a score of ${percentage}%.`;
                 resultMessage.style.color = 'green';
                 certificateButton.style.display = 'block';
             } else {
                 resultMessage.textContent = `You scored ${percentage}%. You need at least 75% to pass.`;
                 resultMessage.style.color = 'red';
+                retakeButton.style.display = 'block';
             }
         }
 
-        function markIncorrect(questionId) {
+        function markIncorrect(questionId, correctAnswer) {
             const questionElements = document.getElementsByName(questionId);
             questionElements.forEach(element => {
-                if (!element.checked) {
+                if (element.value === correctAnswer) {
+                    element.parentElement.style.color = 'green';
+                } else {
                     element.parentElement.style.color = 'red';
                 }
             });
+        }
+
+        function retakeExam() {
+            location.reload();
         }
 
         function redirectToCertificate() {
