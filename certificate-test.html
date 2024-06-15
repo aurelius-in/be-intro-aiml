@@ -29,12 +29,12 @@
             const statusMessage = document.getElementById('statusMessage');
             statusMessage.textContent = "";  // Clear previous status message
 
-            if(name) {
+            if (name) {
                 const canvas = document.getElementById('certificateCanvas');
                 const ctx = canvas.getContext('2d');
                 const template = new Image();
                 template.src = './certificate with simple logo.png';  // Ensure correct relative path
-                
+
                 console.log("Loading template from: " + template.src);
 
                 template.onload = function() {
@@ -61,7 +61,7 @@
                     link.href = canvas.toDataURL('image/png');
                     link.download = `certificate_${name}.png`;
                     link.textContent = 'Download your certificate';
-                    
+
                     const container = document.getElementById('certificateLinkContainer');
                     container.innerHTML = '';  // Clear previous link if any
                     container.appendChild(link);
