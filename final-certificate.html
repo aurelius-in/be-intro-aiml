@@ -46,14 +46,10 @@
                     // Draw the template
                     ctx.drawImage(template, 0, 0);
 
-                    // Add the title
-                    ctx.fillStyle = '#000000';
-                    ctx.font = 'bold 40px Arial';
-                    ctx.textAlign = 'center';
-                    ctx.fillText('Certificate of Completion', canvas.width / 2, 250);
-
                     // Add the name
+                    ctx.fillStyle = '#000000';
                     ctx.font = 'bold 35px Arial';
+                    ctx.textAlign = 'center';
                     ctx.fillText(name, canvas.width / 2, 350);
 
                     // Add the course name
@@ -68,9 +64,11 @@
                     ctx.fillText(`Date: ${date}`, canvas.width / 2, 500);
 
                     // Add additional details
-                    ctx.font = '25px Arial';
+                    ctx.font = '20px Arial';
                     ctx.fillText("This certifies that the above individual has successfully", canvas.width / 2, 550);
-                    ctx.fillText("completed the course requirements and demonstrated proficiency.", canvas.width / 2, 580);
+                    ctx.fillText("completed the course requirements, demonstrating proficiency", canvas.width / 2, 580);
+                    ctx.fillText("in fundamental AI and Machine Learning concepts, including supervised", canvas.width / 2, 610);
+                    ctx.fillText("and unsupervised learning, neural networks, and data preprocessing.", canvas.width / 2, 640);
 
                     // Display the canvas
                     canvas.style.display = 'block';
