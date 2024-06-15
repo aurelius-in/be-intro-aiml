@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1 id="chapterTitle">Chapter Title</h1>
+    </header>
+    <main>
+        <article id="chapterContent">
+            <!-- Chapter content will be dynamically loaded here -->
+        </article>
+        <nav>
+            <a href="#" id="backLink">Back to Module</a> | <a href="#" id="nextLink">Next Chapter</a>
+        </nav>
+    </main>
+    <footer>
+        <p>&copy; 2024 Blue Eagle AI and Robotics. All rights reserved.</p>
+    </footer>
+    <script>
+        // Function to fetch and display chapter content
+        async function loadChapter() {
+            const params = new URLSearchParams(window.location.search);
+            const chapterFile = params.get('file');
+            const response = await fetch(chapterFile);
+            const data = await response.json();
+
+            document.getElementById('chapterTitle').textContent = data.title;
+            const contentElement = document.getElementById('chapterContent');
+            contentElement.innerHTML = '';
+
+            data.sections.forEach(section => {
+                const sectionElement = document.createElement('section');
+                const headingElement = document.createElement('h2');
+                headingElement.textContent = section.heading;
+                sectionElement.appendChild(headingElement);
+
+                const contentParagraph = document.createElement('p');
+                contentParagraph.textContent = section.content;
+                sectionElement.appendChild(contentParagraph);
+
+                if (section.subsections) {
+                    section.subsections.forEach(subsection => {
+                        const subheadingElement = document.createElement('h3');
+                        subheadingElement.textContent = subsection.subheading;
+                        sectionElement.appendChild(subheadingElement);
+
+                        const subcontentParagraph = document.createElement('p');
+                        subcontentParagraph.textContent = subsection.content;
+                        sectionElement.appendChild(subcontentParagraph);
+                    });
+                }
+
+                contentElement.appendChild(sectionElement);
+            });
+
+            // Set navigation links
+            const backLink = params.get('back');
+            const nextLink = params.get('next');
+            document.getElementById('backLink').href = backLink || '#';
+            document.getElementById('nextLink').href = nextLink || '#';
+        }
+
+        document.addEventListener('DOMContentLoaded', loadChapter);
+    </script>
+</body>
+</html>
