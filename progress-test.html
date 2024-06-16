@@ -74,9 +74,11 @@
         document.addEventListener("DOMContentLoaded", () => {
             const checkboxes = document.querySelectorAll("input[type=checkbox]");
             const finalExamButton = document.getElementById("finalExamButton");
+            const loginStatus = document.getElementById("loginStatus");
 
             onAuthStateChanged(auth, async (user) => {
                 if (user) {
+                    loginStatus.textContent = `Logged in as ${user.email}`;
                     console.log("User logged in: ", user);
                     const progress = await loadProgress(user.uid);
                     checkboxes.forEach((checkbox, index) => {
@@ -87,6 +89,7 @@
                         checkbox.addEventListener("change", () => handleCheckboxChange(user.uid, checkboxes));
                     });
                 } else {
+                    loginStatus.textContent = "Not logged in";
                     console.log("No user logged in");
                 }
             });
@@ -101,6 +104,7 @@
     </header>
     <main>
         <h1>Progress Tracking</h1>
+        <p id="loginStatus">Checking login status...</p>
         <div>
             <label><input type="checkbox" id="class1"> Class 1 Complete</label><br>
             <label><input type="checkbox" id="class2"> Class 2 Complete</label><br>
