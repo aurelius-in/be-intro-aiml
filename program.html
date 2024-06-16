@@ -63,6 +63,19 @@
             const urlParams = new URLSearchParams(window.location.search);
             const programType = urlParams.get('type');
 
+            const validTypes = [
+                'robotics',
+                'engineers-developers',
+                'leaders-managers',
+                'data-scientists-researchers',
+                'business-marketing'
+            ];
+
+            if (!validTypes.includes(programType)) {
+                console.error('Invalid program type');
+                return;
+            }
+
             fetch(`${programType}.json`)
                 .then(response => response.json())
                 .then(data => {
