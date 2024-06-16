@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firestore Test - BEST</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+        import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDPBH5ifyna8jYilqjneh9sRlWg6Z1kS0Y",
+            authDomain: "best-6bc96.firebaseapp.com",
+            projectId: "best-6bc96",
+            storageBucket: "best-6bc96.appspot.com",
+            messagingSenderId: "835354586616",
+            appId: "1:835354586616:web:931af2d81b25c287dcba0d",
+            measurementId: "G-7TQN3QPPTX"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth();
+        const db = getFirestore(app);
+
+        async function saveTestData() {
+            const docRef = doc(db, "testCollection", "testDocument");
+            try {
+                await setDoc(docRef, { testField: "Hello, Firestore!" });
+                document.getElementById("result").textContent = "Data saved successfully!";
+            } catch (error) {
+                document.getElementById("result").textContent = "Error saving data: " + error;
+            }
+        }
+
+        async function loadTestData() {
+            const docRef = doc(db, "testCollection", "testDocument");
+            try {
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                    document.getElementById("result").textContent = "Data loaded: " + docSnap.data().testField;
+                } else {
+                    document.getElementById("result").textContent = "No such document!";
+                }
+            } catch (error) {
+                document.getElementById("result").textContent = "Error loading data: " + error;
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById("saveButton").addEventListener("click", saveTestData);
+            document.getElementById("loadButton").addEventListener("click", loadTestData);
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <a href="index.html"><img src="logo-1x1.svg" alt="BEST Logo" class="logo"></a>
+    </header>
+    <main>
+        <h1>Firestore Test</h1>
+        <button id="saveButton">Save Test Data</button>
+        <button id="loadButton">Load Test Data</button>
+        <p id="result"></p>
+    </main>
+    <footer>
+        <p>&copy; 2024 Blue Eagle School of Technology. All rights reserved.</p>
+    </footer>
+</body>
+</html>
