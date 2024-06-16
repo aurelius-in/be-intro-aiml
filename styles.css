@@ -193,3 +193,39 @@ footer p {
     margin: 0;
     font-size: 0.9rem;
 }
+
+/* Login Page Specific Styles */
+.login-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.login-container input[type="email"], 
+.login-container input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.login-container button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background: #004c99;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 1rem;
+}
+
+.login-container button:hover {
+    background: #003366;
+}
