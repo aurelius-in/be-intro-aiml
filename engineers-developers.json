@@ -1,45 +1,16 @@
 {
-    "category": "Engineers & Developers",
-    "programs": [
-        {
-            "title": "Fundamentals of AI for Engineers",
-            "courses": [
-                "Introduction to AI and ML",
-                "Data Structures and Algorithms",
-                "Python Programming for AI",
-                "Data Science Fundamentals",
-                "Capstone Project in AI Engineering"
-            ]
-        },
-        {
-            "title": "Intermediate AI Development",
-            "courses": [
-                "Deep Learning Fundamentals",
-                "Natural Language Processing",
-                "Computer Vision",
-                "AI in Software Development",
-                "Capstone Project in AI Development"
-            ]
-        },
-        {
-            "title": "Advanced AI Engineering",
-            "courses": [
-                "Advanced Machine Learning Algorithms",
-                "Reinforcement Learning",
-                "AI and IoT",
-                "Big Data Analytics",
-                "AI Engineering Capstone Project"
-            ]
-        },
-        {
-            "title": "AI for System Engineers",
-            "courses": [
-                "AI in Systems Engineering",
-                "Autonomous Systems Design",
-                "Cyber-Physical Systems",
-                "AI for Embedded Systems",
-                "Systems Engineering Capstone Project"
-            ]
-        }
-    ]
+  "category": "Engineers & Developers",
+  "programs": [
+    {
+      "title": "Professional Certificate in AI Engineering",
+      "courses": [
+        "Introduction to AI and Machine Learning",
+        "Python for Data Science",
+        "Data Structures and Algorithms",
+        "Deep Learning and Neural Networks",
+        "Natural Language Processing",
+        "Capstone Project in AI Engineering"
+      ]
+    }
+  ]
 }
