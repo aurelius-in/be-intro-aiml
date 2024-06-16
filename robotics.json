@@ -1,45 +1,45 @@
 {
-  "category": "Robotics",
-  "programs": [
-    {
-      "title": "Fundamentals of Robotics",
-      "courses": [
-        "Introduction to Robotics",
-        "Basics of Robot Programming",
-        "Robot Kinematics",
-        "Introduction to Sensors and Actuators",
-        "Introduction to AI in Robotics"
-      ]
-    },
-    {
-      "title": "Intermediate Robotics",
-      "courses": [
-        "Robot Dynamics",
-        "Motion Planning and Control",
-        "Autonomous Mobile Robots",
-        "Machine Learning for Robotics",
-        "Robot Simulation and Modelling"
-      ]
-    },
-    {
-      "title": "Advanced Robotics",
-      "courses": [
-        "Advanced Topics in Robot Control",
-        "Multi-Robot Systems",
-        "Human-Robot Interaction",
-        "AI and Machine Learning in Robotics",
-        "Capstone Project in Robotics"
-      ]
-    },
-    {
-      "title": "Specialized Robotics Applications",
-      "courses": [
-        "Robotics in Manufacturing",
-        "Medical Robotics",
-        "Robotics in Space Exploration",
-        "AI for Robotics Applications",
-        "Robotics Capstone Project"
-      ]
-    }
-  ]
+    "category": "Robotics",
+    "programs": [
+        {
+            "title": "Fundamentals of Robotics",
+            "courses": [
+                "Introduction to Robotics",
+                "Basics of Robot Programming",
+                "Robot Kinematics",
+                "Introduction to Sensors and Actuators",
+                "Introduction to AI in Robotics"
+            ]
+        },
+        {
+            "title": "Intermediate Robotics",
+            "courses": [
+                "Robot Dynamics",
+                "Motion Planning and Control",
+                "Autonomous Mobile Robots",
+                "Machine Learning for Robotics",
+                "Robot Simulation and Modelling"
+            ]
+        },
+        {
+            "title": "Advanced Robotics",
+            "courses": [
+                "Advanced Topics in Robot Control",
+                "Multi-Robot Systems",
+                "Human-Robot Interaction",
+                "AI and Machine Learning in Robotics",
+                "Capstone Project in Robotics"
+            ]
+        },
+        {
+            "title": "Specialized Robotics Applications",
+            "courses": [
+                "Robotics in Manufacturing",
+                "Medical Robotics",
+                "Robotics in Space Exploration",
+                "AI for Robotics Applications",
+                "Robotics Capstone Project"
+            ]
+        }
+    ]
 }

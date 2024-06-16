@@ -1,0 +1,45 @@
+{
+    "category": "Leaders & Managers",
+    "programs": [
+        {
+            "title": "AI for Business Leaders",
+            "courses": [
+                "AI Strategy and Implementation",
+                "Data Analytics for Leaders",
+                "AI Governance and Ethics",
+                "AI-Driven Innovation",
+                "Capstone Project in AI Leadership"
+            ]
+        },
+        {
+            "title": "AI in Operations Management",
+            "courses": [
+                "AI for Supply Chain Optimization",
+                "Process Automation with AI",
+                "Predictive Maintenance and AI",
+                "Operations Analytics",
+                "Capstone Project in Operations AI"
+            ]
+        },
+        {
+            "title": "AI in Strategic Management",
+            "courses": [
+                "Strategic AI Decision Making",
+                "AI in Competitive Analysis",
+                "Digital Transformation with AI",
+                "AI in Strategic Planning",
+                "Capstone Project in Strategic AI"
+            ]
+        },
+        {
+            "title": "AI for Public Sector Leaders",
+            "courses": [
+                "AI in Public Policy",
+                "Data Governance and Privacy",
+                "AI for Social Good",
+                "AI and Regulatory Compliance",
+                "Capstone Project in Public Sector AI"
+            ]
+        }
+    ]
+}
