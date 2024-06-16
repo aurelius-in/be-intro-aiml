@@ -1,45 +1,16 @@
 {
-    "category": "Data Scientists & Researchers",
-    "programs": [
-        {
-            "title": "Fundamentals of Data Science",
-            "courses": [
-                "Introduction to Data Science",
-                "Statistics and Probability for Data Science",
-                "Data Wrangling and Visualization",
-                "Introduction to Machine Learning",
-                "Capstone Project in Data Science"
-            ]
-        },
-        {
-            "title": "Intermediate Machine Learning",
-            "courses": [
-                "Supervised Learning",
-                "Unsupervised Learning",
-                "Feature Engineering and Selection",
-                "Model Evaluation and Validation",
-                "Capstone Project in Machine Learning"
-            ]
-        },
-        {
-            "title": "Advanced Data Science",
-            "courses": [
-                "Deep Learning Techniques",
-                "Advanced Statistical Methods",
-                "Natural Language Processing",
-                "Big Data Technologies",
-                "Advanced Data Science Capstone Project"
-            ]
-        },
-        {
-            "title": "Specialized AI Research",
-            "courses": [
-                "AI in Healthcare",
-                "AI in Environmental Science",
-                "AI in Education",
-                "AI in Cybersecurity",
-                "Research Capstone Project"
-            ]
-        }
-    ]
+  "category": "Data Scientists & Researchers",
+  "programs": [
+    {
+      "title": "Professional Certificate in Data Science",
+      "courses": [
+        "Introduction to Data Science",
+        "Statistics and Probability for Data Science",
+        "Data Wrangling and Visualization",
+        "Machine Learning",
+        "Big Data Technologies",
+        "Capstone Project in Data Science"
+      ]
+    }
+  ]
 }
