@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - BEST</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // Function to handle user login
+        function login() {
+            var email = document.getElementById("loginEmail").value;
+            var password = document.getElementById("loginPassword").value;
+
+            firebase.auth().signInWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    // Signed in
+                    var user = userCredential.user;
+                    console.log("User logged in: ", user);
+                    window.location.href = "index.html";
+                })
+                .catch((error) => {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    console.error("Error: ", errorMessage);
+                    document.getElementById("error-message").textContent = errorMessage;
+                });
+        }
+
+        // Function to handle user sign-up
+        function signUp() {
+            var email = document.getElementById("signupEmail").value;
+            var password = document.getElementById("signupPassword").value;
+
+            firebase.auth().createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    // Signed in 
+                    var user = userCredential.user;
+                    console.log("User signed up: ", user);
+                    window.location.href = "index.html";
+                })
+                .catch((error) => {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    console.error("Error: ", errorMessage);
+                    document.getElementById("error-message").textContent = errorMessage;
+                });
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <a href="index.html"><img src="logo-1x1.svg" alt="BEST Logo" class="logo"></a>
+    </header>
+    <main class="login-container">
+        <h1>Login to BEST</h1>
+        <div id="error-message" style="color: red;"></div>
+        <div>
+            <h2>Login</h2>
+            <input type="email" id="loginEmail" placeholder="Email">
+            <input type="password" id="loginPassword" placeholder="Password">
+            <button onclick="login()">Login</button>
+        </div>
+
+        <div>
+            <h2>Sign Up</h2>
+            <input type="email" id="signupEmail" placeholder="Email">
+            <input type="password" id="signupPassword" placeholder="Password">
+            <button onclick="signUp()">Sign Up</button>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Blue Eagle School of Technology. All rights reserved.</p>
+    </footer>
+</body>
+</html>
