@@ -8,7 +8,7 @@
     <script type="module">
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
         import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
         // Your web app's Firebase configuration
@@ -32,8 +32,10 @@
             try {
                 await setDoc(doc(db, "progress", userId), { progress });
                 console.log("Progress saved!");
+                displayDebugMessage("Progress saved!");
             } catch (error) {
                 console.error("Error saving progress: ", error);
+                displayDebugMessage("Error saving progress: " + error.message);
             }
         }
 
@@ -43,15 +45,27 @@
                 const docRef = doc(db, "progress", userId);
                 const docSnap = await getDoc(docRef);
                 if (docSnap.exists()) {
+                    console.log("Progress loaded: ", docSnap.data());
+                    displayDebugMessage("Progress loaded.");
                     return docSnap.data().progress;
                 } else {
                     console.log("No progress found!");
+                    displayDebugMessage("No progress found!");
                     return {};
                 }
             } catch (error) {
                 console.error("Error loading progress: ", error);
+                displayDebugMessage("Error loading progress: " + error.message);
                 return {};
             }
+        }
+
+        // Function to display debug messages
+        function displayDebugMessage(message) {
+            const debugElement = document.getElementById("debugMessages");
+            const messageElement = document.createElement("p");
+            messageElement.textContent = message;
+            debugElement.appendChild(messageElement);
         }
 
         // Function to handle checkbox changes
@@ -70,16 +84,31 @@
             document.getElementById("finalExamButton").disabled = !allChecked;
         }
 
+        // Function to handle user logout
+        function logout() {
+            signOut(auth).then(() => {
+                console.log("User logged out");
+                window.location.href = "login.html";
+            }).catch((error) => {
+                console.error("Error logging out: ", error);
+                displayDebugMessage("Error logging out: " + error.message);
+            });
+        }
+
         // Initialize the page
         document.addEventListener("DOMContentLoaded", () => {
             const checkboxes = document.querySelectorAll("input[type=checkbox]");
             const finalExamButton = document.getElementById("finalExamButton");
+            const saveButton = document.getElementById("saveButton");
             const loginStatus = document.getElementById("loginStatus");
+            const loginButton = document.getElementById("loginButton");
+            const logoutButton = document.getElementById("logoutButton");
 
             onAuthStateChanged(auth, async (user) => {
                 if (user) {
                     loginStatus.textContent = `Logged in as ${user.email}`;
                     console.log("User logged in: ", user);
+                    displayDebugMessage(`Logged in as ${user.email}`);
                     const progress = await loadProgress(user.uid);
                     checkboxes.forEach((checkbox, index) => {
                         checkbox.checked = progress[`class${index + 1}`] || false;
@@ -88,13 +117,23 @@
                     checkboxes.forEach(checkbox => {
                         checkbox.addEventListener("change", () => handleCheckboxChange(user.uid, checkboxes));
                     });
+                    saveButton.addEventListener("click", () => handleCheckboxChange(user.uid, checkboxes));
+                    loginButton.style.display = 'none';
+                    logoutButton.style.display = 'inline-block';
                 } else {
                     loginStatus.textContent = "Not logged in";
                     console.log("No user logged in");
+                    displayDebugMessage("No user logged in");
+                    loginButton.style.display = 'inline-block';
+                    logoutButton.style.display = 'none';
                 }
             });
 
             finalExamButton.disabled = true;
+            loginButton.addEventListener("click", () => {
+                window.location.href = "login.html";
+            });
+            logoutButton.addEventListener("click", logout);
         });
     </script>
 </head>
@@ -105,6 +144,8 @@
     <main>
         <h1>Progress Tracking</h1>
         <p id="loginStatus">Checking login status...</p>
+        <button id="loginButton" style="display:none;">Login</button>
+        <button id="logoutButton" style="display:none;">Logout</button>
         <div>
             <label><input type="checkbox" id="class1"> Class 1 Complete</label><br>
             <label><input type="checkbox" id="class2"> Class 2 Complete</label><br>
@@ -114,7 +155,9 @@
             <label><input type="checkbox" id="class6"> Class 6 Complete</label><br>
             <label><input type="checkbox" id="class7"> Class 7 Complete</label><br>
         </div>
+        <button id="saveButton">Save Progress</button>
         <button id="finalExamButton" disabled>Take Final Exam</button>
+        <div id="debugMessages" style="margin-top: 2rem; color: red;"></div>
     </main>
     <footer>
         <p>&copy; 2024 Blue Eagle School of Technology. All rights reserved.</p>
