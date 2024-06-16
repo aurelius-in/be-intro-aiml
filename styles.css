@@ -104,7 +104,7 @@ h2 {
 }
 
 .category-button {
-    padding: 1rem 2rem;
+    padding: 0.5rem 1rem; /* Adjusted padding */
     border: 2px solid #ccc;
     border-radius: 15px;
     background-color: white;
@@ -115,9 +115,9 @@ h2 {
     display: inline-block;
     text-align: center;
     transition: all 0.3s ease;
-    width: 200px; /* Adjust width as needed */
-    height: 50px; /* Adjust height as needed */
-    line-height: 50px; /* Vertically center text */
+    width: 250px; /* Adjusted width */
+    height: 60px; /* Adjusted height */
+    line-height: 1.2; /* Adjusted line-height */
 }
 
 .category-button:hover {
