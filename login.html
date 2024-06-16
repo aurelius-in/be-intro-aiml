@@ -5,27 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - BEST</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
-    <script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
         // Your web app's Firebase configuration
-        var firebaseConfig = {
-            apiKey: "YOUR_API_KEY",
-            authDomain: "YOUR_AUTH_DOMAIN",
-            projectId: "YOUR_PROJECT_ID",
-            storageBucket: "YOUR_STORAGE_BUCKET",
-            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-            appId: "YOUR_APP_ID"
+        const firebaseConfig = {
+            apiKey: "AIzaSyDPBH5ifyna8jYilqjneh9sRlWg6Z1kS0Y",
+            authDomain: "best-6bc96.firebaseapp.com",
+            projectId: "best-6bc96",
+            storageBucket: "best-6bc96.appspot.com",
+            messagingSenderId: "835354586616",
+            appId: "1:835354586616:web:931af2d81b25c287dcba0d",
+            measurementId: "G-7TQN3QPPTX"
         };
+
         // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth();
 
         // Function to handle user login
-        function login() {
+        window.login = function() {
             var email = document.getElementById("loginEmail").value;
             var password = document.getElementById("loginPassword").value;
 
-            firebase.auth().signInWithEmailAndPassword(email, password)
+            signInWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
                     // Signed in
                     var user = userCredential.user;
@@ -41,11 +48,11 @@
         }
 
         // Function to handle user sign-up
-        function signUp() {
+        window.signUp = function() {
             var email = document.getElementById("signupEmail").value;
             var password = document.getElementById("signupPassword").value;
 
-            firebase.auth().createUserWithEmailAndPassword(email, password)
+            createUserWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
                     // Signed in 
                     var user = userCredential.user;
