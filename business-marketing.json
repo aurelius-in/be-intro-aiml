@@ -1,45 +1,16 @@
 {
-    "category": "Business & Marketing",
-    "programs": [
-        {
-            "title": "AI for Business Professionals",
-            "courses": [
-                "Introduction to AI and ML",
-                "Data-Driven Decision Making",
-                "AI in Business Strategy",
-                "Ethics in AI",
-                "Capstone Project in Business AI"
-            ]
-        },
-        {
-            "title": "AI for Marketing Professionals",
-            "courses": [
-                "AI and ML in Marketing",
-                "Customer Data Analytics",
-                "Digital Marketing Strategies with AI",
-                "AI-Driven Market Research",
-                "Capstone Project in Marketing AI"
-            ]
-        },
-        {
-            "title": "AI for Financial Professionals",
-            "courses": [
-                "AI in Finance",
-                "Financial Data Analysis with AI",
-                "Predictive Analytics in Finance",
-                "Risk Management with AI",
-                "Capstone Project in Financial AI"
-            ]
-        },
-        {
-            "title": "AI for HR Professionals",
-            "courses": [
-                "AI in Human Resources",
-                "Talent Analytics and Workforce Planning",
-                "AI for Employee Engagement and Retention",
-                "Predictive HR Analytics",
-                "Capstone Project in HR AI"
-            ]
-        }
-    ]
+  "category": "Business & Marketing",
+  "programs": [
+    {
+      "title": "Professional Certificate in AI for Business",
+      "courses": [
+        "AI in Business Strategy",
+        "Data Analytics for Business",
+        "AI-Driven Marketing",
+        "Customer Data Analytics",
+        "AI Ethics and Governance",
+        "Capstone Project in AI for Business"
+      ]
+    }
+  ]
 }
