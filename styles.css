@@ -93,7 +93,7 @@ h2 {
     justify-content: center;
 }
 
-search-container .search-button img {
+.search-container .search-button img {
     width: 25px;
     height: 25px;
     padding: 0;
