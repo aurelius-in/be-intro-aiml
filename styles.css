@@ -12,7 +12,7 @@ body {
 }
 
 header {
-    background-color: white !important; /* Ensure header background is white */
+    background: white !important; /* Ensure header background is white */
     color: #004c99;
     display: flex;
     align-items: center;
@@ -21,9 +21,13 @@ header {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-header .logo-large {
-    width: 150px;
-    height: auto;
+header .logo {
+    width: 100px;
+    height: 100px;
+    min-width: 100px;
+    min-height: 100px;
+    max-width: 100px;
+    max-height: 100px;
 }
 
 main {
