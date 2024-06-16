@@ -12,8 +12,8 @@ body {
 }
 
 header {
-    background: #004c99;
-    color: white;
+    background: white; /* Updated background color */
+    color: #004c99;
     display: flex;
     align-items: center;
     justify-content: center;
