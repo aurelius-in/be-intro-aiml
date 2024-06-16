@@ -42,7 +42,8 @@ h1, h2 {
 }
 
 h1 {
-    font-size: 2rem; /* Adjusted size */
+    font-size: 1.5rem; /* Adjusted size */
+    line-height: 1.2; /* Adjusted line-height */
 }
 
 h2 {
