@@ -41,6 +41,10 @@ h1, h2 {
     font-weight: 700;
 }
 
+h1 {
+    font-size: 2rem; /* Adjusted size */
+}
+
 h2 {
     margin-top: 3rem;
     font-weight: 500;
