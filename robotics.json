@@ -6,19 +6,49 @@
         "Learn about the applications and challenges of robotics in various industries."
     ],
     "modules": [
-        "Module 1: Introduction to Robotics",
-        "Module 2: Robotics Hardware Components",
-        "Module 3: Robotics Software and Programming",
-        "Module 4: Sensors and Actuators",
-        "Module 5: Control Systems in Robotics",
-        "Module 6: Advanced Robotics Concepts",
-        "Module 7: Robotics in Industry",
-        "Module 8: Robotics in Specific Industries",
-        "Module 9: Advanced Topics in Robotics",
-        "Module 10: Practical Robotics Projects"
+        {
+            "title": "Module 1: Introduction to Robotics",
+            "link": "robotics-module-1.json"
+        },
+        {
+            "title": "Module 2: Robotics Hardware Components",
+            "link": "robotics-module-2.json"
+        },
+        {
+            "title": "Module 3: Robotics Software and Programming",
+            "link": "robotics-module-3.json"
+        },
+        {
+            "title": "Module 4: Sensors and Actuators",
+            "link": "robotics-module-4.json"
+        },
+        {
+            "title": "Module 5: Control Systems in Robotics",
+            "link": "robotics-module-5.json"
+        },
+        {
+            "title": "Module 6: Advanced Robotics Concepts",
+            "link": "robotics-module-6.json"
+        },
+        {
+            "title": "Module 7: Robotics in Industry",
+            "link": "robotics-module-7.json"
+        },
+        {
+            "title": "Module 8: Robotics in Specific Industries",
+            "link": "robotics-module-8.json"
+        },
+        {
+            "title": "Module 9: Advanced Topics in Robotics",
+            "link": "robotics-module-9.json"
+        },
+        {
+            "title": "Module 10: Practical Robotics Projects",
+            "link": "robotics-module-10.json"
+        }
     ],
     "additionalResources": {
-        "textbookTitle": "Mastering AI Strategy: A Comprehensive Guide for Leaders",
-        "textbookLink": "https://link-to-your-textbook.com"
+        "textbookTitle": "Artificial Intelligence in Robotics: Transforming the Future",
+        "textbookLink": "https://www.amazon.com/dp/B0D5WRHJ7B"
     }
 }
