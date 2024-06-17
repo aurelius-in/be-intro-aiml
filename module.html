@@ -19,7 +19,7 @@
             </section>
             <section id="contentSection">
                 <h2>Content</h2>
-                <div id="contentList"></div>
+                <ul id="contentList"></ul>
             </section>
         </div>
     </main>
@@ -47,21 +47,13 @@
                     });
 
                     const contentList = document.getElementById('contentList');
-                    data.content.forEach(section => {
-                        const sectionDiv = document.createElement('div');
-                        sectionDiv.classList.add('content-section');
-
-                        const title = document.createElement('h3');
-                        title.innerText = section.title;
-                        sectionDiv.appendChild(title);
-
-                        section.paragraphs.forEach(paragraph => {
-                            const p = document.createElement('p');
-                            p.innerText = paragraph;
-                            sectionDiv.appendChild(p);
-                        });
-
-                        contentList.appendChild(sectionDiv);
+                    data.content.forEach(chapter => {
+                        const li = document.createElement('li');
+                        const a = document.createElement('a');
+                        a.href = `chapter.html?chapter=${chapter.link}`;
+                        a.innerText = chapter.title;
+                        li.appendChild(a);
+                        contentList.appendChild(li);
                     });
                 })
                 .catch(error => {
