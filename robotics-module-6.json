@@ -1,62 +1,31 @@
 {
-    "moduleTitle": "Module 6: Human-Robot Interaction",
+    "moduleTitle": "Module 6: Advanced Robotics Concepts",
     "moduleObjectives": [
-        "Understand the principles of human-robot interaction (HRI).",
-        "Learn about the different types of interactions between humans and robots.",
-        "Apply HRI techniques to enhance collaboration and communication between humans and robots."
+        "Understand the advanced concepts in robotics.",
+        "Learn about mobile robotics and its applications.",
+        "Explore the principles of manipulation and grasping in robotics.",
+        "Gain insights into human-robot interaction and multi-robot systems."
     ],
-    "content": [
+    "modules": [
         {
-            "title": "Introduction to Human-Robot Interaction",
-            "paragraphs": [
-                "Human-robot interaction (HRI) is a multidisciplinary field that studies the interactions between humans and robots. It encompasses the design, implementation, and evaluation of robotic systems that can effectively communicate, collaborate, and coexist with humans.",
-                "HRI aims to create intuitive and natural interfaces that allow humans to interact with robots as they would with other humans. This involves understanding human behavior, developing appropriate communication modalities, and ensuring safety and comfort during interactions."
-            ]
+            "title": "Chapter 1: Mobile Robotics",
+            "link": "robotics-module-6-chapter-1.json"
         },
         {
-            "title": "Types of Human-Robot Interaction",
-            "paragraphs": [
-                "There are several types of interactions between humans and robots, each with its own characteristics and applications. These include:",
-                "1. **Teleoperation**: Involves the remote control of a robot by a human operator. Teleoperation is used in applications where direct human presence is impractical or dangerous, such as space exploration, underwater missions, and hazardous material handling.",
-                "2. **Supervisory Control**: The human operator provides high-level commands to the robot, which then executes the tasks autonomously. The operator intervenes only when necessary. This is used in applications such as industrial automation and military operations.",
-                "3. **Collaborative Control**: Humans and robots work together to complete tasks, with each contributing their strengths. Collaborative robots (cobots) are designed to assist humans in tasks such as assembly, packaging, and healthcare.",
-                "4. **Social Interaction**: Involves robots interacting with humans in social contexts, such as service robots, educational robots, and companion robots. These robots use verbal and non-verbal communication to engage with humans."
-            ]
+            "title": "Chapter 2: Manipulation and Grasping",
+            "link": "robotics-module-6-chapter-2.json"
         },
         {
-            "title": "Communication Modalities in HRI",
-            "paragraphs": [
-                "Effective communication is crucial for successful human-robot interaction. Robots can use various modalities to communicate with humans, including:",
-                "1. **Speech**: Verbal communication allows robots to interact with humans using natural language. Speech recognition and synthesis technologies enable robots to understand and respond to spoken commands.",
-                "2. **Gestures**: Non-verbal communication through gestures, such as pointing or waving, can enhance interaction. Robots use sensors and cameras to recognize human gestures and respond appropriately.",
-                "3. **Facial Expressions**: Expressive robots can use facial expressions to convey emotions and intentions. This helps create a more natural and engaging interaction experience.",
-                "4. **Touch**: Tactile feedback and haptic interfaces allow robots to communicate through touch. This is used in applications such as medical robotics, where precise and sensitive interactions are required."
-            ]
+            "title": "Chapter 3: Human-Robot Interaction",
+            "link": "robotics-module-6-chapter-3.json"
         },
         {
-            "title": "Designing for Human-Robot Interaction",
-            "paragraphs": [
-                "Designing effective human-robot interaction involves considering various factors, including usability, safety, and user experience. Key design principles include:",
-                "1. **Usability**: Interfaces should be intuitive and easy to use, minimizing the learning curve for users. This involves designing clear and consistent interaction patterns and providing feedback to the user.",
-                "2. **Safety**: Ensuring the safety of both humans and robots during interactions is paramount. This includes implementing physical safety measures, such as collision avoidance, and ensuring the reliability and predictability of the robot's behavior.",
-                "3. **User Experience**: Creating a positive and engaging user experience involves understanding the needs and preferences of users. This includes considering factors such as aesthetics, accessibility, and personalization.",
-                "4. **Ethics and Privacy**: Ethical considerations, such as ensuring user privacy and preventing bias, are important in the design of HRI systems. This involves transparent data handling practices and designing interactions that respect user autonomy and dignity."
-            ]
-        },
-        {
-            "title": "Applications of Human-Robot Interaction",
-            "paragraphs": [
-                "HRI is used in various applications to enhance collaboration and communication between humans and robots. Examples include:",
-                "1. **Healthcare**: Robots assist healthcare professionals in tasks such as surgery, rehabilitation, and patient care. They can provide companionship and support to patients, especially the elderly and those with disabilities.",
-                "2. **Education**: Educational robots are used to engage students and enhance learning experiences. They can provide interactive lessons, assist with special education, and promote STEM learning.",
-                "3. **Service Industry**: Service robots are used in hospitality, retail, and customer service to interact with customers, provide information, and perform tasks such as cleaning and delivery.",
-                "4. **Manufacturing**: Collaborative robots (cobots) work alongside human workers in manufacturing environments to increase efficiency and productivity. They assist with tasks such as assembly, quality control, and material handling.",
-                "5. **Entertainment**: Robots are used in entertainment to create interactive and immersive experiences. This includes robotic performers, theme park attractions, and gaming applications."
-            ]
+            "title": "Chapter 4: Multi-Robot Systems",
+            "link": "robotics-module-6-chapter-4.json"
         }
     ],
     "additionalResources": {
-        "textbookTitle": "Mastering AI Strategy: A Comprehensive Guide for Leaders",
-        "textbookLink": "https://link-to-your-textbook.com"
+        "textbookTitle": "Artificial Intelligence in Robotics: Transforming the Future",
+        "textbookLink": "https://www.amazon.com/dp/B0D5WRHJ7B"
     }
 }
