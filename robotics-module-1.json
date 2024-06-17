@@ -7,7 +7,7 @@
         "Gain insights into the future trends and advancements in robotics.",
         "Develop a foundational understanding of robotics technology."
     ],
-    "modules": [
+    "content": [
         {
             "title": "Chapter 1: Overview of Robotics",
             "link": "robotics-module-1-chapter-1.json"
