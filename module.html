@@ -28,45 +28,50 @@
         const urlParams = new URLSearchParams(queryString);
         const moduleFile = urlParams.get('module');
 
-        fetch(`./${moduleFile}`)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                document.getElementById('moduleTitle').innerText = data.moduleTitle;
+        if (moduleFile) {
+            fetch(moduleFile)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    document.getElementById('moduleTitle').innerText = data.moduleTitle;
 
-                const objectivesList = document.getElementById('objectivesList');
-                data.moduleObjectives.forEach(objective => {
-                    const li = document.createElement('li');
-                    li.innerText = objective;
-                    objectivesList.appendChild(li);
-                });
-
-                const contentList = document.getElementById('contentList');
-                data.content.forEach(section => {
-                    const sectionDiv = document.createElement('div');
-                    sectionDiv.classList.add('content-section');
-
-                    const title = document.createElement('h3');
-                    title.innerText = section.title;
-                    sectionDiv.appendChild(title);
-
-                    section.paragraphs.forEach(paragraph => {
-                        const p = document.createElement('p');
-                        p.innerText = paragraph;
-                        sectionDiv.appendChild(p);
+                    const objectivesList = document.getElementById('objectivesList');
+                    data.moduleObjectives.forEach(objective => {
+                        const li = document.createElement('li');
+                        li.innerText = objective;
+                        objectivesList.appendChild(li);
                     });
 
-                    contentList.appendChild(sectionDiv);
+                    const contentList = document.getElementById('contentList');
+                    data.content.forEach(section => {
+                        const sectionDiv = document.createElement('div');
+                        sectionDiv.classList.add('content-section');
+
+                        const title = document.createElement('h3');
+                        title.innerText = section.title;
+                        sectionDiv.appendChild(title);
+
+                        section.paragraphs.forEach(paragraph => {
+                            const p = document.createElement('p');
+                            p.innerText = paragraph;
+                            sectionDiv.appendChild(p);
+                        });
+
+                        contentList.appendChild(sectionDiv);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error loading the JSON file:', error);
+                    document.getElementById('content').innerText = 'Failed to load content. Please try again later.';
                 });
-            })
-            .catch(error => {
-                console.error('Error loading the JSON file:', error);
-                document.getElementById('content').innerText = 'Failed to load content. Please try again later.';
-            });
+        } else {
+            console.error('No module parameter provided in the URL');
+            document.getElementById('content').innerText = 'Failed to load content. Please try again later.';
+        }
     </script>
 </body>
 </html>
