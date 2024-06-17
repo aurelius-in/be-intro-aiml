@@ -68,7 +68,9 @@
                 "2. **Industrial Robots**: Use vision systems for inspection, quality control, and pick-and-place tasks.",
                 "3. **Service Robots**: Use cameras for navigation, human-robot interaction, and object manipulation.",
                 "4. **Medical Robots**: Use imaging techniques for surgery, diagnostics, and patient monitoring.",
-                "5. **Agricultural Robots**: Use vision systems for crop monitoring, pest detection, and automated harvesting."
+                "5. **Agricultural Robots**: Use vision systems for crop monitoring, pest detection, and automated harvesting.",
+                "6. **Security Robots**: Use computer vision for surveillance, intruder detection, and threat assessment.",
+                "7. **Entertainment Robots**: Use vision systems for interactive games, virtual reality, and augmented reality applications."
             ]
         }
     ]
