@@ -1,31 +1,36 @@
 {
     "moduleTitle": "Module 1: Introduction to Robotics",
     "moduleObjectives": [
-        "Understand the basics of robotics.",
-        "Learn about the history and various applications of robotics.",
-        "Gain an overview of the field of robotics and its importance."
+        "Understand the basics of robotics and its applications.",
+        "Learn about the history and development of robotics.",
+        "Explore the fundamental components and systems in robotics.",
+        "Gain insights into the future trends and advancements in robotics.",
+        "Develop a foundational understanding of robotics technology."
     ],
-    "content": [
+    "modules": [
         {
-            "title": "Overview of Robotics",
-            "paragraphs": [
-                "Robotics is an interdisciplinary field that integrates computer science and engineering. It involves the design, construction, operation, and use of robots.",
-                "Robots are machines that can be programmed to perform tasks autonomously or semi-autonomously. They can be used in a variety of environments and for numerous applications."
-            ]
+            "title": "Chapter 1: Overview of Robotics",
+            "link": "robotics-module-1-chapter-1.json"
         },
         {
-            "title": "History of Robotics",
-            "paragraphs": [
-                "The concept of robotics dates back to ancient civilizations where myths and legends spoke of mechanical beings. However, modern robotics began to take shape in the 20th century.",
-                "Significant advancements in robotics were made during the 1950s and 1960s with the development of industrial robots. These robots were primarily used in manufacturing for repetitive tasks."
-            ]
+            "title": "Chapter 2: History of Robotics",
+            "link": "robotics-module-1-chapter-2.json"
         },
         {
-            "title": "Applications of Robotics",
-            "paragraphs": [
-                "Robots are used in various industries including manufacturing, healthcare, agriculture, military, and space exploration.",
-                "In manufacturing, robots are used for assembly, welding, painting, and packaging. In healthcare, they assist in surgeries and rehabilitation."
-            ]
+            "title": "Chapter 3: Applications of Robotics",
+            "link": "robotics-module-1-chapter-3.json"
+        },
+        {
+            "title": "Chapter 4: Fundamental Components of Robotics",
+            "link": "robotics-module-1-chapter-4.json"
+        },
+        {
+            "title": "Chapter 5: Future Trends in Robotics",
+            "link": "robotics-module-1-chapter-5.json"
         }
-    ]
+    ],
+    "additionalResources": {
+        "textbookTitle": "Mastering AI Strategy: A Comprehensive Guide for Leaders",
+        "textbookLink": "https://link-to-your-textbook.com"
+    }
 }
