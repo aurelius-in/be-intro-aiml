@@ -38,10 +38,10 @@
         fetch(jsonFile)
             .then(response => response.json())
             .then(data => {
-                document.getElementById('programTitle').innerText = data.programTitle;
+                document.getElementById('programTitle').innerText = data.moduleTitle;
 
                 const objectivesList = document.getElementById('objectivesList');
-                data.courseObjectives.forEach(objective => {
+                data.moduleObjectives.forEach(objective => {
                     const li = document.createElement('li');
                     li.innerText = objective;
                     objectivesList.appendChild(li);
@@ -50,7 +50,10 @@
                 const modulesList = document.getElementById('modulesList');
                 data.modules.forEach(module => {
                     const li = document.createElement('li');
-                    li.innerText = module;
+                    const a = document.createElement('a');
+                    a.href = `chapter.html?chapter=${module.link}`;
+                    a.innerText = module.title;
+                    li.appendChild(a);
                     modulesList.appendChild(li);
                 });
 
