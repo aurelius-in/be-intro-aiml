@@ -3,97 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Module</title>
+    <title>Module - BEST</title>
     <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <nav>
-        <h1 id="moduleTitle">Module Title</h1>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="course.html">Course</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
-    <main>
-        <nav>
-            <ul id="chapterList">
-                <!-- Chapter links will be dynamically loaded here -->
-            </ul>
-        </nav>
-        <article id="chapterContent">
-            <!-- Chapter content will be dynamically loaded here -->
-        </article>
-        <nav>
-            <a href="course.html">Back to Course</a>
-        </nav>
-    </main>
-    <footer>
-        <p>&copy; 2024 Blue Eagle AI and Robotics. All rights reserved.</p>
-    </footer>
-    <script>
-        async function loadModule() {
-            const params = new URLSearchParams(window.location.search);
-            const moduleFile = params.get('file');
-            const response = await fetch(moduleFile);
+    <script type="module">
+        async function loadModuleContent() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const moduleName = urlParams.get('module');
+            const response = await fetch(`${moduleName}.json`);
             const data = await response.json();
 
-            document.getElementById('moduleTitle').textContent = data.title;
+            document.getElementById("moduleTitle").textContent = data.moduleTitle;
 
-            const chapterList = document.getElementById('chapterList');
-            chapterList.innerHTML = '';
-
-            data.chapters.forEach((chapter, index) => {
-                const chapterItem = document.createElement('li');
-                const chapterLink = document.createElement('a');
-                chapterLink.href = `module.html?file=${moduleFile}&chapter=${index}`;
-                chapterLink.textContent = chapter.title;
-                chapterLink.onclick = function() {
-                    loadChapterContent(index, data.chapters);
-                    return false;
-                };
-                chapterItem.appendChild(chapterLink);
-                chapterList.appendChild(chapterItem);
+            const objectivesList = document.getElementById("moduleObjectives");
+            data.moduleObjectives.forEach(objective => {
+                const li = document.createElement("li");
+                li.textContent = objective;
+                objectivesList.appendChild(li);
             });
 
-            // Load the first chapter by default if no specific chapter is selected
-            const selectedChapterIndex = params.get('chapter') || 0;
-            loadChapterContent(selectedChapterIndex, data.chapters);
-        }
+            const contentList = document.getElementById("moduleContent");
+            data.content.forEach(section => {
+                const sectionItem = document.createElement("li");
+                const sectionTitle = document.createElement("strong");
+                sectionTitle.textContent = section.title;
+                sectionItem.appendChild(sectionTitle);
 
-        function loadChapterContent(index, chapters) {
-            const chapterContent = document.getElementById('chapterContent');
-            const chapter = chapters[index];
-            chapterContent.innerHTML = `<h2>${chapter.title}</h2>`;
+                const paragraphs = document.createElement("div");
+                section.paragraphs.forEach(paragraph => {
+                    const p = document.createElement("p");
+                    p.textContent = paragraph;
+                    paragraphs.appendChild(p);
+                });
 
-            chapter.sections.forEach(section => {
-                const sectionElement = document.createElement('section');
-                const headingElement = document.createElement('h2');
-                headingElement.textContent = section.heading;
-                sectionElement.appendChild(headingElement);
-
-                const contentParagraph = document.createElement('p');
-                contentParagraph.textContent = section.content;
-                sectionElement.appendChild(contentParagraph);
-
-                if (section.subsections) {
-                    section.subsections.forEach(subsection => {
-                        const subheadingElement = document.createElement('h3');
-                        subheadingElement.textContent = subsection.subheading;
-                        sectionElement.appendChild(subheadingElement);
-
-                        const subcontentParagraph = document.createElement('p');
-                        subcontentParagraph.textContent = subsection.content;
-                        sectionElement.appendChild(subcontentParagraph);
-                    });
-                }
-
-                chapterContent.appendChild(sectionElement);
+                sectionItem.appendChild(paragraphs);
+                contentList.appendChild(sectionItem);
             });
         }
 
-        document.addEventListener('DOMContentLoaded', loadModule);
+        document.addEventListener("DOMContentLoaded", loadModuleContent);
     </script>
+</head>
+<body>
+    <header>
+        <a href="index.html"><img src="logo-main-sm.png" alt="BEST Logo" class="logo"></a>
+    </header>
+    <main id="moduleContent">
+        <h1 id="moduleTitle">Loading...</h1>
+        <section>
+            <h2>Module Objectives</h2>
+            <ul id="moduleObjectives"></ul>
+        </section>
+        <section>
+            <h2>Content</h2>
+            <ul id="moduleContent"></ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Blue Eagle School of Technology. All rights reserved.</p>
+    </footer>
 </body>
 </html>
