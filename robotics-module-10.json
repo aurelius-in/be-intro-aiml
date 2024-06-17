@@ -1,0 +1,42 @@
+{
+    "moduleTitle": "Module 10: Practical Robotics Projects",
+    "moduleObjectives": [
+        "Apply theoretical knowledge to practical robotics projects.",
+        "Gain hands-on experience in building and programming robots.",
+        "Understand the challenges and solutions involved in real-world robotics applications."
+    ],
+    "content": [
+        {
+            "title": "Building a Basic Mobile Robot",
+            "paragraphs": [
+                "In this project, you will build a basic mobile robot using common components such as motors, wheels, sensors, and a microcontroller. The project will cover the design and assembly of the robot, as well as programming it to perform basic tasks such as line following and obstacle avoidance.",
+                "This project provides a foundation for understanding the mechanical, electronic, and software aspects of robotics, and prepares you for more advanced projects."
+            ]
+        },
+        {
+            "title": "Developing a Robotic Arm",
+            "paragraphs": [
+                "In this project, you will design and build a robotic arm capable of performing tasks such as picking and placing objects. The project will cover the mechanical design of the arm, the selection and integration of actuators, and the programming of control algorithms.",
+                "The robotic arm project introduces concepts such as kinematics, dynamics, and control theory, and demonstrates the application of these concepts in a practical setting."
+            ]
+        },
+        {
+            "title": "Implementing a Vision System",
+            "paragraphs": [
+                "In this project, you will develop a vision system for a robot, enabling it to recognize and respond to its environment. The project will cover the integration of cameras and other sensors, the processing of visual data, and the development of algorithms for object detection and tracking.",
+                "The vision system project highlights the importance of computer vision in robotics and provides hands-on experience with image processing techniques and machine learning algorithms."
+            ]
+        },
+        {
+            "title": "Integrating AI and Robotics",
+            "paragraphs": [
+                "In this project, you will integrate artificial intelligence (AI) techniques with a robotic system to enable autonomous behavior. The project will cover the application of machine learning algorithms, the development of decision-making processes, and the implementation of autonomous navigation and task execution.",
+                "The AI integration project demonstrates the synergy between AI and robotics, and provides practical experience in developing intelligent robotic systems."
+            ]
+        }
+    ],
+    "additionalResources": {
+        "textbookTitle": "Mastering AI Strategy: A Comprehensive Guide for Leaders",
+        "textbookLink": "https://link-to-your-textbook.com"
+    }
+}
