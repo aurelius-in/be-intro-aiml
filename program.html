@@ -3,96 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Program - BEST</title>
+    <title>Program</title>
     <link rel="stylesheet" href="styles.css">
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyDPBH5ifyna8jYilqjneh9sRlWg6Z1kS0Y",
-            authDomain: "best-6bc96.firebaseapp.com",
-            projectId: "best-6bc96",
-            storageBucket: "best-6bc96.appspot.com",
-            messagingSenderId: "835354586616",
-            appId: "1:835354586616:web:931af2d81b25c287dcba0d",
-            measurementId: "G-7TQN3QPPTX"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-
-        async function loadProgramContent() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const programType = urlParams.get('type');
-            const docRef = doc(db, "programs", programType);
-            const docSnap = await getDoc(docRef);
-
-            if (docSnap.exists()) {
-                const data = docSnap.data();
-                document.getElementById("programTitle").textContent = data.courseTitle;
-
-                const objectivesList = document.getElementById("courseObjectives");
-                data.courseObjectives.forEach(objective => {
-                    const li = document.createElement("li");
-                    li.textContent = objective;
-                    objectivesList.appendChild(li);
-                });
-
-                const modulesList = document.getElementById("modules");
-                data.modules.forEach(module => {
-                    const moduleItem = document.createElement("li");
-                    const moduleTitle = document.createElement("strong");
-                    moduleTitle.textContent = module.title;
-                    moduleItem.appendChild(moduleTitle);
-
-                    const topicsList = document.createElement("ul");
-                    module.topics.forEach(topic => {
-                        const topicItem = document.createElement("li");
-                        topicItem.textContent = topic;
-                        topicsList.appendChild(topicItem);
-                    });
-
-                    moduleItem.appendChild(topicsList);
-                    modulesList.appendChild(moduleItem);
-                });
-
-                const additionalResources = document.getElementById("additionalResources");
-                const textbookLink = document.createElement("a");
-                textbookLink.href = data.additionalResources.textbookLink;
-                textbookLink.target = "_blank";
-                textbookLink.textContent = data.additionalResources.textbookTitle;
-                additionalResources.appendChild(textbookLink);
-            } else {
-                document.getElementById("programContent").textContent = "Program content not found.";
-            }
-        }
-
-        document.addEventListener("DOMContentLoaded", loadProgramContent);
-    </script>
 </head>
 <body>
     <header>
         <a href="index.html"><img src="logo-main-sm.png" alt="BEST Logo" class="logo"></a>
     </header>
-    <main id="programContent">
-        <h1 id="programTitle">Loading...</h1>
-        <section>
-            <h2>Course Objectives</h2>
-            <ul id="courseObjectives"></ul>
-        </section>
-        <section>
-            <h2>Modules and Topics</h2>
-            <ul id="modules"></ul>
-        </section>
-        <section>
-            <h2>Additional Resources</h2>
-            <p>For more in-depth reading and resources, refer to the textbook:</p>
-            <div id="additionalResources"></div>
-        </section>
+    <main>
+        <div id="content">
+            <h1 id="programTitle">Loading...</h1>
+            <section id="objectives">
+                <h2>Course Objectives</h2>
+                <ul id="objectivesList"></ul>
+            </section>
+            <section id="modules">
+                <h2>Modules and Topics</h2>
+                <ul id="modulesList"></ul>
+            </section>
+            <section id="resources">
+                <h2>Additional Resources</h2>
+                <p>For more in-depth reading and resources, refer to the textbook:</p>
+                <p id="textbook"></p>
+            </section>
+        </div>
     </main>
-    <footer>
-        <p>&copy; 2024 Blue Eagle School of Technology. All rights reserved.</p>
-    </footer>
+    <script>
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const type = urlParams.get('type');
+        
+        const jsonFile = `${type}.json`;
+
+        fetch(jsonFile)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('programTitle').innerText = data.programTitle;
+
+                const objectivesList = document.getElementById('objectivesList');
+                data.courseObjectives.forEach(objective => {
+                    const li = document.createElement('li');
+                    li.innerText = objective;
+                    objectivesList.appendChild(li);
+                });
+
+                const modulesList = document.getElementById('modulesList');
+                data.modules.forEach(module => {
+                    const li = document.createElement('li');
+                    li.innerText = module;
+                    modulesList.appendChild(li);
+                });
+
+                document.getElementById('textbook').innerHTML = `<a href="${data.additionalResources.textbookLink}">${data.additionalResources.textbookTitle}</a>`;
+            })
+            .catch(error => {
+                console.error('Error loading the JSON file:', error);
+                document.getElementById('content').innerText = 'Failed to load content. Please try again later.';
+            });
+    </script>
 </body>
 </html>
