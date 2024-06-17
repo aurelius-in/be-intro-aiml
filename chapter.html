@@ -12,13 +12,14 @@
     </header>
     <main>
         <div id="content">
-            <h1 id="chapterTitle">Loading...</h1>
+            <h1 id="moduleTitle">Loading...</h1>
+            <h2 id="chapterTitle">Loading...</h2>
             <section id="objectives">
-                <h2>Chapter Objectives</h2>
+                <h3>Chapter Objectives</h3>
                 <ul id="objectivesList"></ul>
             </section>
             <section id="contentSection">
-                <h2>Content</h2>
+                <h3>Content</h3>
                 <div id="contentList"></div>
             </section>
         </div>
@@ -29,6 +30,13 @@
         const chapterFile = urlParams.get('chapter');
 
         if (chapterFile) {
+            // Extract module number from the file name
+            const moduleMatch = chapterFile.match(/module-(\d+)/);
+            const moduleNumber = moduleMatch ? `MODULE ${moduleMatch[1]}` : 'MODULE';
+
+            // Set the module title
+            document.getElementById('moduleTitle').innerText = moduleNumber;
+
             fetch(chapterFile)
                 .then(response => {
                     if (!response.ok) {
@@ -51,7 +59,7 @@
                         const sectionDiv = document.createElement('div');
                         sectionDiv.classList.add('content-section');
 
-                        const title = document.createElement('h3');
+                        const title = document.createElement('h4');
                         title.innerText = section.title;
                         sectionDiv.appendChild(title);
 
