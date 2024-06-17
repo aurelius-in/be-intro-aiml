@@ -3,63 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Module - BEST</title>
+    <title>Module</title>
     <link rel="stylesheet" href="styles.css">
-    <script type="module">
-        async function loadModuleContent() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const moduleName = urlParams.get('module');
-            const response = await fetch(`${moduleName}.json`);
-            const data = await response.json();
-
-            document.getElementById("moduleTitle").textContent = data.moduleTitle;
-
-            const objectivesList = document.getElementById("moduleObjectives");
-            data.moduleObjectives.forEach(objective => {
-                const li = document.createElement("li");
-                li.textContent = objective;
-                objectivesList.appendChild(li);
-            });
-
-            const contentList = document.getElementById("moduleContent");
-            data.content.forEach(section => {
-                const sectionItem = document.createElement("li");
-                const sectionTitle = document.createElement("strong");
-                sectionTitle.textContent = section.title;
-                sectionItem.appendChild(sectionTitle);
-
-                const paragraphs = document.createElement("div");
-                section.paragraphs.forEach(paragraph => {
-                    const p = document.createElement("p");
-                    p.textContent = paragraph;
-                    paragraphs.appendChild(p);
-                });
-
-                sectionItem.appendChild(paragraphs);
-                contentList.appendChild(sectionItem);
-            });
-        }
-
-        document.addEventListener("DOMContentLoaded", loadModuleContent);
-    </script>
 </head>
 <body>
     <header>
-        <a href="index.html"><img src="logo-main-sm.png" alt="BEST Logo" class="logo"></a>
+        <a href="index.html"><img src="logo-1x1.svg" alt="BEST Logo" class="logo"></a>
     </header>
-    <main id="moduleContent">
-        <h1 id="moduleTitle">Loading...</h1>
-        <section>
-            <h2>Module Objectives</h2>
-            <ul id="moduleObjectives"></ul>
-        </section>
-        <section>
-            <h2>Content</h2>
-            <ul id="moduleContent"></ul>
-        </section>
+    <main>
+        <div id="content">
+            <h1 id="moduleTitle">Loading...</h1>
+            <section id="objectives">
+                <h2>Module Objectives</h2>
+                <ul id="objectivesList"></ul>
+            </section>
+            <section id="contentSection">
+                <h2>Content</h2>
+                <div id="contentList"></div>
+            </section>
+        </div>
     </main>
-    <footer>
-        <p>&copy; 2024 Blue Eagle School of Technology. All rights reserved.</p>
-    </footer>
+    <script>
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const moduleFile = urlParams.get('module');
+
+        fetch(moduleFile)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                document.getElementById('moduleTitle').innerText = data.moduleTitle;
+
+                const objectivesList = document.getElementById('objectivesList');
+                data.moduleObjectives.forEach(objective => {
+                    const li = document.createElement('li');
+                    li.innerText = objective;
+                    objectivesList.appendChild(li);
+                });
+
+                const contentList = document.getElementById('contentList');
+                data.content.forEach(section => {
+                    const sectionDiv = document.createElement('div');
+                    sectionDiv.classList.add('content-section');
+
+                    const title = document.createElement('h3');
+                    title.innerText = section.title;
+                    sectionDiv.appendChild(title);
+
+                    section.paragraphs.forEach(paragraph => {
+                        const p = document.createElement('p');
+                        p.innerText = paragraph;
+                        sectionDiv.appendChild(p);
+                    });
+
+                    contentList.appendChild(sectionDiv);
+                });
+            })
+            .catch(error => {
+                console.error('Error loading the JSON file:', error);
+                document.getElementById('content').innerText = 'Failed to load content. Please try again later.';
+            });
+    </script>
 </body>
 </html>
