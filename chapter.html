@@ -3,69 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chapter</title>
+    <title>Chapter - BEST</title>
     <link rel="stylesheet" href="styles.css">
+    <script type="module">
+        async function loadChapterContent() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const chapterName = urlParams.get('chapter');
+            const response = await fetch(`${chapterName}.json`);
+            const data = await response.json();
+
+            document.getElementById("chapterTitle").textContent = data.chapterTitle;
+
+            const objectivesList = document.getElementById("chapterObjectives");
+            data.chapterObjectives.forEach(objective => {
+                const li = document.createElement("li");
+                li.textContent = objective;
+                objectivesList.appendChild(li);
+            });
+
+            const contentList = document.getElementById("chapterContent");
+            data.content.forEach(section => {
+                const sectionItem = document.createElement("li");
+                const sectionTitle = document.createElement("strong");
+                sectionTitle.textContent = section.title;
+                sectionItem.appendChild(sectionTitle);
+
+                const paragraphs = document.createElement("div");
+                section.paragraphs.forEach(paragraph => {
+                    const p = document.createElement("p");
+                    p.textContent = paragraph;
+                    paragraphs.appendChild(p);
+                });
+
+                sectionItem.appendChild(paragraphs);
+                contentList.appendChild(sectionItem);
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", loadChapterContent);
+    </script>
 </head>
 <body>
     <header>
-        <h1 id="chapterTitle">Chapter Title</h1>
+        <a href="index.html"><img src="logo-main-sm.png" alt="BEST Logo" class="logo"></a>
     </header>
-    <main>
-        <article id="chapterContent">
-            <!-- Chapter content will be dynamically loaded here -->
-        </article>
-        <nav>
-            <a href="#" id="backLink">Back to Module</a> | <a href="#" id="nextLink">Next Chapter</a>
-        </nav>
+    <main id="chapterContent">
+        <h1 id="chapterTitle">Loading...</h1>
+        <section>
+            <h2>Chapter Objectives</h2>
+            <ul id="chapterObjectives"></ul>
+        </section>
+        <section>
+            <h2>Content</h2>
+            <ul id="chapterContent"></ul>
+        </section>
     </main>
     <footer>
-        <p>&copy; 2024 Blue Eagle AI and Robotics. All rights reserved.</p>
+        <p>&copy; 2024 Blue Eagle School of Technology. All rights reserved.</p>
     </footer>
-    <script>
-        // Function to fetch and display chapter content
-        async function loadChapter() {
-            const params = new URLSearchParams(window.location.search);
-            const chapterFile = params.get('file');
-            const response = await fetch(chapterFile);
-            const data = await response.json();
-
-            document.getElementById('chapterTitle').textContent = data.title;
-            const contentElement = document.getElementById('chapterContent');
-            contentElement.innerHTML = '';
-
-            data.sections.forEach(section => {
-                const sectionElement = document.createElement('section');
-                const headingElement = document.createElement('h2');
-                headingElement.textContent = section.heading;
-                sectionElement.appendChild(headingElement);
-
-                const contentParagraph = document.createElement('p');
-                contentParagraph.textContent = section.content;
-                sectionElement.appendChild(contentParagraph);
-
-                if (section.subsections) {
-                    section.subsections.forEach(subsection => {
-                        const subheadingElement = document.createElement('h3');
-                        subheadingElement.textContent = subsection.subheading;
-                        sectionElement.appendChild(subheadingElement);
-
-                        const subcontentParagraph = document.createElement('p');
-                        subcontentParagraph.textContent = subsection.content;
-                        sectionElement.appendChild(subcontentParagraph);
-                    });
-                }
-
-                contentElement.appendChild(sectionElement);
-            });
-
-            // Set navigation links
-            const backLink = params.get('back');
-            const nextLink = params.get('next');
-            document.getElementById('backLink').href = backLink || '#';
-            document.getElementById('nextLink').href = nextLink || '#';
-        }
-
-        document.addEventListener('DOMContentLoaded', loadChapter);
-    </script>
 </body>
 </html>
