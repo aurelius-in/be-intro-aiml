@@ -194,3 +194,9 @@ footer p {
     margin: 0;
     font-size: 0.9rem;
 }
+
+.clickable-title {
+    cursor: pointer;
+    color: #004c99; /* or any color that suits your design */
+    text-decoration: underline; /* Optional: to make it look like a link */
+}
