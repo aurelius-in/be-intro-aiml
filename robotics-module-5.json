@@ -1,64 +1,31 @@
 {
-    "moduleTitle": "Module 5: Robot Learning and AI in Robotics",
+    "moduleTitle": "Module 5: Control Systems in Robotics",
     "moduleObjectives": [
-        "Understand the principles of robot learning and artificial intelligence (AI) in robotics.",
-        "Learn about different machine learning techniques used in robotics.",
-        "Apply AI methods to enhance the autonomy and intelligence of robotic systems."
+        "Understand the basic principles of control systems in robotics.",
+        "Learn about feedback control systems and their applications.",
+        "Explore PID controllers and their usage in robotics.",
+        "Gain insights into advanced control techniques."
     ],
-    "content": [
+    "modules": [
         {
-            "title": "Introduction to Robot Learning and AI",
-            "paragraphs": [
-                "Robot learning and artificial intelligence (AI) involve applying machine learning techniques to enable robots to learn from data and improve their performance over time. AI enhances the autonomy and intelligence of robotic systems, allowing them to adapt to new environments, perform complex tasks, and interact with humans.",
-                "Robot learning encompasses various techniques, including supervised learning, unsupervised learning, reinforcement learning, and deep learning. These techniques enable robots to acquire new skills, optimize their actions, and make informed decisions based on sensory data."
-            ]
+            "title": "Chapter 1: Introduction to Control Systems",
+            "link": "robotics-module-5-chapter-1.json"
         },
         {
-            "title": "Supervised Learning",
-            "paragraphs": [
-                "Supervised learning is a machine learning technique where a model is trained on labeled data. The model learns to map input features to output labels, enabling it to make predictions on new, unseen data.",
-                "In robotics, supervised learning is used for tasks such as object recognition, speech recognition, and gesture recognition. For example, a robot can be trained to recognize different objects by providing it with labeled images of those objects.",
-                "Common algorithms used in supervised learning include linear regression, logistic regression, support vector machines (SVMs), and decision trees. Deep learning models, such as convolutional neural networks (CNNs), are also widely used for image and speech recognition tasks."
-            ]
+            "title": "Chapter 2: Feedback Control Systems",
+            "link": "robotics-module-5-chapter-2.json"
         },
         {
-            "title": "Unsupervised Learning",
-            "paragraphs": [
-                "Unsupervised learning is a machine learning technique where a model is trained on unlabeled data. The model learns to identify patterns and structures within the data without explicit supervision.",
-                "In robotics, unsupervised learning is used for tasks such as clustering, anomaly detection, and dimensionality reduction. For example, a robot can use unsupervised learning to group similar objects together or detect unusual patterns in sensor data.",
-                "Common algorithms used in unsupervised learning include k-means clustering, hierarchical clustering, principal component analysis (PCA), and autoencoders. These techniques enable robots to discover hidden patterns and gain insights from large datasets."
-            ]
+            "title": "Chapter 3: PID Controllers",
+            "link": "robotics-module-5-chapter-3.json"
         },
         {
-            "title": "Reinforcement Learning",
-            "paragraphs": [
-                "Reinforcement learning is a machine learning technique where an agent learns to make decisions by interacting with its environment and receiving feedback in the form of rewards or penalties. The agent aims to maximize its cumulative reward over time.",
-                "In robotics, reinforcement learning is used for tasks such as robot navigation, manipulation, and control. For example, a robot can learn to navigate a maze by receiving positive rewards for reaching the goal and negative rewards for hitting obstacles.",
-                "Common algorithms used in reinforcement learning include Q-learning, SARSA (State-Action-Reward-State-Action), and deep reinforcement learning methods such as Deep Q-Networks (DQNs) and Proximal Policy Optimization (PPO). These techniques enable robots to learn complex behaviors and adapt to dynamic environments."
-            ]
-        },
-        {
-            "title": "Deep Learning",
-            "paragraphs": [
-                "Deep learning is a subset of machine learning that uses neural networks with multiple layers (deep neural networks) to learn complex representations from data. Deep learning models can automatically extract features and learn hierarchical patterns, making them highly effective for tasks such as image recognition, speech processing, and natural language understanding.",
-                "In robotics, deep learning is used for tasks such as object detection, scene understanding, and human-robot interaction. For example, a robot can use a deep learning model to detect and recognize objects in its environment, enabling it to perform tasks such as picking and placing objects.",
-                "Common deep learning architectures include convolutional neural networks (CNNs), recurrent neural networks (RNNs), and transformers. These architectures can be trained on large datasets to achieve state-of-the-art performance in various robotic applications."
-            ]
-        },
-        {
-            "title": "Applications of AI in Robotics",
-            "paragraphs": [
-                "AI is used in various robotic applications to enhance autonomy, intelligence, and performance. Examples include:",
-                "1. **Autonomous Vehicles**: Use AI for perception, decision-making, and control. Machine learning algorithms enable self-driving cars to navigate complex environments, detect obstacles, and make real-time decisions.",
-                "2. **Industrial Robots**: Use AI for adaptive control, predictive maintenance, and quality inspection. Machine learning models enable robots to optimize their actions, predict equipment failures, and perform detailed inspections.",
-                "3. **Service Robots**: Use AI for human-robot interaction, natural language understanding, and personalized assistance. Machine learning techniques enable robots to understand and respond to human commands, provide personalized services, and interact naturally with users.",
-                "4. **Medical Robots**: Use AI for surgical planning, diagnostics, and patient monitoring. Machine learning models enable robots to assist in surgeries, analyze medical images, and monitor patient health in real-time.",
-                "5. **Agricultural Robots**: Use AI for crop monitoring, pest detection, and automated harvesting. Machine learning algorithms enable robots to analyze crop health, detect pests, and perform precise harvesting tasks."
-            ]
+            "title": "Chapter 4: Advanced Control Techniques",
+            "link": "robotics-module-5-chapter-4.json"
         }
     ],
     "additionalResources": {
-        "textbookTitle": "Mastering AI Strategy: A Comprehensive Guide for Leaders",
-        "textbookLink": "https://link-to-your-textbook.com"
+        "textbookTitle": "Artificial Intelligence in Robotics: Transforming the Future",
+        "textbookLink": "https://www.amazon.com/dp/B0D5WRHJ7B"
     }
 }
