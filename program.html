@@ -43,10 +43,10 @@
                 return response.json();
             })
             .then(data => {
-                document.getElementById('programTitle').innerText = data.moduleTitle;
+                document.getElementById('programTitle').innerText = data.programTitle;
 
                 const objectivesList = document.getElementById('objectivesList');
-                data.moduleObjectives.forEach(objective => {
+                data.courseObjectives.forEach(objective => {
                     const li = document.createElement('li');
                     li.innerText = objective;
                     objectivesList.appendChild(li);
