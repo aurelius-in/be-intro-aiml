@@ -1,0 +1,31 @@
+{
+    "moduleTitle": "Module 1: Introduction to Robotics",
+    "moduleObjectives": [
+        "Understand the basics of robotics.",
+        "Learn about the history and various applications of robotics.",
+        "Gain an overview of the field of robotics and its importance."
+    ],
+    "content": [
+        {
+            "title": "Overview of Robotics",
+            "paragraphs": [
+                "Robotics is an interdisciplinary field that integrates computer science and engineering. It involves the design, construction, operation, and use of robots.",
+                "Robots are machines that can be programmed to perform tasks autonomously or semi-autonomously. They can be used in a variety of environments and for numerous applications."
+            ]
+        },
+        {
+            "title": "History of Robotics",
+            "paragraphs": [
+                "The concept of robotics dates back to ancient civilizations where myths and legends spoke of mechanical beings. However, modern robotics began to take shape in the 20th century.",
+                "Significant advancements in robotics were made during the 1950s and 1960s with the development of industrial robots. These robots were primarily used in manufacturing for repetitive tasks."
+            ]
+        },
+        {
+            "title": "Applications of Robotics",
+            "paragraphs": [
+                "Robots are used in various industries including manufacturing, healthcare, agriculture, military, and space exploration.",
+                "In manufacturing, robots are used for assembly, welding, painting, and packaging. In healthcare, they assist in surgeries and rehabilitation."
+            ]
+        }
+    ]
+}
