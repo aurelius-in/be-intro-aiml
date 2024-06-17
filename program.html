@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-        <a href="index.html"><img src="logo-main-sm.png" alt="BEST Logo" class="logo"></a>
+        <a href="index.html"><img src="logo-1x1.svg" alt="BEST Logo" class="logo"></a>
     </header>
     <main>
         <div id="content">
@@ -36,7 +36,12 @@
         const jsonFile = `${type}.json`;
 
         fetch(jsonFile)
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
             .then(data => {
                 document.getElementById('programTitle').innerText = data.moduleTitle;
 
