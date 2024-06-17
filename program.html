@@ -19,7 +19,7 @@
             </section>
             <section id="modules">
                 <h2>Modules and Topics</h2>
-                <ul id="modulesList"></ul>
+                <div id="modulesList"></div>
             </section>
             <section id="resources">
                 <h2>Additional Resources</h2>
@@ -54,12 +54,12 @@
 
                 const modulesList = document.getElementById('modulesList');
                 data.modules.forEach(module => {
-                    const li = document.createElement('li');
+                    const div = document.createElement('div');
                     const a = document.createElement('a');
                     a.href = `module.html?module=${module.link}`;
                     a.innerText = module.title;
-                    li.appendChild(a);
-                    modulesList.appendChild(li);
+                    div.appendChild(a);
+                    modulesList.appendChild(div);
                 });
 
                 document.getElementById('textbook').innerHTML = `<a href="${data.additionalResources.textbookLink}">${data.additionalResources.textbookTitle}</a>`;
