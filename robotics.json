@@ -1,61 +1,21 @@
 {
-    "courseTitle": "Robotics Certificate Program",
+    "programTitle": "Robotics Professional Certificate Program",
     "courseObjectives": [
-        "Equip students with comprehensive knowledge in robotics.",
-        "Provide both theoretical and practical skills in robotics.",
-        "Prepare students for real-world applications and career advancement in robotics."
+        "Understand the fundamental principles of robotics.",
+        "Gain hands-on experience in building and programming robots.",
+        "Learn about the applications and challenges of robotics in various industries."
     ],
     "modules": [
-        {
-            "title": "Module 1: Introduction to Robotics",
-            "topics": [
-                "Overview of robotics",
-                "History and applications"
-            ]
-        },
-        {
-            "title": "Module 2: Robot Kinematics",
-            "topics": [
-                "Forward kinematics",
-                "Inverse kinematics",
-                "Coordinate frames and transformations"
-            ]
-        },
-        {
-            "title": "Module 3: Robot Dynamics",
-            "topics": [
-                "Newton-Euler dynamics",
-                "Lagrangian dynamics"
-            ]
-        },
-        {
-            "title": "Module 4: Control Systems",
-            "topics": [
-                "PID control",
-                "Advanced control strategies"
-            ]
-        },
-        {
-            "title": "Module 5: Path Planning",
-            "topics": [
-                "Path planning algorithms (A*, RRT)",
-                "Obstacle avoidance"
-            ]
-        },
-        {
-            "title": "Module 6: SLAM and Localization",
-            "topics": [
-                "Simultaneous localization and mapping (SLAM)",
-                "Localization techniques"
-            ]
-        },
-        {
-            "title": "Module 7: Computer Vision for Robotics",
-            "topics": [
-                "Image processing",
-                "Object detection and recognition"
-            ]
-        }
+        "Module 1: Introduction to Robotics",
+        "Module 2: Robotics Hardware Components",
+        "Module 3: Robotics Software and Programming",
+        "Module 4: Sensors and Actuators",
+        "Module 5: Control Systems in Robotics",
+        "Module 6: Advanced Robotics Concepts",
+        "Module 7: Robotics in Industry",
+        "Module 8: Robotics in Specific Industries",
+        "Module 9: Advanced Topics in Robotics",
+        "Module 10: Practical Robotics Projects"
     ],
     "additionalResources": {
         "textbookTitle": "Mastering AI Strategy: A Comprehensive Guide for Leaders",
