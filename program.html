@@ -56,7 +56,7 @@
                 data.modules.forEach(module => {
                     const li = document.createElement('li');
                     const a = document.createElement('a');
-                    a.href = `chapter.html?chapter=${module.link}`;
+                    a.href = `module.html?module=${module.link}`;
                     a.innerText = module.title;
                     li.appendChild(a);
                     modulesList.appendChild(li);
