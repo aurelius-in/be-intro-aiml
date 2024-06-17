@@ -28,7 +28,7 @@
         const urlParams = new URLSearchParams(queryString);
         const moduleFile = urlParams.get('module');
 
-        fetch(moduleFile)
+        fetch(`./${moduleFile}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
