@@ -12,7 +12,7 @@
     </header>
     <main>
         <div id="content">
-            <h1 id="moduleTitle">Loading...</h1>
+            <h1 id="moduleTitle" class="clickable-title">Loading...</h1>
             <h2 id="chapterTitle">Loading...</h2>
             <section id="objectives">
                 <h3>Chapter Objectives</h3>
@@ -32,10 +32,19 @@
         if (chapterFile) {
             // Extract module number from the file name
             const moduleMatch = chapterFile.match(/module-(\d+)/);
-            const moduleNumber = moduleMatch ? `MODULE ${moduleMatch[1]}` : 'MODULE';
+            const moduleNumber = moduleMatch ? moduleMatch[1] : null;
+            const moduleTitleText = moduleNumber ? `MODULE ${moduleNumber}` : 'MODULE';
 
             // Set the module title
-            document.getElementById('moduleTitle').innerText = moduleNumber;
+            const moduleTitleElement = document.getElementById('moduleTitle');
+            moduleTitleElement.innerText = moduleTitleText;
+
+            // Make the module title clickable
+            if (moduleNumber) {
+                moduleTitleElement.addEventListener('click', () => {
+                    window.location.href = `module.html?module=robotics-module-${moduleNumber}.json`;
+                });
+            }
 
             fetch(chapterFile)
                 .then(response => {
