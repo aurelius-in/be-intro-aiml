@@ -3,63 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chapter - BEST</title>
+    <title>Chapter</title>
     <link rel="stylesheet" href="styles.css">
-    <script type="module">
-        async function loadChapterContent() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const chapterName = urlParams.get('chapter');
-            const response = await fetch(`${chapterName}.json`);
-            const data = await response.json();
-
-            document.getElementById("chapterTitle").textContent = data.chapterTitle;
-
-            const objectivesList = document.getElementById("chapterObjectives");
-            data.chapterObjectives.forEach(objective => {
-                const li = document.createElement("li");
-                li.textContent = objective;
-                objectivesList.appendChild(li);
-            });
-
-            const contentList = document.getElementById("chapterContent");
-            data.content.forEach(section => {
-                const sectionItem = document.createElement("li");
-                const sectionTitle = document.createElement("strong");
-                sectionTitle.textContent = section.title;
-                sectionItem.appendChild(sectionTitle);
-
-                const paragraphs = document.createElement("div");
-                section.paragraphs.forEach(paragraph => {
-                    const p = document.createElement("p");
-                    p.textContent = paragraph;
-                    paragraphs.appendChild(p);
-                });
-
-                sectionItem.appendChild(paragraphs);
-                contentList.appendChild(sectionItem);
-            });
-        }
-
-        document.addEventListener("DOMContentLoaded", loadChapterContent);
-    </script>
 </head>
 <body>
     <header>
-        <a href="index.html"><img src="logo-main-sm.png" alt="BEST Logo" class="logo"></a>
+        <a href="index.html"><img src="logo-1x1.svg" alt="BEST Logo" class="logo"></a>
     </header>
-    <main id="chapterContent">
-        <h1 id="chapterTitle">Loading...</h1>
-        <section>
-            <h2>Chapter Objectives</h2>
-            <ul id="chapterObjectives"></ul>
-        </section>
-        <section>
-            <h2>Content</h2>
-            <ul id="chapterContent"></ul>
-        </section>
+    <main>
+        <div id="content">
+            <h1 id="chapterTitle">Loading...</h1>
+            <section id="objectives">
+                <h2>Chapter Objectives</h2>
+                <ul id="objectivesList"></ul>
+            </section>
+            <section id="contentSection">
+                <h2>Content</h2>
+                <div id="contentList"></div>
+            </section>
+        </div>
     </main>
-    <footer>
-        <p>&copy; 2024 Blue Eagle School of Technology. All rights reserved.</p>
-    </footer>
+    <script>
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const chapterFile = urlParams.get('chapter');
+
+        if (chapterFile) {
+            fetch(chapterFile)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    document.getElementById('chapterTitle').innerText = data.chapterTitle;
+
+                    const objectivesList = document.getElementById('objectivesList');
+                    data.chapterObjectives.forEach(objective => {
+                        const li = document.createElement('li');
+                        li.innerText = objective;
+                        objectivesList.appendChild(li);
+                    });
+
+                    const contentList = document.getElementById('contentList');
+                    data.content.forEach(section => {
+                        const sectionDiv = document.createElement('div');
+                        sectionDiv.classList.add('content-section');
+
+                        const title = document.createElement('h3');
+                        title.innerText = section.title;
+                        sectionDiv.appendChild(title);
+
+                        section.paragraphs.forEach(paragraph => {
+                            const p = document.createElement('p');
+                            p.innerText = paragraph;
+                            sectionDiv.appendChild(p);
+                        });
+
+                        contentList.appendChild(sectionDiv);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error loading the JSON file:', error);
+                    document.getElementById('content').innerText = 'Failed to load content. Please try again later.';
+                });
+        } else {
+            console.error('No chapter parameter provided in the URL');
+            document.getElementById('content').innerText = 'Failed to load content. Please try again later.';
+        }
+    </script>
 </body>
 </html>
