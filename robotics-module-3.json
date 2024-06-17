@@ -1,26 +1,26 @@
 {
     "moduleTitle": "Module 3: Robotics Software and Programming",
     "moduleObjectives": [
-        "Understand the basics of programming robots.",
-        "Learn about the Robot Operating System (ROS).",
-        "Explore different programming languages used in robotics.",
-        "Gain hands-on experience in simulation and testing of robotic systems."
+        "Understand the basics of programming for robotics.",
+        "Learn about different programming languages used in robotics.",
+        "Explore software frameworks and libraries for robotic development.",
+        "Gain hands-on experience in writing and debugging robotic software."
     ],
-    "modules": [
+    "content": [
         {
-            "title": "Chapter 1: Introduction to Programming Robots",
+            "title": "Chapter 1: Introduction to Robotics Programming",
             "link": "robotics-module-3-chapter-1.json"
         },
         {
-            "title": "Chapter 2: Robot Operating System (ROS)",
+            "title": "Chapter 2: Programming Languages for Robotics",
             "link": "robotics-module-3-chapter-2.json"
         },
         {
-            "title": "Chapter 3: Programming Languages for Robotics",
+            "title": "Chapter 3: Software Frameworks and Libraries",
             "link": "robotics-module-3-chapter-3.json"
         },
         {
-            "title": "Chapter 4: Simulation and Testing",
+            "title": "Chapter 4: Writing and Debugging Robotic Software",
             "link": "robotics-module-3-chapter-4.json"
         }
     ],
