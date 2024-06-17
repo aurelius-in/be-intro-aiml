@@ -1,26 +1,26 @@
 {
     "moduleTitle": "Module 2: Robotics Hardware Components",
     "moduleObjectives": [
-        "Understand the fundamental hardware components used in robotics.",
-        "Learn about the different types of motors and actuators.",
-        "Gain insights into various sensors and their applications in robotics.",
-        "Explore the power supply and energy storage solutions for robots."
+        "Identify various hardware components used in robotics.",
+        "Understand the functionality of different sensors and actuators.",
+        "Learn about microcontrollers and their role in robotics.",
+        "Explore the integration of hardware components in robotic systems."
     ],
-    "modules": [
+    "content": [
         {
-            "title": "Chapter 1: Motors and Actuators",
+            "title": "Chapter 1: Introduction to Robotics Hardware",
             "link": "robotics-module-2-chapter-1.json"
         },
         {
-            "title": "Chapter 2: Sensors and Transducers",
+            "title": "Chapter 2: Sensors and Their Applications",
             "link": "robotics-module-2-chapter-2.json"
         },
         {
-            "title": "Chapter 3: Power Supply and Energy Storage",
+            "title": "Chapter 3: Actuators in Robotics",
             "link": "robotics-module-2-chapter-3.json"
         },
         {
-            "title": "Chapter 4: Integration and Testing",
+            "title": "Chapter 4: Microcontrollers and Control Systems",
             "link": "robotics-module-2-chapter-4.json"
         }
     ],
