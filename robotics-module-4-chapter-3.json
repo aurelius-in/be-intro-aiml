@@ -61,7 +61,9 @@
                 "2. **Mobile Robots**: Use sensor fusion to integrate data from ultrasonic sensors, IR sensors, and cameras for robust environment mapping and localization.",
                 "3. **Drones**: Use sensor fusion to combine data from IMUs, GPS, and cameras for stable flight control and precise navigation.",
                 "4. **Industrial Robots**: Use sensor fusion to integrate data from force/torque sensors, cameras, and proximity sensors for precise manipulation and assembly tasks.",
-                "5. **Medical Robots**: Use sensor fusion to combine data from imaging systems, force sensors, and position trackers for accurate and safe surgical procedures."
+                "5. **Medical Robots**: Use sensor fusion to combine data from imaging systems, force sensors, and position trackers for accurate and safe surgical procedures.",
+                "6. **Agricultural Robots**: Use sensor fusion to combine data from soil moisture sensors, cameras, and GPS for precision farming tasks.",
+                "7. **Military Robots**: Use sensor fusion to integrate data from various sensors for reconnaissance, surveillance, and target acquisition."
             ]
         }
     ]
