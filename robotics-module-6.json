@@ -6,7 +6,7 @@
         "Explore the principles of manipulation and grasping in robotics.",
         "Gain insights into human-robot interaction and multi-robot systems."
     ],
-    "modules": [
+    "content": [
         {
             "title": "Chapter 1: Mobile Robotics",
             "link": "robotics-module-6-chapter-1.json"
