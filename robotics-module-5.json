@@ -6,7 +6,7 @@
         "Explore PID controllers and their usage in robotics.",
         "Gain insights into advanced control techniques."
     ],
-    "modules": [
+    "content": [
         {
             "title": "Chapter 1: Introduction to Control Systems",
             "link": "robotics-module-5-chapter-1.json"
