@@ -2,79 +2,169 @@
     "quizTitle": "Module 1: Introduction to Robotics Quiz",
     "questions": [
         {
-            "question": "1. What is the primary objective of studying robotics?",
-            "options": ["To understand natural systems", "To create advanced video games", "To automate tasks and processes", "To develop new social media platforms"],
-            "answer": "To automate tasks and processes"
+            "question": "1. What is robotics?",
+            "options": [
+                "A branch of engineering that involves the conception, design, manufacture, and operation of robots.",
+                "A field of medicine focused on robot-assisted surgeries.",
+                "A subset of artificial intelligence focusing on machine learning.",
+                "None of the above."
+            ],
+            "answer": "A branch of engineering that involves the conception, design, manufacture, and operation of robots.",
+            "explanation": "Robotics is a branch of engineering that involves the conception, design, manufacture, and operation of robots."
         },
         {
-            "question": "2. Which of the following is a key component of a robotic system?",
-            "options": ["Speakers", "Microcontroller", "Printer", "Monitor"],
-            "answer": "Microcontroller"
+            "question": "2. Who is considered the father of robotics?",
+            "options": [
+                "Isaac Asimov",
+                "George Devol",
+                "Alan Turing",
+                "John McCarthy"
+            ],
+            "answer": "George Devol",
+            "explanation": "George Devol is considered the father of robotics for inventing the first industrial robot."
         },
         {
-            "question": "3. What is one of the earliest examples of a robot?",
-            "options": ["Curiosity Rover", "Roomba", "Unimate", "Sophia"],
-            "answer": "Unimate"
+            "question": "3. What is the primary function of sensors in a robot?",
+            "options": [
+                "To process data and make decisions.",
+                "To control the movement of the robot.",
+                "To allow the robot to perceive its environment.",
+                "To provide power to the robot."
+            ],
+            "answer": "To allow the robot to perceive its environment.",
+            "explanation": "Sensors allow the robot to perceive its environment by collecting data that can be processed for decision-making."
         },
         {
-            "question": "4. What is the role of sensors in a robot?",
-            "options": ["To provide energy", "To process information", "To sense the environment", "To store data"],
-            "answer": "To sense the environment"
+            "question": "4. Which of the following is a common use of robots in industry?",
+            "options": [
+                "Welding",
+                "Cooking",
+                "Writing software",
+                "Teaching"
+            ],
+            "answer": "Welding",
+            "explanation": "In industry, robots are commonly used for tasks such as welding, assembly, and material handling."
         },
         {
-            "question": "5. Which type of sensor is used to detect obstacles?",
-            "options": ["Temperature sensor", "Infrared sensor", "Pressure sensor", "Humidity sensor"],
-            "answer": "Infrared sensor"
+            "question": "5. What is the significance of degrees of freedom (DoF) in a robotic arm?",
+            "options": [
+                "It determines the speed of the robot.",
+                "It indicates the number of independent movements the robot can make.",
+                "It measures the robot's power consumption.",
+                "It defines the robot's weight capacity."
+            ],
+            "answer": "It indicates the number of independent movements the robot can make.",
+            "explanation": "Degrees of freedom (DoF) in a robotic arm indicate the number of independent movements the robot can make."
         },
         {
-            "question": "6. What does a microcontroller do in a robot?",
-            "options": ["It powers the robot", "It controls the robot's movements", "It stores data", "It provides network connectivity"],
-            "answer": "It controls the robot's movements"
+            "question": "6. What role do actuators play in a robot?",
+            "options": [
+                "They process sensor data.",
+                "They generate power for the robot.",
+                "They enable movement by converting energy into motion.",
+                "They provide the robot's cognitive abilities."
+            ],
+            "answer": "They enable movement by converting energy into motion.",
+            "explanation": "Actuators enable movement in a robot by converting energy into motion, allowing the robot to perform tasks."
         },
         {
-            "question": "7. What is an example of an actuator in a robot?",
-            "options": ["Camera", "Motor", "Sensor", "Battery"],
-            "answer": "Motor"
+            "question": "7. Which microcontroller is commonly used in DIY robotics projects?",
+            "options": [
+                "Intel Core i7",
+                "Raspberry Pi",
+                "NVIDIA GeForce",
+                "AMD Ryzen"
+            ],
+            "answer": "Raspberry Pi",
+            "explanation": "Raspberry Pi is a popular microcontroller used in DIY robotics projects due to its versatility and ease of use."
         },
         {
-            "question": "8. What is the main purpose of an end effector?",
-            "options": ["To sense the environment", "To provide energy", "To interact with objects", "To store data"],
-            "answer": "To interact with objects"
+            "question": "8. What is the purpose of the chassis in a mobile robot?",
+            "options": [
+                "To house and protect the robot's internal components.",
+                "To provide sensory input for the robot.",
+                "To process data and make decisions.",
+                "To enable the robot to interact with its environment."
+            ],
+            "answer": "To house and protect the robot's internal components.",
+            "explanation": "The chassis in a mobile robot serves to house and protect the robot's internal components."
         },
         {
-            "question": "9. Which programming language is commonly used for programming robots?",
-            "options": ["HTML", "Python", "CSS", "PHP"],
-            "answer": "Python"
+            "question": "9. Which sensor is commonly used for obstacle detection in robots?",
+            "options": [
+                "Ultrasonic sensor",
+                "Temperature sensor",
+                "Light sensor",
+                "Pressure sensor"
+            ],
+            "answer": "Ultrasonic sensor",
+            "explanation": "Ultrasonic sensors are commonly used in robots for obstacle detection by measuring the distance to objects using sound waves."
         },
         {
-            "question": "10. What is a common application of robotics in manufacturing?",
-            "options": ["Social interaction", "Assembly line automation", "Entertainment", "Healthcare"],
-            "answer": "Assembly line automation"
+            "question": "10. What is the primary advantage of using autonomous robots in industry?",
+            "options": [
+                "They require no maintenance.",
+                "They can perform tasks without human intervention, increasing efficiency.",
+                "They are more affordable than human labor.",
+                "They can learn and evolve on their own."
+            ],
+            "answer": "They can perform tasks without human intervention, increasing efficiency.",
+            "explanation": "Autonomous robots can perform tasks without human intervention, increasing efficiency and reducing labor costs."
         },
         {
-            "question": "11. How do robots improve efficiency in manufacturing?",
-            "options": ["By slowing down processes", "By increasing precision and speed", "By making decisions for managers", "By designing new products"],
-            "answer": "By increasing precision and speed"
+            "question": "11. What does the term 'robotic end effector' refer to?",
+            "options": [
+                "The power source of the robot.",
+                "The control unit of the robot.",
+                "The tool or device at the end of a robotic arm that interacts with the environment.",
+                "The sensor system of the robot."
+            ],
+            "answer": "The tool or device at the end of a robotic arm that interacts with the environment.",
+            "explanation": "The robotic end effector is the tool or device at the end of a robotic arm that interacts with the environment, such as a gripper or welding torch."
         },
         {
-            "question": "12. What is one challenge of integrating robotics into industries?",
-            "options": ["Increased social interaction", "High initial costs", "Decreased production", "Simplified processes"],
-            "answer": "High initial costs"
+            "question": "12. How do force sensors contribute to a robot's functionality?",
+            "options": [
+                "By providing feedback on the robot's speed.",
+                "By allowing the robot to measure and control the force it applies.",
+                "By powering the robot's movements.",
+                "By enabling the robot to process visual data."
+            ],
+            "answer": "By allowing the robot to measure and control the force it applies.",
+            "explanation": "Force sensors allow the robot to measure and control the force it applies, which is crucial for tasks requiring delicate handling."
         },
         {
-            "question": "13. What is the main advantage of using collaborative robots (cobots)?",
-            "options": ["They work independently", "They replace human workers", "They work alongside humans", "They require no maintenance"],
-            "answer": "They work alongside humans"
+            "question": "13. What is one key advantage of using stepper motors in robotics?",
+            "options": [
+                "They are cheaper than other types of motors.",
+                "They provide precise control of position and speed.",
+                "They consume less power.",
+                "They are easier to program."
+            ],
+            "answer": "They provide precise control of position and speed.",
+            "explanation": "Stepper motors are valued in robotics for their ability to provide precise control of position and speed, making them ideal for applications requiring accurate movement."
         },
         {
-            "question": "14. What is an example of a service robot?",
-            "options": ["Robotic arm in manufacturing", "Roomba vacuum cleaner", "Automated teller machine (ATM)", "MRI machine"],
-            "answer": "Roomba vacuum cleaner"
+            "question": "14. Why is calibration important in the assembly of a robot?",
+            "options": [
+                "To ensure the robot's physical components are correctly aligned and functioning properly.",
+                "To increase the robot's processing speed.",
+                "To reduce the robot's power consumption.",
+                "To simplify the programming process."
+            ],
+            "answer": "To ensure the robot's physical components are correctly aligned and functioning properly.",
+            "explanation": "Calibration is important in robot assembly to ensure that the robot's physical components are correctly aligned and functioning properly, which is crucial for accurate operation."
         },
         {
-            "question": "15. Which industry is most likely to benefit from the use of autonomous drones?",
-            "options": ["Healthcare", "Agriculture", "Education", "Entertainment"],
-            "answer": "Agriculture"
+            "question": "15. What role does the microcontroller play in a robot?",
+            "options": [
+                "It generates the power for the robot.",
+                "It processes sensor data and controls the actuators.",
+                "It provides the physical structure of the robot.",
+                "It enables wireless communication."
+            ],
+            "answer": "It processes sensor data and controls the actuators.",
+            "explanation": "The microcontroller in a robot processes sensor data and controls the actuators, effectively serving as the robot's brain."
         }
     ]
 }
