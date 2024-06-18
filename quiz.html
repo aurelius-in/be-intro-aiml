@@ -11,116 +11,102 @@
         import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
         const firebaseConfig = {
-            apiKey: "AIzaSyDPBH5ifyna8jYilqjneh9sRlWg6Z1kS0Y",
-            authDomain: "best-6bc96.firebaseapp.com",
-            projectId: "best-6bc96",
-            storageBucket: "best-6bc96.appspot.com",
-            messagingSenderId: "835354586616",
-            appId: "1:835354586616:web:931af2d81b25c287dcba0d",
-            measurementId: "G-7TQN3QPPTX"
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID",
+            measurementId: "YOUR_MEASUREMENT_ID"
         };
 
         const app = initializeApp(firebaseConfig);
         const auth = getAuth();
         const db = getFirestore(app);
 
-        function signIn(email, password) {
-            signInWithEmailAndPassword(auth, email, password)
-                .then((userCredential) => {
-                    const user = userCredential.user;
-                    document.getElementById("loginForm").style.display = "none";
-                    loadQuizData();
+        function loadQuizData(program, module) {
+            const quizRef = doc(db, "quizzes", `${program}-${module}`);
+            getDoc(quizRef)
+                .then((docSnap) => {
+                    if (docSnap.exists()) {
+                        displayQuiz(docSnap.data());
+                    } else {
+                        document.getElementById("quiz-content").innerText = "Quiz not found.";
+                    }
                 })
                 .catch((error) => {
-                    document.getElementById("loginMessage").textContent = "Error during sign-in: " + error.message;
+                    document.getElementById("quiz-content").innerText = `Error loading quiz: ${error}`;
                 });
-        }
-
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                document.getElementById("loginForm").style.display = "none";
-                loadQuizData();
-            } else {
-                document.getElementById("loginForm").style.display = "block";
-            }
-        });
-
-        async function loadQuizData() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const program = urlParams.get('program');
-            const module = urlParams.get('module');
-
-            const docRef = doc(db, `quizzes/${program}-${module}`);
-            try {
-                const docSnap = await getDoc(docRef);
-                if (docSnap.exists()) {
-                    const quizData = docSnap.data();
-                    displayQuiz(quizData);
-                } else {
-                    document.getElementById("quizContent").textContent = "Quiz not found!";
-                }
-            } catch (error) {
-                document.getElementById("quizContent").textContent = "Error loading quiz: " + error;
-            }
         }
 
         function displayQuiz(quizData) {
-            const quizContent = document.getElementById("quizContent");
-            quizContent.innerHTML = '';
+            const quizContent = document.getElementById("quiz-content");
+            quizContent.innerHTML = "";
             quizData.questions.forEach((question, index) => {
-                const questionDiv = document.createElement('div');
-                questionDiv.className = 'question';
-                questionDiv.innerHTML = `<p>${index + 1}. ${question.question}</p>`;
-                question.options.forEach((option, i) => {
-                    const optionDiv = document.createElement('div');
-                    optionDiv.className = 'option';
-                    optionDiv.innerHTML = `<input type="radio" name="q${index}" value="${i}"> ${option}`;
-                    questionDiv.appendChild(optionDiv);
-                });
-                quizContent.appendChild(questionDiv);
+                const questionElement = document.createElement("div");
+                questionElement.className = "question";
+                questionElement.innerHTML = `
+                    <p>${index + 1}. ${question.question}</p>
+                    ${question.options.map((option, i) => `
+                        <label>
+                            <input type="radio" name="question${index}" value="${i}">
+                            ${option}
+                        </label>
+                    `).join("")}
+                `;
+                quizContent.appendChild(questionElement);
             });
-
-            const submitButton = document.createElement('button');
-            submitButton.textContent = 'Submit';
-            submitButton.addEventListener('click', () => gradeQuiz(quizData));
+            const submitButton = document.createElement("button");
+            submitButton.innerText = "Submit";
+            submitButton.addEventListener("click", () => gradeQuiz(quizData));
             quizContent.appendChild(submitButton);
         }
 
         function gradeQuiz(quizData) {
+            const quizContent = document.getElementById("quiz-content");
             let score = 0;
             quizData.questions.forEach((question, index) => {
-                const selectedOption = document.querySelector(`input[name="q${index}"]:checked`);
+                const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
                 if (selectedOption && parseInt(selectedOption.value) === question.correctAnswer) {
                     score++;
                 }
             });
-
-            const resultDiv = document.createElement('div');
-            resultDiv.className = 'result';
-            resultDiv.innerHTML = `<p>Your score: ${score} out of ${quizData.questions.length}</p>`;
-            
-            quizData.questions.forEach((question, index) => {
-                const explanation = document.createElement('p');
-                explanation.className = 'explanation';
-                const selectedOption = document.querySelector(`input[name="q${index}"]:checked`);
-                if (selectedOption && parseInt(selectedOption.value) === question.correctAnswer) {
-                    explanation.textContent = `Question ${index + 1}: Correct! ${question.explanation}`;
-                } else {
-                    explanation.textContent = `Question ${index + 1}: Incorrect. ${question.explanation}`;
-                }
-                resultDiv.appendChild(explanation);
-            });
-
-            document.getElementById("quizContent").appendChild(resultDiv);
+            quizContent.innerHTML = `<p>You scored ${score} out of ${quizData.questions.length}</p>`;
         }
 
-        document.addEventListener("DOMContentLoaded", () => {
-            document.getElementById("loginButton").addEventListener("click", () => {
-                const email = document.getElementById("email").value;
-                const password = document.getElementById("password").value;
-                signIn(email, password);
-            });
-        });
+        function handleAuth() {
+            const user = auth.currentUser;
+            if (user) {
+                const urlParams = new URLSearchParams(window.location.search);
+                const program = urlParams.get('program');
+                const module = urlParams.get('module');
+                loadQuizData(program, module);
+            } else {
+                document.getElementById("quiz-content").innerHTML = `
+                    <p>To ensure your progress is saved, please sign in again.</p>
+                    <form id="login-form">
+                        <input type="email" id="email" placeholder="Email" required>
+                        <input type="password" id="password" placeholder="Password" required>
+                        <button type="submit">Sign In</button>
+                    </form>
+                `;
+                document.getElementById("login-form").addEventListener("submit", (e) => {
+                    e.preventDefault();
+                    const email = document.getElementById("email").value;
+                    const password = document.getElementById("password").value;
+                    signInWithEmailAndPassword(auth, email, password)
+                        .then(() => {
+                            document.getElementById("quiz-content").innerHTML = "";
+                            handleAuth();
+                        })
+                        .catch((error) => {
+                            document.getElementById("quiz-content").innerHTML = `<p>Error: ${error.message}</p>`;
+                        });
+                });
+            }
+        }
+
+        onAuthStateChanged(auth, handleAuth);
     </script>
 </head>
 <body>
@@ -129,13 +115,7 @@
     </header>
     <main>
         <h1>Quiz</h1>
-        <div id="loginForm" style="display: none;">
-            <p id="loginMessage">To ensure your progress is saved, please sign in again.</p>
-            <input type="email" id="email" placeholder="Email" required>
-            <input type="password" id="password" placeholder="Password" required>
-            <button id="loginButton">Sign In</button>
-        </div>
-        <div id="quizContent">Loading...</div>
+        <div id="quiz-content"></div>
     </main>
     <footer>
         <p>&copy; 2024 Blue Eagle School of Technology. All rights reserved.</p>
