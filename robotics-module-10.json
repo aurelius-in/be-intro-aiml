@@ -5,7 +5,7 @@
         "Gain hands-on experience in building and programming robots.",
         "Understand the challenges and solutions involved in real-world robotics applications."
     ],
-    "modules": [
+    "content": [
         {
             "title": "Chapter 1: Building a Basic Mobile Robot",
             "link": "robotics-module-10-chapter-1.json"
