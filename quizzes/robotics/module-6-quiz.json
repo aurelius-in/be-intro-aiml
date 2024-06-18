@@ -1,0 +1,137 @@
+{
+    "title": "Module 6 Quiz",
+    "questions": [
+        {
+            "title": "Question 1: What is the primary focus of mobile robotics?",
+            "options": [
+                "a. Controlling robotic arms",
+                "b. Enabling robots to move through their environment",
+                "c. Human-robot interaction",
+                "d. Multi-robot coordination"
+            ],
+            "correct": "b",
+            "explanation": "The primary focus of mobile robotics is enabling robots to move through their environment autonomously or semi-autonomously."
+        },
+        {
+            "title": "Question 2: Which sensor is commonly used for obstacle detection in mobile robots?",
+            "options": [
+                "a. Temperature sensor",
+                "b. Ultrasonic sensor",
+                "c. Pressure sensor",
+                "d. Humidity sensor"
+            ],
+            "correct": "b",
+            "explanation": "Ultrasonic sensors are commonly used in mobile robots for obstacle detection by emitting sound waves and measuring the time it takes for the echo to return."
+        },
+        {
+            "title": "Question 3: What is SLAM in the context of mobile robotics?",
+            "options": [
+                "a. Simultaneous Localization and Mapping",
+                "b. Single Line and Measurement",
+                "c. Secure Light Access Method",
+                "d. Sequential Learning and Monitoring"
+            ],
+            "correct": "a",
+            "explanation": "SLAM stands for Simultaneous Localization and Mapping, a technique used by mobile robots to build a map of an unknown environment while simultaneously keeping track of their location within it."
+        },
+        {
+            "title": "Question 4: What is the main challenge in robotic manipulation and grasping?",
+            "options": [
+                "a. Moving the robot",
+                "b. Detecting light levels",
+                "c. Accurately grasping and manipulating objects",
+                "d. Communicating with other robots"
+            ],
+            "correct": "c",
+            "explanation": "The main challenge in robotic manipulation and grasping is accurately grasping and manipulating objects of varying shapes, sizes, and weights."
+        },
+        {
+            "title": "Question 5: Which of the following is an example of an end effector used in robotic manipulation?",
+            "options": [
+                "a. Wheel",
+                "b. Gripper",
+                "c. Sensor",
+                "d. Battery"
+            ],
+            "correct": "b",
+            "explanation": "A gripper is an example of an end effector used in robotic manipulation to grasp and manipulate objects."
+        },
+        {
+            "title": "Question 6: What role do force sensors play in robotic manipulation?",
+            "options": [
+                "a. They provide power to the robot",
+                "b. They measure the force applied by the robot during manipulation",
+                "c. They detect temperature changes",
+                "d. They enable wireless communication"
+            ],
+            "correct": "b",
+            "explanation": "Force sensors measure the force applied by the robot during manipulation, providing feedback to ensure precise and safe handling of objects."
+        },
+        {
+            "title": "Question 7: What is human-robot interaction (HRI)?",
+            "options": [
+                "a. Robots interacting with other robots",
+                "b. Robots interacting with humans in various contexts",
+                "c. Robots moving in an environment",
+                "d. Robots performing repetitive tasks"
+            ],
+            "correct": "b",
+            "explanation": "Human-robot interaction (HRI) refers to the study and practice of robots interacting with humans in various contexts, including communication, collaboration, and coexistence."
+        },
+        {
+            "title": "Question 8: Why is safety a critical consideration in human-robot interaction?",
+            "options": [
+                "a. To save energy",
+                "b. To prevent damage to the robot",
+                "c. To ensure that humans are not harmed during interactions",
+                "d. To improve battery life"
+            ],
+            "correct": "c",
+            "explanation": "Safety is a critical consideration in human-robot interaction to ensure that humans are not harmed during interactions with robots."
+        },
+        {
+            "title": "Question 9: Which technology is often used to enable natural language communication in human-robot interaction?",
+            "options": [
+                "a. Computer vision",
+                "b. Natural Language Processing (NLP)",
+                "c. GPS",
+                "d. LiDAR"
+            ],
+            "correct": "b",
+            "explanation": "Natural Language Processing (NLP) is used to enable natural language communication in human-robot interaction, allowing robots to understand and respond to human speech."
+        },
+        {
+            "title": "Question 10: What is the primary goal of multi-robot systems?",
+            "options": [
+                "a. To improve individual robot performance",
+                "b. To enable robots to work together to achieve common goals",
+                "c. To reduce the size of robots",
+                "d. To increase battery life"
+            ],
+            "correct": "b",
+            "explanation": "The primary goal of multi-robot systems is to enable robots to work together to achieve common goals, leveraging the capabilities of multiple robots for complex tasks."
+        },
+        {
+            "title": "Question 11: Which of the following is a common application of multi-robot systems?",
+            "options": [
+                "a. Personal assistance",
+                "b. Search and rescue missions",
+                "c. Painting",
+                "d. Cooking"
+            ],
+            "correct": "b",
+            "explanation": "A common application of multi-robot systems is search and rescue missions, where multiple robots can work together to cover large areas and locate survivors more efficiently."
+        },
+        {
+            "title": "Question 12: What is one of the main challenges in coordinating multi-robot systems?",
+            "options": [
+                "a. Power supply management",
+                "b. Communication and coordination among robots",
+                "c. Reducing robot size",
+                "d. Increasing robot speed"
+            ],
+            "correct": "b",
+            "explanation": "One of the main challenges in coordinating multi-robot systems is ensuring effective communication and coordination among robots to achieve the desired collective behavior."
+        }
+    ]
+}
