@@ -1,0 +1,137 @@
+{
+    "title": "Module 2 Quiz",
+    "questions": [
+        {
+            "title": "Question 1: What is Human-Robot Interaction (HRI)?",
+            "options": [
+                "a. Interaction between robots only",
+                "b. Interaction between humans and computers",
+                "c. Interaction between humans and robots",
+                "d. Interaction between robots and animals"
+            ],
+            "correct": "c",
+            "explanation": "Human-Robot Interaction (HRI) involves the interaction between humans and robots, focusing on the design, implementation, and evaluation of robotic systems that effectively communicate and collaborate with humans."
+        },
+        {
+            "title": "Question 2: Why is HRI important?",
+            "options": [
+                "a. It makes robots faster",
+                "b. It ensures that robots are expensive",
+                "c. It enhances the usability, efficiency, and acceptance of robotic systems",
+                "d. It reduces the number of sensors needed"
+            ],
+            "correct": "c",
+            "explanation": "HRI is crucial for the successful integration of robots into various aspects of human life, enhancing usability, efficiency, and acceptance."
+        },
+        {
+            "title": "Question 3: What is teleoperation in HRI?",
+            "options": [
+                "a. Remote control of a robot by a human operator",
+                "b. Autonomous operation of robots",
+                "c. Robots controlling humans",
+                "d. Robots operating without any human input"
+            ],
+            "correct": "a",
+            "explanation": "Teleoperation involves the remote control of a robot by a human operator, used in applications where direct human presence is impractical or dangerous."
+        },
+        {
+            "title": "Question 4: What is supervisory control?",
+            "options": [
+                "a. Robots controlling other robots",
+                "b. Humans giving high-level commands while robots execute tasks autonomously",
+                "c. Humans controlling robots in real-time",
+                "d. Robots operating independently without any human supervision"
+            ],
+            "correct": "b",
+            "explanation": "Supervisory control involves humans providing high-level commands while robots execute tasks autonomously, with human intervention only when necessary."
+        },
+        {
+            "title": "Question 5: What type of interaction involves humans and robots working together to complete tasks?",
+            "options": [
+                "a. Teleoperation",
+                "b. Supervisory control",
+                "c. Collaborative control",
+                "d. Autonomous control"
+            ],
+            "correct": "c",
+            "explanation": "Collaborative control involves humans and robots working together to complete tasks, leveraging each other's strengths."
+        },
+        {
+            "title": "Question 6: What is a key challenge in designing effective HRI systems?",
+            "options": [
+                "a. Reducing the number of sensors",
+                "b. Ensuring clear and effective communication between humans and robots",
+                "c. Increasing the cost of robots",
+                "d. Limiting robot autonomy"
+            ],
+            "correct": "b",
+            "explanation": "A key challenge in designing effective HRI systems is ensuring clear and effective communication between humans and robots, including natural language processing and gesture recognition."
+        },
+        {
+            "title": "Question 7: What is the role of speech in HRI?",
+            "options": [
+                "a. To control robot's movements",
+                "b. To allow robots to interact using natural language",
+                "c. To power the robot",
+                "d. To build the robot's structure"
+            ],
+            "correct": "b",
+            "explanation": "Speech allows robots to interact with humans using natural language, enabling them to understand and respond to spoken commands."
+        },
+        {
+            "title": "Question 8: What is a common use of gestures in HRI?",
+            "options": [
+                "a. To power the robot",
+                "b. To provide physical structure",
+                "c. To convey spatial information and support hands-free interaction",
+                "d. To process sensor data"
+            ],
+            "correct": "c",
+            "explanation": "Gestures are used to convey spatial information and support hands-free interaction in HRI."
+        },
+        {
+            "title": "Question 9: Why are facial expressions important in HRI?",
+            "options": [
+                "a. To power the robot",
+                "b. To convey emotions and intentions",
+                "c. To build the robot's structure",
+                "d. To control the robot's movements"
+            ],
+            "correct": "b",
+            "explanation": "Facial expressions are important in HRI as they help robots convey emotions and intentions, creating a more natural and engaging interaction experience."
+        },
+        {
+            "title": "Question 10: What is a key principle of usability in HRI design?",
+            "options": [
+                "a. Complexity",
+                "b. Inaccessibility",
+                "c. Simplicity",
+                "d. Unpredictability"
+            ],
+            "correct": "c",
+            "explanation": "A key principle of usability in HRI design is simplicity, ensuring that interfaces are intuitive and easy to use."
+        },
+        {
+            "title": "Question 11: What is a primary concern in ensuring safety in HRI?",
+            "options": [
+                "a. Reducing the number of sensors",
+                "b. Ensuring predictable and reliable robot behavior",
+                "c. Increasing the robot's speed",
+                "d. Reducing the robot's autonomy"
+            ],
+            "correct": "b",
+            "explanation": "Ensuring safety in HRI involves making sure that robot behavior is predictable and reliable to avoid unexpected actions that could cause harm."
+        },
+        {
+            "title": "Question 12: What is a key ethical issue in HRI design?",
+            "options": [
+                "a. Complexity",
+                "b. Inaccessibility",
+                "c. Privacy",
+                "d. Unpredictability"
+            ],
+            "correct": "c",
+            "explanation": "Privacy is a key ethical issue in HRI design, involving the responsible collection and use of user data."
+        }
+    ]
+}
