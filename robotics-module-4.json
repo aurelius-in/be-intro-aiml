@@ -6,7 +6,7 @@
         "Explore the various types of actuators and their applications.",
         "Gain insights into the integration and calibration of sensors and actuators."
     ],
-    "modules": [
+    "content": [
         {
             "title": "Chapter 1: Introduction to Sensors and Actuators",
             "link": "robotics-module-4-chapter-1.json"
