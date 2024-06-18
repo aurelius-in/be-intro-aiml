@@ -1,0 +1,95 @@
+{
+    "title": "Module 1 Quiz",
+    "questions": [
+        {
+            "title": "Question 1: What is the primary function of a robot's chassis?",
+            "options": [
+                "Provide structure and support for the robot",
+                "Control the robot's movements",
+                "Process sensor data"
+            ],
+            "correct": "a",
+            "explanation": "The chassis provides structure and support for all the components of the robot."
+        },
+        {
+            "title": "Question 2: Which component acts as the brain of the robot?",
+            "options": [
+                "Motors",
+                "Microcontroller",
+                "Sensors"
+            ],
+            "correct": "b",
+            "explanation": "The microcontroller processes sensor data and controls the robot's movements."
+        },
+        {
+            "title": "Question 3: What is the primary role of sensors in a robot?",
+            "options": [
+                "Provide power to the robot",
+                "Move the robot",
+                "Detect and measure environmental conditions"
+            ],
+            "correct": "c",
+            "explanation": "Sensors detect and measure various environmental conditions, providing essential data for the robot's operation."
+        },
+        {
+            "title": "Question 4: What is inverse kinematics used for in robotics?",
+            "options": [
+                "Calculating the position of the end effector",
+                "Determining the joint angles needed to place the end effector at a specific position",
+                "Measuring the force applied by the robot"
+            ],
+            "correct": "b",
+            "explanation": "Inverse kinematics is used to determine the joint angles required to move the end effector to a specified position."
+        },
+        {
+            "title": "Question 5: What is the purpose of a gripper on a robotic arm?",
+            "options": [
+                "To sense environmental conditions",
+                "To provide power to the robot",
+                "To grasp and manipulate objects"
+            ],
+            "correct": "c",
+            "explanation": "A gripper is an end effector used by a robotic arm to grasp and manipulate objects."
+        },
+        {
+            "title": "Question 6: Which type of motor is commonly used for precise control of robotic joints?",
+            "options": [
+                "DC motor",
+                "Stepper motor",
+                "Servo motor"
+            ],
+            "correct": "c",
+            "explanation": "Servo motors are commonly used for precise control of robotic joints."
+        },
+        {
+            "title": "Question 7: What is the purpose of a robot's control system?",
+            "options": [
+                "To process sensor data and control the robot's movements",
+                "To provide structural support",
+                "To generate power for the robot"
+            ],
+            "correct": "a",
+            "explanation": "The control system processes sensor data and controls the robot's movements."
+        },
+        {
+            "title": "Question 8: How do robots perceive their environment?",
+            "options": [
+                "Through their motors",
+                "Using sensors",
+                "Using their microcontroller"
+            ],
+            "correct": "b",
+            "explanation": "Robots use sensors to perceive their environment and gather data for decision-making."
+        },
+        {
+            "title": "Question 9: What is the significance of feedback in robotic control systems?",
+            "options": [
+                "To provide power",
+                "To measure and adjust the robot's actions based on sensor data",
+                "To control the robot's speed"
+            ],
+            "correct": "b",
+            "explanation": "Feedback in control systems allows the robot to measure and adjust its actions based on sensor data, ensuring accurate and adaptive behavior."
+        }
+    ]
+}
