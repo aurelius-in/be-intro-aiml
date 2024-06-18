@@ -6,7 +6,7 @@
         "Explore the challenges and opportunities in these industries.",
         "Gain insights into the future trends and advancements in industry-specific robotics."
     ],
-    "modules": [
+    "content": [
         {
             "title": "Chapter 1: Robotics in Manufacturing",
             "link": "robotics-module-8-chapter-1.json"
