@@ -24,32 +24,31 @@
         const auth = getAuth();
         const db = getFirestore(app);
 
-        function loadQuizData(program, module) {
-            const quizRef = doc(db, "quizzes", `${program}-${module}`);
-            getDoc(quizRef)
-                .then((docSnap) => {
-                    if (docSnap.exists()) {
-                        displayQuiz(docSnap.data());
-                    } else {
-                        document.getElementById("quiz-content").innerText = "Quiz not found.";
-                    }
-                })
-                .catch((error) => {
-                    document.getElementById("quiz-content").innerText = `Error loading quiz: ${error}`;
-                });
+        async function loadQuizData(program, module) {
+            const quizRef = doc(db, "quizzes", `${program}-${module}-quiz`);
+            try {
+                const docSnap = await getDoc(quizRef);
+                if (docSnap.exists()) {
+                    displayQuiz(docSnap.data());
+                } else {
+                    document.getElementById("quiz-content").innerText = "Quiz not found.";
+                }
+            } catch (error) {
+                document.getElementById("quiz-content").innerText = `Error loading quiz: ${error.message}`;
+            }
         }
 
         function displayQuiz(quizData) {
             const quizContent = document.getElementById("quiz-content");
-            quizContent.innerHTML = "";
+            quizContent.innerHTML = `<h2>${quizData.title}</h2>`;
             quizData.questions.forEach((question, index) => {
                 const questionElement = document.createElement("div");
                 questionElement.className = "question";
                 questionElement.innerHTML = `
-                    <p>${index + 1}. ${question.question}</p>
+                    <p>${index + 1}. ${question.title}</p>
                     ${question.options.map((option, i) => `
                         <label>
-                            <input type="radio" name="question${index}" value="${i}">
+                            <input type="radio" name="question${index}" value="${String.fromCharCode(97 + i)}">
                             ${option}
                         </label>
                     `).join("")}
@@ -67,11 +66,22 @@
             let score = 0;
             quizData.questions.forEach((question, index) => {
                 const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
-                if (selectedOption && parseInt(selectedOption.value) === question.correctAnswer) {
+                if (selectedOption && selectedOption.value === question.correct) {
                     score++;
                 }
             });
             quizContent.innerHTML = `<p>You scored ${score} out of ${quizData.questions.length}</p>`;
+            quizData.questions.forEach((question, index) => {
+                const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
+                const resultElement = document.createElement("p");
+                resultElement.innerHTML = `
+                    Question ${index + 1}: ${question.title} <br>
+                    Your answer: ${selectedOption ? selectedOption.value : 'None'} <br>
+                    Correct answer: ${question.correct} <br>
+                    Explanation: ${question.explanation}
+                `;
+                quizContent.appendChild(resultElement);
+            });
         }
 
         function handleAuth() {
@@ -90,18 +100,17 @@
                         <button type="submit">Sign In</button>
                     </form>
                 `;
-                document.getElementById("login-form").addEventListener("submit", (e) => {
+                document.getElementById("login-form").addEventListener("submit", async (e) => {
                     e.preventDefault();
                     const email = document.getElementById("email").value;
                     const password = document.getElementById("password").value;
-                    signInWithEmailAndPassword(auth, email, password)
-                        .then(() => {
-                            document.getElementById("quiz-content").innerHTML = "";
-                            handleAuth();
-                        })
-                        .catch((error) => {
-                            document.getElementById("quiz-content").innerHTML = `<p>Error: ${error.message}</p>`;
-                        });
+                    try {
+                        await signInWithEmailAndPassword(auth, email, password);
+                        document.getElementById("quiz-content").innerHTML = "";
+                        handleAuth();
+                    } catch (error) {
+                        document.getElementById("quiz-content").innerHTML = `<p>Error: ${error.message}</p>`;
+                    }
                 });
             }
         }
