@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-        import { getAuth, onAuthStateChanged, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+        import { getAuth, onAuthStateChanged, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
         import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
         const firebaseConfig = {
@@ -23,23 +23,25 @@
         const app = initializeApp(firebaseConfig);
         const auth = getAuth();
         const db = getFirestore(app);
-        const provider = new GoogleAuthProvider();
 
-        function signIn() {
-            alert("To ensure your progress is saved, please sign in again.");
-            signInWithPopup(auth, provider)
-                .then((result) => {
-                    console.log(result.user);
-                }).catch((error) => {
-                    console.error("Error during sign-in: ", error);
+        function signIn(email, password) {
+            signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    document.getElementById("loginForm").style.display = "none";
+                    loadQuizData();
+                })
+                .catch((error) => {
+                    document.getElementById("loginMessage").textContent = "Error during sign-in: " + error.message;
                 });
         }
 
         onAuthStateChanged(auth, (user) => {
             if (user) {
+                document.getElementById("loginForm").style.display = "none";
                 loadQuizData();
             } else {
-                signIn();
+                document.getElementById("loginForm").style.display = "block";
             }
         });
 
@@ -111,6 +113,14 @@
 
             document.getElementById("quizContent").appendChild(resultDiv);
         }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById("loginButton").addEventListener("click", () => {
+                const email = document.getElementById("email").value;
+                const password = document.getElementById("password").value;
+                signIn(email, password);
+            });
+        });
     </script>
 </head>
 <body>
@@ -119,6 +129,12 @@
     </header>
     <main>
         <h1>Quiz</h1>
+        <div id="loginForm" style="display: none;">
+            <p id="loginMessage">To ensure your progress is saved, please sign in again.</p>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button id="loginButton">Sign In</button>
+        </div>
         <div id="quizContent">Loading...</div>
     </main>
     <footer>
