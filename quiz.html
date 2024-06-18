@@ -5,156 +5,121 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz</title>
     <link rel="stylesheet" href="styles.css">
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+        import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDPBH5ifyna8jYilqjneh9sRlWg6Z1kS0Y",
+            authDomain: "best-6bc96.firebaseapp.com",
+            projectId: "best-6bc96",
+            storageBucket: "best-6bc96.appspot.com",
+            messagingSenderId: "835354586616",
+            appId: "1:835354586616:web:931af2d81b25c287dcba0d",
+            measurementId: "G-7TQN3QPPTX"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth();
+        const db = getFirestore(app);
+
+        async function saveQuizProgress(quizId, answers) {
+            const user = auth.currentUser;
+            if (user) {
+                const docRef = doc(db, "quizProgress", user.uid);
+                try {
+                    await setDoc(docRef, { [quizId]: answers }, { merge: true });
+                    console.log("Quiz progress saved successfully!");
+                } catch (error) {
+                    console.error("Error saving quiz progress: ", error);
+                }
+            }
+        }
+
+        async function loadQuiz() {
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            const program = urlParams.get('program');
+            const module = urlParams.get('module');
+
+            if (program && module) {
+                try {
+                    const response = await fetch(`quizzes/${program}/${module}-quiz.json`);
+                    const quizData = await response.json();
+                    document.getElementById('quizTitle').textContent = quizData.title;
+
+                    const form = document.getElementById('quizForm');
+                    quizData.questions.forEach((question, index) => {
+                        const questionContainer = document.createElement('div');
+                        questionContainer.innerHTML = `
+                            <h2>${question.title}</h2>
+                            ${question.options.map((option, i) => `
+                                <input type="radio" id="q${index+1}${String.fromCharCode(97+i)}" name="q${index+1}" value="${String.fromCharCode(97+i)}">
+                                <label for="q${index+1}${String.fromCharCode(97+i)}">${option}</label><br>
+                            `).join('')}
+                            <p id="q${index+1}Explanation"></p>
+                        `;
+                        form.appendChild(questionContainer);
+                    });
+                } catch (error) {
+                    console.error("Error loading quiz: ", error);
+                }
+            } else {
+                console.error("No program or module parameter provided in the URL");
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            loadQuiz();
+
+            document.getElementById('quizForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const queryString = window.location.search;
+                const urlParams = new URLSearchParams(queryString);
+                const program = urlParams.get('program');
+                const module = urlParams.get('module');
+                const quizId = `${program}-${module}`;
+
+                const formData = new FormData(event.target);
+                const answers = {};
+                formData.forEach((value, key) => {
+                    answers[key] = value;
+                });
+
+                fetch(`quizzes/${program}/${module}-quiz.json`)
+                    .then(response => response.json())
+                    .then(quizData => {
+                        let score = 0;
+                        quizData.questions.forEach((question, index) => {
+                            const answer = answers[`q${index+1}`];
+                            const correctAnswer = question.correct;
+                            if (answer === correctAnswer) {
+                                score++;
+                                document.getElementById(`q${index+1}Explanation`).textContent = 'Correct!';
+                            } else {
+                                document.getElementById(`q${index+1}Explanation`).textContent = `Incorrect. The correct answer is ${correctAnswer}. ${question.explanation}`;
+                            }
+                        });
+                        alert(`You scored ${score} out of ${quizData.questions.length}`);
+
+                        saveQuizProgress(quizId, answers);
+                    });
+            });
+        });
+    </script>
 </head>
 <body>
     <header>
         <a href="index.html"><img src="logo-1x1.svg" alt="BEST Logo" class="logo"></a>
     </header>
     <main>
-        <div id="content">
-            <h1 id="quizTitle">Loading...</h1>
-            <form id="quizForm">
-                <div id="questionsList"></div>
-                <button type="button" onclick="submitQuiz()">Submit</button>
-                <button type="button" onclick="saveProgress()">Save Progress</button>
-            </form>
-            <div id="results" style="display:none;">
-                <h2>Results</h2>
-                <p id="score"></p>
-                <p id="status"></p>
-                <div id="explanations"></div>
-            </div>
-        </div>
+        <h1 id="quizTitle">Loading...</h1>
+        <form id="quizForm"></form>
     </main>
-    <script>
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        const quizFile = urlParams.get('quiz');
-
-        if (quizFile) {
-            fetch(quizFile)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    document.getElementById('quizTitle').innerText = data.quizTitle;
-                    const questionsList = document.getElementById('questionsList');
-                    data.questions.forEach((question, index) => {
-                        const questionDiv = document.createElement('div');
-                        questionDiv.classList.add('question');
-
-                        const questionText = document.createElement('p');
-                        questionText.innerText = question.question;
-                        questionDiv.appendChild(questionText);
-
-                        question.options.forEach(option => {
-                            const optionLabel = document.createElement('label');
-                            const optionInput = document.createElement('input');
-                            optionInput.type = 'radio';
-                            optionInput.name = `question-${index}`;
-                            optionInput.value = option;
-                            optionLabel.appendChild(optionInput);
-                            optionLabel.appendChild(document.createTextNode(option));
-                            questionDiv.appendChild(optionLabel);
-                            questionDiv.appendChild(document.createElement('br'));
-                        });
-
-                        questionsList.appendChild(questionDiv);
-                    });
-                })
-                .catch(error => {
-                    console.error('Error loading the JSON file:', error);
-                    document.getElementById('content').innerText = 'Failed to load content. Please try again later.';
-                });
-        } else {
-            console.error('No quiz parameter provided in the URL');
-            document.getElementById('content').innerText = 'Failed to load content. Please try again later.';
-        }
-
-        function submitQuiz() {
-            const form = document.getElementById('quizForm');
-            const formData = new FormData(form);
-            const results = [];
-            let correctCount = 0;
-
-            fetch(quizFile)
-                .then(response => response.json())
-                .then(data => {
-                    data.questions.forEach((question, index) => {
-                        const selectedOption = formData.get(`question-${index}`);
-                        const isCorrect = selectedOption === question.answer;
-                        results.push({
-                            question: question.question,
-                            selectedOption: selectedOption,
-                            correctOption: question.answer,
-                            isCorrect: isCorrect,
-                            explanation: `Explanation: ${question.answer}`
-                        });
-                        if (isCorrect) {
-                            correctCount++;
-                        }
-                    });
-
-                    const score = (correctCount / data.questions.length) * 100;
-                    document.getElementById('score').innerText = `Score: ${score.toFixed(2)}%`;
-                    document.getElementById('status').innerText = score >= 75 ? 'Status: Pass' : 'Status: Fail';
-
-                    const explanationsDiv = document.getElementById('explanations');
-                    explanationsDiv.innerHTML = '';
-                    results.forEach(result => {
-                        const resultDiv = document.createElement('div');
-                        resultDiv.classList.add(result.isCorrect ? 'correct' : 'incorrect');
-
-                        const questionText = document.createElement('p');
-                        questionText.innerText = result.question;
-                        resultDiv.appendChild(questionText);
-
-                        const selectedOptionText = document.createElement('p');
-                        selectedOptionText.innerText = `Your answer: ${result.selectedOption || 'No answer selected'}`;
-                        resultDiv.appendChild(selectedOptionText);
-
-                        const correctOptionText = document.createElement('p');
-                        correctOptionText.innerText = `Correct answer: ${result.correctOption}`;
-                        resultDiv.appendChild(correctOptionText);
-
-                        const explanationText = document.createElement('p');
-                        explanationText.innerText = result.explanation;
-                        resultDiv.appendChild(explanationText);
-
-                        explanationsDiv.appendChild(resultDiv);
-                    });
-
-                    document.getElementById('results').style.display = 'block';
-                });
-        }
-
-        function saveProgress() {
-            const form = document.getElementById('quizForm');
-            const formData = new FormData(form);
-            const progress = {};
-            for (const [key, value] of formData.entries()) {
-                progress[key] = value;
-            }
-            localStorage.setItem(quizFile, JSON.stringify(progress));
-            alert('Progress saved.');
-        }
-
-        function loadProgress() {
-            const savedProgress = JSON.parse(localStorage.getItem(quizFile));
-            if (savedProgress) {
-                for (const [key, value] of Object.entries(savedProgress)) {
-                    const input = document.querySelector(`input[name="${key}"][value="${value}"]`);
-                    if (input) {
-                        input.checked = true;
-                    }
-                }
-            }
-        }
-
-        window.onload = loadProgress;
-    </script>
+    <footer>
+        <p>&copy; 2024 Blue Eagle School of Technology. All rights reserved.</p>
+    </footer>
 </body>
 </html>
