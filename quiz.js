@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getAuth, onAuthStateChanged, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getAuth, onAuthStateChanged, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -18,140 +18,127 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore(app);
+const provider = new GoogleAuthProvider();
 
-const urlParams = new URLSearchParams(window.location.search);
-const program = urlParams.get('program');
-const module = urlParams.get('module');
-
-document.addEventListener("DOMContentLoaded", async () => {
-    const user = await new Promise((resolve) => {
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                resolve(user);
-            } else {
-                const loginDiv = document.createElement('div');
-                loginDiv.innerHTML = `
-                    <h2>To ensure your progress is saved, please sign in again</h2>
-                    <form id="login-form">
-                        <input type="email" id="email" placeholder="Email" required>
-                        <input type="password" id="password" placeholder="Password" required>
-                        <button type="submit">Sign In</button>
-                    </form>
-                `;
-                document.body.appendChild(loginDiv);
-                document.getElementById('login-form').addEventListener('submit', async (e) => {
-                    e.preventDefault();
-                    const email = document.getElementById('email').value;
-                    const password = document.getElementById('password').value;
-                    try {
-                        await signInWithEmailAndPassword(auth, email, password);
-                        location.reload();
-                    } catch (error) {
-                        alert("Login failed: " + error.message);
-                    }
-                });
-            }
-        });
-    });
-
-    if (!user) return;
-
-    const quizUrl = `quizzes/${program}/${module}-quiz.json`;
+async function loadQuizData(program, module) {
     try {
-        const response = await fetch(quizUrl);
+        const response = await fetch(`quizzes/${program}/${module}-quiz.json`);
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
         const quizData = await response.json();
-        loadQuiz(quizData);
+        return quizData;
     } catch (error) {
-        document.getElementById("quiz-container").innerText = "Error loading quiz: " + error.message;
+        console.error('Error fetching quiz data:', error);
+        throw error;
     }
-});
-
-function loadQuiz(quizData) {
-    const quizContainer = document.getElementById("quiz-container");
-    const form = document.createElement("form");
-    form.id = "quiz-form";
-
-    quizData.questions.forEach((question, index) => {
-        const questionDiv = document.createElement("div");
-        questionDiv.className = "question";
-
-        const questionTitle = document.createElement("h3");
-        questionTitle.innerText = question.title;
-        questionDiv.appendChild(questionTitle);
-
-        question.options.forEach((option, optionIndex) => {
-            const optionLabel = document.createElement("label");
-            const optionRadio = document.createElement("input");
-            optionRadio.type = "radio";
-            optionRadio.name = `question-${index}`;
-            optionRadio.value = "abcd"[optionIndex];
-            optionLabel.appendChild(optionRadio);
-            optionLabel.append(option);
-            questionDiv.appendChild(optionLabel);
-            questionDiv.appendChild(document.createElement("br"));
-        });
-
-        const explanationDiv = document.createElement("div");
-        explanationDiv.className = "explanation";
-        explanationDiv.id = `explanation-${index}`;
-        explanationDiv.style.display = "none";
-        questionDiv.appendChild(explanationDiv);
-
-        form.appendChild(questionDiv);
-    });
-
-    const submitButton = document.createElement("button");
-    submitButton.type = "button";
-    submitButton.innerText = "Submit";
-    submitButton.addEventListener("click", () => gradeQuiz(quizData));
-    form.appendChild(submitButton);
-
-    quizContainer.appendChild(form);
 }
 
-async function gradeQuiz(quizData) {
-    const form = document.getElementById("quiz-form");
-
-    let correctCount = 0;
+function renderQuiz(quizData) {
+    const quizContainer = document.getElementById('quiz');
+    quizContainer.innerHTML = `<h1>${quizData.title}</h1>`;
     quizData.questions.forEach((question, index) => {
-        const selectedOption = form[`question-${index}`].value;
-        const explanationDiv = document.getElementById(`explanation-${index}`);
-        if (selectedOption === question.correct) {
-            correctCount++;
-            explanationDiv.style.color = "green";
-            explanationDiv.innerText = `Correct! ${question.explanation}`;
-        } else {
-            explanationDiv.style.color = "red";
-            explanationDiv.innerText = `Incorrect. ${question.explanation}`;
-        }
-        explanationDiv.style.display = "block";
+        const questionElem = document.createElement('div');
+        questionElem.innerHTML = `
+            <h2>${question.title}</h2>
+            ${question.options.map((option, i) => `
+                <label>
+                    <input type="radio" name="question-${index}" value="${String.fromCharCode(97 + i)}">
+                    ${option}
+                </label>
+            `).join('<br>')}
+            <div class="explanation" id="explanation-${index}" style="display:none;">${question.explanation}</div>
+        `;
+        quizContainer.appendChild(questionElem);
     });
-
-    const result = document.createElement("p");
-    result.innerText = `You got ${correctCount} out of ${quizData.questions.length} correct.`;
-    form.appendChild(result);
-
-    await saveProgress(correctCount, quizData.questions.length);
+    quizContainer.innerHTML += `<button id="submitQuiz">Submit</button>`;
 }
 
-async function saveProgress(correctCount, totalQuestions) {
+async function saveQuizProgress(userId, program, module, progress) {
+    const docRef = doc(db, `progress/${userId}/quizzes/${program}-${module}`);
+    return setDoc(docRef, progress, { merge: true });
+}
+
+async function loadQuizProgress(userId, program, module) {
+    const docRef = doc(db, `progress/${userId}/quizzes/${program}-${module}`);
+    const docSnap = await getDoc(docRef);
+    return docSnap.exists() ? docSnap.data() : {};
+}
+
+async function handleQuizSubmit(event) {
     const user = auth.currentUser;
-    if (!user) return;
-
-    const progressRef = doc(db, "progress", user.uid);
-    try {
-        const progressSnap = await getDoc(progressRef);
-        let progressData = {};
-        if (progressSnap.exists()) {
-            progressData = progressSnap.data();
-        }
-        progressData[`${program}_${module}`] = {
-            correct: correctCount,
-            total: totalQuestions,
-            timestamp: new Date()
-        };
-        await setDoc(progressRef, progressData);
-    } catch (error) {
-        console.error("Error saving progress: ", error);
+    if (!user) {
+        alert('You need to be signed in to submit the quiz.');
+        return;
     }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const program = urlParams.get('program');
+    const module = urlParams.get('module');
+
+    const quizData = await loadQuizData(program, module);
+    const userAnswers = {};
+    let correctCount = 0;
+
+    quizData.questions.forEach((question, index) => {
+        const selectedOption = document.querySelector(`input[name="question-${index}"]:checked`);
+        const userAnswer = selectedOption ? selectedOption.value : 'not answered';
+        userAnswers[`question-${index}`] = userAnswer;
+
+        const explanationDiv = document.getElementById(`explanation-${index}`);
+        explanationDiv.style.display = 'block';
+        if (userAnswer === question.correct) {
+            correctCount++;
+            explanationDiv.style.color = 'green';
+            explanationDiv.innerHTML += `<br>Correct! ${question.explanation}`;
+        } else {
+            explanationDiv.style.color = 'red';
+            explanationDiv.innerHTML += `<br>Incorrect. ${question.explanation}`;
+        }
+    });
+
+    const result = document.createElement('p');
+    result.innerText = `You got ${correctCount} out of ${quizData.questions.length} correct.`;
+    document.getElementById('quiz').appendChild(result);
+
+    await saveQuizProgress(user.uid, program, module, { userAnswers, correctCount, totalQuestions: quizData.questions.length });
 }
+
+async function init() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const program = urlParams.get('program');
+    const module = urlParams.get('module');
+
+    if (!program || !module) {
+        document.getElementById('quiz').textContent = 'Invalid quiz URL parameters.';
+        return;
+    }
+
+    onAuthStateChanged(auth, async (user) => {
+        if (user) {
+            try {
+                const quizData = await loadQuizData(program, module);
+                renderQuiz(quizData);
+
+                const progress = await loadQuizProgress(user.uid, program, module);
+                console.log('Loaded progress:', progress);
+
+                document.getElementById('submitQuiz').addEventListener('click', handleQuizSubmit);
+            } catch (error) {
+                document.getElementById('quiz').textContent = 'Error loading quiz: ' + error.message;
+            }
+        } else {
+            document.getElementById('quiz').innerHTML = `
+                <p>To ensure your progress is saved, please sign in again.</p>
+                <button id="signInButton">Sign In</button>
+            `;
+            document.getElementById('signInButton').addEventListener('click', () => {
+                signInWithPopup(auth, provider).catch((error) => {
+                    console.error('Error signing in:', error);
+                });
+            });
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', init);
