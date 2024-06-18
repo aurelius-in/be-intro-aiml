@@ -21,6 +21,10 @@
                 <h2>Content</h2>
                 <ul id="contentList"></ul>
             </section>
+            <section id="additionalResources">
+                <h2>Additional Resources</h2>
+                <p id="textbookInfo"></p>
+            </section>
         </div>
     </main>
     <script>
@@ -55,6 +59,13 @@
                         li.appendChild(a);
                         contentList.appendChild(li);
                     });
+
+                    // Handle additional resources
+                    const additionalResources = data.additionalResources;
+                    if (additionalResources) {
+                        const textbookInfo = document.getElementById('textbookInfo');
+                        textbookInfo.innerHTML = `For more in-depth reading and resources, refer to the textbook: <a href="${additionalResources.textbookLink}" target="_blank">${additionalResources.textbookTitle}</a>`;
+                    }
                 })
                 .catch(error => {
                     console.error('Error loading the JSON file:', error);
