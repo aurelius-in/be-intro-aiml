@@ -26,6 +26,7 @@
         const provider = new GoogleAuthProvider();
 
         function signIn() {
+            alert("To ensure your progress is saved, please sign in again.");
             signInWithPopup(auth, provider)
                 .then((result) => {
                     console.log(result.user);
