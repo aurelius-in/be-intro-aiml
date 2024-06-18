@@ -7,8 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-        import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+        import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyDPBH5ifyna8jYilqjneh9sRlWg6Z1kS0Y",
@@ -21,92 +20,75 @@
         };
 
         const app = initializeApp(firebaseConfig);
-        const auth = getAuth();
         const db = getFirestore(app);
 
-        async function saveQuizProgress(quizId, answers) {
-            const user = auth.currentUser;
-            if (user) {
-                const docRef = doc(db, "quizProgress", user.uid);
-                try {
-                    await setDoc(docRef, { [quizId]: answers }, { merge: true });
-                    console.log("Quiz progress saved successfully!");
-                } catch (error) {
-                    console.error("Error saving quiz progress: ", error);
+        async function loadQuizData(program, module) {
+            const docRef = doc(db, `quizzes/${program}-${module}`);
+            try {
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                    const quizData = docSnap.data();
+                    displayQuiz(quizData);
+                } else {
+                    document.getElementById("quizContent").textContent = "Quiz not found!";
                 }
+            } catch (error) {
+                document.getElementById("quizContent").textContent = "Error loading quiz: " + error;
             }
         }
 
-        async function loadQuiz() {
-            const queryString = window.location.search;
-            const urlParams = new URLSearchParams(queryString);
+        function displayQuiz(quizData) {
+            const quizContent = document.getElementById("quizContent");
+            quizContent.innerHTML = '';
+            quizData.questions.forEach((question, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question';
+                questionDiv.innerHTML = `<p>${index + 1}. ${question.question}</p>`;
+                question.options.forEach((option, i) => {
+                    const optionDiv = document.createElement('div');
+                    optionDiv.className = 'option';
+                    optionDiv.innerHTML = `<input type="radio" name="q${index}" value="${i}"> ${option}`;
+                    questionDiv.appendChild(optionDiv);
+                });
+                quizContent.appendChild(questionDiv);
+            });
+
+            const submitButton = document.createElement('button');
+            submitButton.textContent = 'Submit';
+            submitButton.addEventListener('click', () => gradeQuiz(quizData));
+            quizContent.appendChild(submitButton);
+        }
+
+        function gradeQuiz(quizData) {
+            let score = 0;
+            quizData.questions.forEach((question, index) => {
+                const selectedOption = document.querySelector(`input[name="q${index}"]:checked`);
+                if (selectedOption && parseInt(selectedOption.value) === question.correctAnswer) {
+                    score += 1;
+                }
+            });
+
+            const result = document.getElementById('result');
+            result.textContent = `Your score: ${score} / ${quizData.questions.length}`;
+
+            quizData.questions.forEach((question, index) => {
+                const explanationDiv = document.createElement('div');
+                explanationDiv.className = 'explanation';
+                explanationDiv.innerHTML = `<p>${index + 1}. ${question.explanation}</p>`;
+                document.querySelector(`.question:nth-child(${index + 1})`).appendChild(explanationDiv);
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const urlParams = new URLSearchParams(window.location.search);
             const program = urlParams.get('program');
             const module = urlParams.get('module');
 
             if (program && module) {
-                try {
-                    const response = await fetch(`quizzes/${program}/${module}-quiz.json`);
-                    const quizData = await response.json();
-                    document.getElementById('quizTitle').textContent = quizData.title;
-
-                    const form = document.getElementById('quizForm');
-                    quizData.questions.forEach((question, index) => {
-                        const questionContainer = document.createElement('div');
-                        questionContainer.innerHTML = `
-                            <h2>${question.title}</h2>
-                            ${question.options.map((option, i) => `
-                                <input type="radio" id="q${index+1}${String.fromCharCode(97+i)}" name="q${index+1}" value="${String.fromCharCode(97+i)}">
-                                <label for="q${index+1}${String.fromCharCode(97+i)}">${option}</label><br>
-                            `).join('')}
-                            <p id="q${index+1}Explanation"></p>
-                        `;
-                        form.appendChild(questionContainer);
-                    });
-                } catch (error) {
-                    console.error("Error loading quiz: ", error);
-                }
+                loadQuizData(program, module);
             } else {
-                console.error("No program or module parameter provided in the URL");
+                document.getElementById("quizContent").textContent = "Invalid quiz parameters!";
             }
-        }
-
-        document.addEventListener("DOMContentLoaded", () => {
-            loadQuiz();
-
-            document.getElementById('quizForm').addEventListener('submit', function(event) {
-                event.preventDefault();
-
-                const queryString = window.location.search;
-                const urlParams = new URLSearchParams(queryString);
-                const program = urlParams.get('program');
-                const module = urlParams.get('module');
-                const quizId = `${program}-${module}`;
-
-                const formData = new FormData(event.target);
-                const answers = {};
-                formData.forEach((value, key) => {
-                    answers[key] = value;
-                });
-
-                fetch(`quizzes/${program}/${module}-quiz.json`)
-                    .then(response => response.json())
-                    .then(quizData => {
-                        let score = 0;
-                        quizData.questions.forEach((question, index) => {
-                            const answer = answers[`q${index+1}`];
-                            const correctAnswer = question.correct;
-                            if (answer === correctAnswer) {
-                                score++;
-                                document.getElementById(`q${index+1}Explanation`).textContent = 'Correct!';
-                            } else {
-                                document.getElementById(`q${index+1}Explanation`).textContent = `Incorrect. The correct answer is ${correctAnswer}. ${question.explanation}`;
-                            }
-                        });
-                        alert(`You scored ${score} out of ${quizData.questions.length}`);
-
-                        saveQuizProgress(quizId, answers);
-                    });
-            });
         });
     </script>
 </head>
@@ -115,8 +97,9 @@
         <a href="index.html"><img src="logo-1x1.svg" alt="BEST Logo" class="logo"></a>
     </header>
     <main>
-        <h1 id="quizTitle">Loading...</h1>
-        <form id="quizForm"></form>
+        <h1>Quiz</h1>
+        <div id="quizContent">Loading quiz...</div>
+        <p id="result"></p>
     </main>
     <footer>
         <p>&copy; 2024 Blue Eagle School of Technology. All rights reserved.</p>
