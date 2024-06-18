@@ -24,9 +24,9 @@
         const auth = getAuth();
         const db = getFirestore(app);
 
-        async function loadQuizData(program, module) {
+        async function loadQuizData(course, module) {
             try {
-                const response = await fetch(`robotics/${module}-quiz.json`);
+                const response = await fetch(`${course}/${module}-quiz.json`);
                 const quizData = await response.json();
                 displayQuiz(quizData);
             } catch (error) {
@@ -104,9 +104,9 @@
             const user = auth.currentUser;
             if (user) {
                 const urlParams = new URLSearchParams(window.location.search);
-                const program = urlParams.get('program');
+                const course = urlParams.get('course');
                 const module = urlParams.get('module');
-                loadQuizData(program, module);
+                loadQuizData(course, module);
             } else {
                 document.getElementById("quiz-content").innerHTML = `
                     <p>To ensure your progress is saved, please sign in again.</p>
