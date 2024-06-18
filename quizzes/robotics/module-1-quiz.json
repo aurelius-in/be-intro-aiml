@@ -4,9 +4,10 @@
         {
             "title": "Question 1: What is the primary function of a robot's chassis?",
             "options": [
-                "Provide structure and support for the robot",
-                "Control the robot's movements",
-                "Process sensor data"
+                "a. Provide structure and support for the robot",
+                "b. Control the robot's movements",
+                "c. Process sensor data",
+                "d. Supply power to the robot"
             ],
             "correct": "a",
             "explanation": "The chassis provides structure and support for all the components of the robot."
@@ -14,9 +15,10 @@
         {
             "title": "Question 2: Which component acts as the brain of the robot?",
             "options": [
-                "Motors",
-                "Microcontroller",
-                "Sensors"
+                "a. Motors",
+                "b. Microcontroller",
+                "c. Sensors",
+                "d. Chassis"
             ],
             "correct": "b",
             "explanation": "The microcontroller processes sensor data and controls the robot's movements."
@@ -24,9 +26,10 @@
         {
             "title": "Question 3: What is the primary role of sensors in a robot?",
             "options": [
-                "Provide power to the robot",
-                "Move the robot",
-                "Detect and measure environmental conditions"
+                "a. Provide power to the robot",
+                "b. Move the robot",
+                "c. Detect and measure environmental conditions",
+                "d. Control the robot's movements"
             ],
             "correct": "c",
             "explanation": "Sensors detect and measure various environmental conditions, providing essential data for the robot's operation."
@@ -34,9 +37,10 @@
         {
             "title": "Question 4: What is inverse kinematics used for in robotics?",
             "options": [
-                "Calculating the position of the end effector",
-                "Determining the joint angles needed to place the end effector at a specific position",
-                "Measuring the force applied by the robot"
+                "a. Calculating the position of the end effector",
+                "b. Determining the joint angles needed to place the end effector at a specific position",
+                "c. Measuring the force applied by the robot",
+                "d. Controlling the speed of the robot"
             ],
             "correct": "b",
             "explanation": "Inverse kinematics is used to determine the joint angles required to move the end effector to a specified position."
@@ -44,9 +48,10 @@
         {
             "title": "Question 5: What is the purpose of a gripper on a robotic arm?",
             "options": [
-                "To sense environmental conditions",
-                "To provide power to the robot",
-                "To grasp and manipulate objects"
+                "a. To sense environmental conditions",
+                "b. To provide power to the robot",
+                "c. To grasp and manipulate objects",
+                "d. To process sensor data"
             ],
             "correct": "c",
             "explanation": "A gripper is an end effector used by a robotic arm to grasp and manipulate objects."
@@ -54,9 +59,10 @@
         {
             "title": "Question 6: Which type of motor is commonly used for precise control of robotic joints?",
             "options": [
-                "DC motor",
-                "Stepper motor",
-                "Servo motor"
+                "a. DC motor",
+                "b. Stepper motor",
+                "c. Servo motor",
+                "d. AC motor"
             ],
             "correct": "c",
             "explanation": "Servo motors are commonly used for precise control of robotic joints."
@@ -64,9 +70,10 @@
         {
             "title": "Question 7: What is the purpose of a robot's control system?",
             "options": [
-                "To process sensor data and control the robot's movements",
-                "To provide structural support",
-                "To generate power for the robot"
+                "a. To process sensor data and control the robot's movements",
+                "b. To provide structural support",
+                "c. To generate power for the robot",
+                "d. To measure environmental conditions"
             ],
             "correct": "a",
             "explanation": "The control system processes sensor data and controls the robot's movements."
@@ -74,9 +81,10 @@
         {
             "title": "Question 8: How do robots perceive their environment?",
             "options": [
-                "Through their motors",
-                "Using sensors",
-                "Using their microcontroller"
+                "a. Through their motors",
+                "b. Using sensors",
+                "c. Using their microcontroller",
+                "d. Through their chassis"
             ],
             "correct": "b",
             "explanation": "Robots use sensors to perceive their environment and gather data for decision-making."
@@ -84,12 +92,79 @@
         {
             "title": "Question 9: What is the significance of feedback in robotic control systems?",
             "options": [
-                "To provide power",
-                "To measure and adjust the robot's actions based on sensor data",
-                "To control the robot's speed"
+                "a. To provide power",
+                "b. To measure and adjust the robot's actions based on sensor data",
+                "c. To control the robot's speed",
+                "d. To provide structural support"
             ],
             "correct": "b",
             "explanation": "Feedback in control systems allows the robot to measure and adjust its actions based on sensor data, ensuring accurate and adaptive behavior."
+        },
+        {
+            "title": "Question 10: Which component of a robotic arm determines the degrees of freedom?",
+            "options": [
+                "a. Gripper",
+                "b. Frame",
+                "c. Joints",
+                "d. Actuators"
+            ],
+            "correct": "c",
+            "explanation": "The joints of a robotic arm determine its degrees of freedom."
+        },
+        {
+            "title": "Question 11: What is the primary function of actuators in a robotic arm?",
+            "options": [
+                "a. To provide structural support",
+                "b. To drive the joints",
+                "c. To process sensor data",
+                "d. To provide power"
+            ],
+            "correct": "b",
+            "explanation": "Actuators drive the joints of a robotic arm, enabling its movement."
+        },
+        {
+            "title": "Question 12: What is a common use of sensors in robotic arms?",
+            "options": [
+                "a. To drive the joints",
+                "b. To provide structural support",
+                "c. To provide feedback on position and force",
+                "d. To provide power"
+            ],
+            "correct": "c",
+            "explanation": "Sensors in robotic arms provide feedback on position and force, which is essential for precise control."
+        },
+        {
+            "title": "Question 13: What is the purpose of a vision system in a robot?",
+            "options": [
+                "a. To provide power",
+                "b. To enable the robot to perceive and interpret its environment",
+                "c. To control the robot's movements",
+                "d. To provide structural support"
+            ],
+            "correct": "b",
+            "explanation": "A vision system enables a robot to perceive and interpret its environment through visual data."
+        },
+        {
+            "title": "Question 14: Which technology is commonly used in robotic vision systems for image processing?",
+            "options": [
+                "a. Neural networks",
+                "b. DC motors",
+                "c. Servo motors",
+                "d. Ultrasonic sensors"
+            ],
+            "correct": "a",
+            "explanation": "Neural networks are commonly used in robotic vision systems for image processing."
+        },
+        {
+            "title": "Question 15: What is a typical application of a vision system in industrial robots?",
+            "options": [
+                "a. Providing structural support",
+                "b. Controlling the robot's movements",
+                "c. Quality control and inspection",
+                "d. Providing power"
+            ],
+            "correct": "c",
+            "explanation": "Vision systems in industrial robots are typically used for quality control and inspection."
         }
     ]
 }
