@@ -1,0 +1,137 @@
+{
+    "title": "Module 9 Quiz",
+    "questions": [
+        {
+            "title": "Question 1: What is the primary inspiration for swarm robotics?",
+            "options": [
+                "a. Individual animal behavior",
+                "b. Human teamwork",
+                "c. Collective behavior of social insects",
+                "d. Machine efficiency"
+            ],
+            "correct": "c",
+            "explanation": "Swarm robotics is inspired by the collective behavior of social insects such as ants, bees, and termites."
+        },
+        {
+            "title": "Question 2: What is a key characteristic of swarm robotics?",
+            "options": [
+                "a. Centralized control",
+                "b. Scalability",
+                "c. High cost",
+                "d. Single robot functionality"
+            ],
+            "correct": "b",
+            "explanation": "Scalability is a key characteristic of swarm robotics, allowing the system to handle large numbers of robots effectively."
+        },
+        {
+            "title": "Question 3: What is one of the main challenges in implementing swarm robotics?",
+            "options": [
+                "a. Simple communication",
+                "b. Coordination without central control",
+                "c. High-speed processing",
+                "d. Single point of failure"
+            ],
+            "correct": "b",
+            "explanation": "One of the main challenges in implementing swarm robotics is developing algorithms for effective coordination without central control."
+        },
+        {
+            "title": "Question 4: What materials are commonly used in soft robotics?",
+            "options": [
+                "a. Rigid metals",
+                "b. Hard plastics",
+                "c. Elastomers",
+                "d. Ceramic composites"
+            ],
+            "correct": "c",
+            "explanation": "Elastomers are commonly used in soft robotics due to their high flexibility and elasticity."
+        },
+        {
+            "title": "Question 5: Which application is ideal for soft robotics?",
+            "options": [
+                "a. Heavy lifting",
+                "b. High-speed machining",
+                "c. Delicate object manipulation",
+                "d. High-temperature operations"
+            ],
+            "correct": "c",
+            "explanation": "Soft robotics is ideal for delicate object manipulation due to the flexibility and compliance of the materials used."
+        },
+        {
+            "title": "Question 6: What is a major challenge in soft robotics?",
+            "options": [
+                "a. High rigidity",
+                "b. Control and actuation",
+                "c. Low cost",
+                "d. Simple integration"
+            ],
+            "correct": "b",
+            "explanation": "A major challenge in soft robotics is developing effective control and actuation systems for the flexible materials."
+        },
+        {
+            "title": "Question 7: What is the goal of cognitive robotics?",
+            "options": [
+                "a. High-speed computation",
+                "b. Simple task execution",
+                "c. Endowing robots with cognitive capabilities",
+                "d. Reducing robot size"
+            ],
+            "correct": "c",
+            "explanation": "The goal of cognitive robotics is to endow robots with cognitive capabilities such as perception, reasoning, learning, and decision-making."
+        },
+        {
+            "title": "Question 8: Which technology is crucial for cognitive robotics?",
+            "options": [
+                "a. Basic circuits",
+                "b. Simple motors",
+                "c. Artificial intelligence (AI)",
+                "d. Manual control"
+            ],
+            "correct": "c",
+            "explanation": "Artificial intelligence (AI) is crucial for cognitive robotics, enabling robots to process data, recognize patterns, and make decisions."
+        },
+        {
+            "title": "Question 9: What is a key application of cognitive robotics?",
+            "options": [
+                "a. Basic construction",
+                "b. Manual labor",
+                "c. Social interaction with humans",
+                "d. High-speed machining"
+            ],
+            "correct": "c",
+            "explanation": "A key application of cognitive robotics is social interaction with humans, using AI to understand and respond to human behavior."
+        },
+        {
+            "title": "Question 10: What is bio-inspired robotics?",
+            "options": [
+                "a. Robots inspired by human design",
+                "b. Robots that mimic biological systems",
+                "c. Robots that use artificial materials",
+                "d. Robots with simple mechanisms"
+            ],
+            "correct": "b",
+            "explanation": "Bio-inspired robotics involves designing robots that mimic the structures, functions, and behaviors of biological organisms."
+        },
+        {
+            "title": "Question 11: What is a common design approach in bio-inspired robotics?",
+            "options": [
+                "a. Rigid structures",
+                "b. Biomimicry",
+                "c. High-speed motors",
+                "d. Centralized control"
+            ],
+            "correct": "b",
+            "explanation": "Biomimicry is a common design approach in bio-inspired robotics, where robots imitate the structures and functions of biological organisms."
+        },
+        {
+            "title": "Question 12: What is a significant challenge in bio-inspired robotics?",
+            "options": [
+                "a. Simple programming",
+                "b. Material limitations",
+                "c. High cost",
+                "d. Basic control systems"
+            ],
+            "correct": "b",
+            "explanation": "A significant challenge in bio-inspired robotics is finding suitable materials that can replicate the properties of biological tissues and ensuring their durability."
+        }
+    ]
+}
