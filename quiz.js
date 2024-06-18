@@ -95,7 +95,6 @@ function loadQuiz(quizData) {
         explanationDiv.className = "explanation";
         explanationDiv.id = `explanation-${index}`;
         explanationDiv.style.display = "none";
-        explanationDiv.innerText = question.explanation;
         questionDiv.appendChild(explanationDiv);
 
         form.appendChild(questionDiv);
@@ -104,15 +103,14 @@ function loadQuiz(quizData) {
     const submitButton = document.createElement("button");
     submitButton.type = "button";
     submitButton.innerText = "Submit";
-    submitButton.addEventListener("click", gradeQuiz);
+    submitButton.addEventListener("click", () => gradeQuiz(quizData));
     form.appendChild(submitButton);
 
     quizContainer.appendChild(form);
 }
 
-async function gradeQuiz() {
+async function gradeQuiz(quizData) {
     const form = document.getElementById("quiz-form");
-    const quizData = await (await fetch(`quizzes/${program}/${module}-quiz.json`)).json();
 
     let correctCount = 0;
     quizData.questions.forEach((question, index) => {
@@ -121,8 +119,10 @@ async function gradeQuiz() {
         if (selectedOption === question.correct) {
             correctCount++;
             explanationDiv.style.color = "green";
+            explanationDiv.innerText = `Correct! ${question.explanation}`;
         } else {
             explanationDiv.style.color = "red";
+            explanationDiv.innerText = `Incorrect. ${question.explanation}`;
         }
         explanationDiv.style.display = "block";
     });
