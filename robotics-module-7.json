@@ -6,7 +6,7 @@
         "Explore the role of robotics in healthcare, agriculture, and construction.",
         "Gain insights into the impact of robotics on different sectors."
     ],
-    "modules": [
+    "content": [
         {
             "title": "Chapter 1: Robotics in Manufacturing",
             "link": "robotics-module-7-chapter-1.json"
