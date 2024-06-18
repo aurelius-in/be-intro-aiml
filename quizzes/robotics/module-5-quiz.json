@@ -1,0 +1,137 @@
+{
+    "title": "Module 5 Quiz",
+    "questions": [
+        {
+            "title": "Question 1: What is the primary purpose of a control system in robotics?",
+            "options": [
+                "a. To provide structural support",
+                "b. To manage and direct the behavior of the robot",
+                "c. To store energy",
+                "d. To detect obstacles"
+            ],
+            "correct": "b",
+            "explanation": "The primary purpose of a control system in robotics is to manage and direct the behavior of the robot, ensuring it operates as intended."
+        },
+        {
+            "title": "Question 2: What are the key components of a basic control system?",
+            "options": [
+                "a. Sensors, actuators, and controllers",
+                "b. Wheels, chassis, and motors",
+                "c. Power supply, frame, and software",
+                "d. Batteries, wires, and gears"
+            ],
+            "correct": "a",
+            "explanation": "The key components of a basic control system are sensors, actuators, and controllers, which work together to manage the robot's actions."
+        },
+        {
+            "title": "Question 3: What is the main role of feedback in a control system?",
+            "options": [
+                "a. To increase the robot's speed",
+                "b. To provide real-time information about the system's performance",
+                "c. To store data",
+                "d. To power the robot"
+            ],
+            "correct": "b",
+            "explanation": "The main role of feedback in a control system is to provide real-time information about the system's performance, allowing for adjustments and corrections."
+        },
+        {
+            "title": "Question 4: How does a feedback control system differ from an open-loop control system?",
+            "options": [
+                "a. Feedback control systems do not use sensors",
+                "b. Open-loop control systems use feedback to adjust actions",
+                "c. Feedback control systems use feedback to adjust actions, while open-loop systems do not",
+                "d. Open-loop systems are more accurate"
+            ],
+            "correct": "c",
+            "explanation": "Feedback control systems use feedback to adjust actions and improve accuracy, while open-loop systems do not use feedback."
+        },
+        {
+            "title": "Question 5: What does PID stand for in PID controllers?",
+            "options": [
+                "a. Proportional-Integral-Derivative",
+                "b. Power-Input-Drive",
+                "c. Position-Internal-Distance",
+                "d. Pulse-Indexed-Direction"
+            ],
+            "correct": "a",
+            "explanation": "PID stands for Proportional-Integral-Derivative, which are the three terms used in this type of control algorithm."
+        },
+        {
+            "title": "Question 6: What is the function of the proportional term in a PID controller?",
+            "options": [
+                "a. To store energy",
+                "b. To measure the error",
+                "c. To correct the error based on its magnitude",
+                "d. To maintain a constant speed"
+            ],
+            "correct": "c",
+            "explanation": "The proportional term in a PID controller corrects the error based on its magnitude, providing a proportional response."
+        },
+        {
+            "title": "Question 7: What is the role of the integral term in a PID controller?",
+            "options": [
+                "a. To increase the system's speed",
+                "b. To correct accumulated errors over time",
+                "c. To reduce noise",
+                "d. To provide power"
+            ],
+            "correct": "b",
+            "explanation": "The integral term in a PID controller corrects accumulated errors over time, helping to eliminate steady-state error."
+        },
+        {
+            "title": "Question 8: What does the derivative term in a PID controller help with?",
+            "options": [
+                "a. To amplify the signal",
+                "b. To reduce overshoot and improve stability",
+                "c. To store data",
+                "d. To detect obstacles"
+            ],
+            "correct": "b",
+            "explanation": "The derivative term in a PID controller helps to reduce overshoot and improve stability by reacting to the rate of change of the error."
+        },
+        {
+            "title": "Question 9: In what scenario would you most likely use a PID controller?",
+            "options": [
+                "a. To power a robot",
+                "b. To control temperature in an oven",
+                "c. To provide structural support",
+                "d. To measure distance"
+            ],
+            "correct": "b",
+            "explanation": "A PID controller is commonly used to control temperature in an oven, where precise and stable control is needed."
+        },
+        {
+            "title": "Question 10: What is model predictive control (MPC)?",
+            "options": [
+                "a. A technique for predicting robot failure",
+                "b. A method for predicting future control actions based on a model of the system",
+                "c. A way to increase robot speed",
+                "d. A type of sensor"
+            ],
+            "correct": "b",
+            "explanation": "Model predictive control (MPC) is a method for predicting future control actions based on a model of the system, allowing for optimized decision-making."
+        },
+        {
+            "title": "Question 11: What is an advantage of using advanced control techniques in robotics?",
+            "options": [
+                "a. They are easier to implement than basic techniques",
+                "b. They provide more accurate and optimized control",
+                "c. They require less power",
+                "d. They are less expensive"
+            ],
+            "correct": "b",
+            "explanation": "Advanced control techniques provide more accurate and optimized control, improving the performance and efficiency of robotic systems."
+        },
+        {
+            "title": "Question 12: What is adaptive control in robotics?",
+            "options": [
+                "a. A technique for increasing robot speed",
+                "b. A method for adjusting control parameters in real-time based on changes in the system",
+                "c. A way to reduce power consumption",
+                "d. A type of actuator"
+            ],
+            "correct": "b",
+            "explanation": "Adaptive control is a method for adjusting control parameters in real-time based on changes in the system, ensuring optimal performance under varying conditions."
+        }
+    ]
+}
