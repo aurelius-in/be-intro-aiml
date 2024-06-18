@@ -8,7 +8,7 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
         import { getAuth, onAuthStateChanged, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+        import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyDPBH5ifyna8jYilqjneh9sRlWg6Z1kS0Y",
@@ -25,14 +25,10 @@
         const db = getFirestore(app);
 
         async function loadQuizData(program, module) {
-            const quizRef = doc(db, "quizzes", `${program}-${module}-quiz`);
             try {
-                const docSnap = await getDoc(quizRef);
-                if (docSnap.exists()) {
-                    displayQuiz(docSnap.data());
-                } else {
-                    document.getElementById("quiz-content").innerText = "Quiz not found.";
-                }
+                const response = await fetch(`robotics/${module}-quiz.json`);
+                const quizData = await response.json();
+                displayQuiz(quizData);
             } catch (error) {
                 document.getElementById("quiz-content").innerText = `Error loading quiz: ${error.message}`;
             }
@@ -61,15 +57,35 @@
             quizContent.appendChild(submitButton);
         }
 
-        function gradeQuiz(quizData) {
+        async function gradeQuiz(quizData) {
             const quizContent = document.getElementById("quiz-content");
             let score = 0;
+            const answers = {};
+
             quizData.questions.forEach((question, index) => {
                 const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
-                if (selectedOption && selectedOption.value === question.correct) {
-                    score++;
+                if (selectedOption) {
+                    answers[`question${index}`] = selectedOption.value;
+                    if (selectedOption.value === question.correct) {
+                        score++;
+                    }
+                } else {
+                    answers[`question${index}`] = null;
                 }
             });
+
+            const user = auth.currentUser;
+            if (user) {
+                const quizResult = {
+                    score,
+                    total: quizData.questions.length,
+                    answers,
+                    status: score >= quizData.questions.length * 0.7 ? 'passed' : 'failed'
+                };
+                const quizRef = doc(db, "progress", `${user.uid}-${quizData.title}`);
+                await setDoc(quizRef, quizResult);
+            }
+
             quizContent.innerHTML = `<p>You scored ${score} out of ${quizData.questions.length}</p>`;
             quizData.questions.forEach((question, index) => {
                 const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
