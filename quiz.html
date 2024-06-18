@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="styles.css">
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-        import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+        import { getAuth, onAuthStateChanged, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyDPBH5ifyna8jYilqjneh9sRlWg6Z1kS0Y",
@@ -20,9 +21,32 @@
         };
 
         const app = initializeApp(firebaseConfig);
+        const auth = getAuth();
         const db = getFirestore(app);
+        const provider = new GoogleAuthProvider();
 
-        async function loadQuizData(program, module) {
+        function signIn() {
+            signInWithPopup(auth, provider)
+                .then((result) => {
+                    console.log(result.user);
+                }).catch((error) => {
+                    console.error("Error during sign-in: ", error);
+                });
+        }
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                loadQuizData();
+            } else {
+                signIn();
+            }
+        });
+
+        async function loadQuizData() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const program = urlParams.get('program');
+            const module = urlParams.get('module');
+
             const docRef = doc(db, `quizzes/${program}-${module}`);
             try {
                 const docSnap = await getDoc(docRef);
@@ -64,32 +88,28 @@
             quizData.questions.forEach((question, index) => {
                 const selectedOption = document.querySelector(`input[name="q${index}"]:checked`);
                 if (selectedOption && parseInt(selectedOption.value) === question.correctAnswer) {
-                    score += 1;
+                    score++;
                 }
             });
 
-            const result = document.getElementById('result');
-            result.textContent = `Your score: ${score} / ${quizData.questions.length}`;
-
+            const resultDiv = document.createElement('div');
+            resultDiv.className = 'result';
+            resultDiv.innerHTML = `<p>Your score: ${score} out of ${quizData.questions.length}</p>`;
+            
             quizData.questions.forEach((question, index) => {
-                const explanationDiv = document.createElement('div');
-                explanationDiv.className = 'explanation';
-                explanationDiv.innerHTML = `<p>${index + 1}. ${question.explanation}</p>`;
-                document.querySelector(`.question:nth-child(${index + 1})`).appendChild(explanationDiv);
+                const explanation = document.createElement('p');
+                explanation.className = 'explanation';
+                const selectedOption = document.querySelector(`input[name="q${index}"]:checked`);
+                if (selectedOption && parseInt(selectedOption.value) === question.correctAnswer) {
+                    explanation.textContent = `Question ${index + 1}: Correct! ${question.explanation}`;
+                } else {
+                    explanation.textContent = `Question ${index + 1}: Incorrect. ${question.explanation}`;
+                }
+                resultDiv.appendChild(explanation);
             });
+
+            document.getElementById("quizContent").appendChild(resultDiv);
         }
-
-        document.addEventListener("DOMContentLoaded", () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const program = urlParams.get('program');
-            const module = urlParams.get('module');
-
-            if (program && module) {
-                loadQuizData(program, module);
-            } else {
-                document.getElementById("quizContent").textContent = "Invalid quiz parameters!";
-            }
-        });
     </script>
 </head>
 <body>
@@ -98,8 +118,7 @@
     </header>
     <main>
         <h1>Quiz</h1>
-        <div id="quizContent">Loading quiz...</div>
-        <p id="result"></p>
+        <div id="quizContent">Loading...</div>
     </main>
     <footer>
         <p>&copy; 2024 Blue Eagle School of Technology. All rights reserved.</p>
