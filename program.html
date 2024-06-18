@@ -5,86 +5,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Program</title>
     <link rel="stylesheet" href="styles.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const program = urlParams.get('program') || 'robotics';
+            const modules = {
+                robotics: [
+                    { title: "Module 1: Introduction to Robotics", file: "robotics-module-1.json" },
+                    { title: "Module 2: Robot Kinematics", file: "robotics-module-2.json" },
+                    { title: "Module 3: Robotics Software and Programming", file: "robotics-module-3.json" },
+                    { title: "Module 4: Sensors and Actuators", file: "robotics-module-4.json" },
+                    { title: "Module 5: Reinforcement Learning", file: "robotics-module-5.json" },
+                    { title: "Module 6: Human-Robot Interaction", file: "robotics-module-6.json" },
+                    { title: "Module 7: Ethics in Robotics", file: "robotics-module-7.json" },
+                    { title: "Module 8: Robotics in Industry", file: "robotics-module-8.json" },
+                    { title: "Module 9: Advanced Robotics", file: "robotics-module-9.json" },
+                    { title: "Module 10: Building Your Own Robot", file: "robotics-module-10.json" }
+                ],
+                // Define modules for other programs here, if applicable
+            };
+
+            const quizzes = {
+                robotics: [
+                    "module-1", "module-2", "module-3", "module-4", "module-5", 
+                    "module-6", "module-7", "module-8", "module-9", "module-10", "final"
+                ],
+                // Define quizzes for other programs here, if applicable
+            };
+
+            if (modules[program]) {
+                const moduleList = document.getElementById('moduleList');
+                modules[program].forEach(module => {
+                    const li = document.createElement('li');
+                    const a = document.createElement('a');
+                    a.href = `module.html?module=${module.file}`;
+                    a.textContent = module.title;
+                    li.appendChild(a);
+                    moduleList.appendChild(li);
+                });
+            }
+
+            if (quizzes[program]) {
+                const quizList = document.getElementById('quizList');
+                quizzes[program].forEach((quiz, index) => {
+                    const li = document.createElement('li');
+                    const a = document.createElement('a');
+                    a.href = `quiz.html?program=${program}&module=${quiz}`;
+                    a.textContent = index === quizzes[program].length - 1 ? 'Final Exam' : `Quiz for Module ${index + 1}`;
+                    li.appendChild(a);
+                    quizList.appendChild(li);
+                });
+            }
+        });
+    </script>
 </head>
 <body>
     <header>
         <a href="index.html"><img src="logo-1x1.svg" alt="BEST Logo" class="logo"></a>
     </header>
     <main>
-        <div id="content">
-            <h1 id="programTitle">Loading...</h1>
-            <section id="objectives">
-                <h2>Course Objectives</h2>
-                <ul id="objectivesList"></ul>
-            </section>
-            <section id="modules">
-                <h2>Modules and Topics</h2>
-                <div id="modulesList"></div>
-            </section>
-            <section id="quizzes">
-                <h2>Quizzes and Final Exam</h2>
-                <div id="quizzesList">
-                    <div><a href="quiz.html?quiz=quiz-module-1.json">Module 1 Quiz</a></div>
-                    <div><a href="quiz.html?quiz=quiz-module-2.json">Module 2 Quiz</a></div>
-                    <div><a href="quiz.html?quiz=quiz-module-3.json">Module 3 Quiz</a></div>
-                    <div><a href="quiz.html?quiz=quiz-module-4.json">Module 4 Quiz</a></div>
-                    <div><a href="quiz.html?quiz=quiz-module-5.json">Module 5 Quiz</a></div>
-                    <div><a href="quiz.html?quiz=quiz-module-6.json">Module 6 Quiz</a></div>
-                    <div><a href="quiz.html?quiz=quiz-module-7.json">Module 7 Quiz</a></div>
-                    <div><a href="quiz.html?quiz=quiz-module-8.json">Module 8 Quiz</a></div>
-                    <div><a href="quiz.html?quiz=quiz-module-9.json">Module 9 Quiz</a></div>
-                    <div><a href="quiz.html?quiz=quiz-module-10.json">Module 10 Quiz</a></div>
-                    <div><a href="quiz.html?quiz=final-exam.json">Final Exam</a></div>
-                </div>
-            </section>
-            <section id="resources">
-                <h2>Additional Resources</h2>
-                <p>For more in-depth reading and resources, refer to the textbook:</p>
-                <p id="textbook"></p>
-            </section>
+        <h1 id="programTitle">Program Overview</h1>
+        <div id="modules">
+            <h2>Modules</h2>
+            <ul id="moduleList"></ul>
+        </div>
+        <div id="quizzes">
+            <h2>Quizzes</h2>
+            <ul id="quizList"></ul>
         </div>
     </main>
-    <script>
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        const type = urlParams.get('type');
-        
-        const jsonFile = `${type}.json`;
-
-        fetch(jsonFile)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                document.getElementById('programTitle').innerText = data.programTitle;
-
-                const objectivesList = document.getElementById('objectivesList');
-                data.courseObjectives.forEach(objective => {
-                                        const li = document.createElement('li');
-                    li.innerText = objective;
-                    objectivesList.appendChild(li);
-                });
-
-                const modulesList = document.getElementById('modulesList');
-                data.modules.forEach(module => {
-                    const div = document.createElement('div');
-                    const a = document.createElement('a');
-                    a.href = `module.html?module=${module.link}`;
-                    a.innerText = module.title;
-                    div.appendChild(a);
-                    modulesList.appendChild(div);
-                });
-
-                document.getElementById('textbook').innerHTML = `<a href="${data.additionalResources.textbookLink}">${data.additionalResources.textbookTitle}</a>`;
-            })
-            .catch(error => {
-                console.error('Error loading the JSON file:', error);
-                document.getElementById('content').innerText = 'Failed to load content. Please try again later.';
-            });
-    </script>
+    <footer>
+        <p>&copy; 2024 Blue Eagle School of Technology. All rights reserved.</p>
+    </footer>
 </body>
 </html>
-
