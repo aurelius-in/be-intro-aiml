@@ -21,14 +21,26 @@
                 <h2>Modules and Topics</h2>
                 <div id="modulesList"></div>
             </section>
+            <section id="quizzes">
+                <h2>Quizzes and Final Exam</h2>
+                <div id="quizzesList">
+                    <div><a href="quiz.html?quiz=quiz-module-1.json">Module 1 Quiz</a></div>
+                    <div><a href="quiz.html?quiz=quiz-module-2.json">Module 2 Quiz</a></div>
+                    <div><a href="quiz.html?quiz=quiz-module-3.json">Module 3 Quiz</a></div>
+                    <div><a href="quiz.html?quiz=quiz-module-4.json">Module 4 Quiz</a></div>
+                    <div><a href="quiz.html?quiz=quiz-module-5.json">Module 5 Quiz</a></div>
+                    <div><a href="quiz.html?quiz=quiz-module-6.json">Module 6 Quiz</a></div>
+                    <div><a href="quiz.html?quiz=quiz-module-7.json">Module 7 Quiz</a></div>
+                    <div><a href="quiz.html?quiz=quiz-module-8.json">Module 8 Quiz</a></div>
+                    <div><a href="quiz.html?quiz=quiz-module-9.json">Module 9 Quiz</a></div>
+                    <div><a href="quiz.html?quiz=quiz-module-10.json">Module 10 Quiz</a></div>
+                    <div><a href="quiz.html?quiz=final-exam.json">Final Exam</a></div>
+                </div>
+            </section>
             <section id="resources">
                 <h2>Additional Resources</h2>
                 <p>For more in-depth reading and resources, refer to the textbook:</p>
                 <p id="textbook"></p>
-            </section>
-            <section id="quizzes">
-                <h2>Quizzes and Final Exam</h2>
-                <ul id="quizzesList"></ul>
             </section>
         </div>
     </main>
@@ -51,7 +63,7 @@
 
                 const objectivesList = document.getElementById('objectivesList');
                 data.courseObjectives.forEach(objective => {
-                    const li = document.createElement('li');
+                                        const li = document.createElement('li');
                     li.innerText = objective;
                     objectivesList.appendChild(li);
                 });
@@ -67,22 +79,6 @@
                 });
 
                 document.getElementById('textbook').innerHTML = `<a href="${data.additionalResources.textbookLink}">${data.additionalResources.textbookTitle}</a>`;
-
-                const quizzesList = document.getElementById('quizzesList');
-                data.modules.forEach((module, index) => {
-                    const li = document.createElement('li');
-                    const a = document.createElement('a');
-                    a.href = `quiz.html?module=quiz-module-${index + 1}.json`;
-                    a.innerText = `${module.title} Quiz`;
-                    li.appendChild(a);
-                    quizzesList.appendChild(li);
-                });
-                const finalExamLi = document.createElement('li');
-                const finalExamA = document.createElement('a');
-                finalExamA.href = `quiz.html?module=final-exam.json`;
-                finalExamA.innerText = 'Final Exam';
-                finalExamLi.appendChild(finalExamA);
-                quizzesList.appendChild(finalExamLi);
             })
             .catch(error => {
                 console.error('Error loading the JSON file:', error);
@@ -91,3 +87,4 @@
     </script>
 </body>
 </html>
+
