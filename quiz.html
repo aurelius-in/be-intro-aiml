@@ -25,9 +25,9 @@
         const db = getFirestore(app);
         const provider = new GoogleAuthProvider();
 
-        async function loadQuizData(course, module) {
+        async function loadQuizData(program, module) {
             try {
-                const response = await fetch(`quizzes/${course}/${module}-quiz.json`);
+                const response = await fetch(`quizzes/${program}/${module}-quiz.json`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
