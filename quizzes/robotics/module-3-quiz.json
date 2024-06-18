@@ -1,0 +1,137 @@
+{
+    "title": "Module 3 Quiz",
+    "questions": [
+        {
+            "title": "Question 1: What is the primary goal of robotics programming?",
+            "options": [
+                "a. To design hardware for robots",
+                "b. To control the movements and actions of a robot",
+                "c. To build physical robot models",
+                "d. To manage the power systems of robots"
+            ],
+            "correct": "b",
+            "explanation": "The primary goal of robotics programming is to control the movements and actions of a robot."
+        },
+        {
+            "title": "Question 2: Which of the following is not a basic component of a robotics programming system?",
+            "options": [
+                "a. Sensors",
+                "b. Actuators",
+                "c. Microcontroller",
+                "d. Marketing plan"
+            ],
+            "correct": "d",
+            "explanation": "A marketing plan is not a basic component of a robotics programming system."
+        },
+        {
+            "title": "Question 3: What is an example of a task that can be automated through robotics programming?",
+            "options": [
+                "a. Writing an email",
+                "b. Sweeping the floor",
+                "c. Designing a website",
+                "d. Conducting a business meeting"
+            ],
+            "correct": "b",
+            "explanation": "Sweeping the floor is an example of a task that can be automated through robotics programming."
+        },
+        {
+            "title": "Question 4: Which programming language is commonly used for robotics?",
+            "options": [
+                "a. Python",
+                "b. French",
+                "c. JavaScript",
+                "d. Spanish"
+            ],
+            "correct": "a",
+            "explanation": "Python is commonly used for robotics programming due to its simplicity and readability."
+        },
+        {
+            "title": "Question 5: What is ROS in the context of robotics?",
+            "options": [
+                "a. Robot Operating System",
+                "b. Reactive Operating System",
+                "c. Robust Operational Service",
+                "d. Remote Observation System"
+            ],
+            "correct": "a",
+            "explanation": "ROS stands for Robot Operating System, which is a flexible framework for writing robot software."
+        },
+        {
+            "title": "Question 6: Which programming language is often used for embedded systems in robotics?",
+            "options": [
+                "a. HTML",
+                "b. SQL",
+                "c. C/C++",
+                "d. CSS"
+            ],
+            "correct": "c",
+            "explanation": "C/C++ is often used for embedded systems in robotics due to its performance and control over hardware."
+        },
+        {
+            "title": "Question 7: What is the primary purpose of using software frameworks in robotics?",
+            "options": [
+                "a. To design the physical structure of robots",
+                "b. To provide a platform for developing and managing robot applications",
+                "c. To sell robots",
+                "d. To clean robots"
+            ],
+            "correct": "b",
+            "explanation": "Software frameworks in robotics provide a platform for developing and managing robot applications."
+        },
+        {
+            "title": "Question 8: Which library is commonly used for computer vision in robotics?",
+            "options": [
+                "a. NumPy",
+                "b. OpenCV",
+                "c. Pandas",
+                "d. Matplotlib"
+            ],
+            "correct": "b",
+            "explanation": "OpenCV is commonly used for computer vision tasks in robotics."
+        },
+        {
+            "title": "Question 9: What is the role of debugging in robotics software development?",
+            "options": [
+                "a. To add new features to the robot",
+                "b. To find and fix errors in the code",
+                "c. To market the robot",
+                "d. To design the robot's hardware"
+            ],
+            "correct": "b",
+            "explanation": "Debugging is the process of finding and fixing errors in the code to ensure the robot operates correctly."
+        },
+        {
+            "title": "Question 10: What tool is commonly used for version control in robotics software development?",
+            "options": [
+                "a. Git",
+                "b. Excel",
+                "c. PowerPoint",
+                "d. Word"
+            ],
+            "correct": "a",
+            "explanation": "Git is commonly used for version control to manage changes in the robotics software development process."
+        },
+        {
+            "title": "Question 11: Why is testing important in robotics software development?",
+            "options": [
+                "a. To ensure the robot performs as expected",
+                "b. To increase the robot's weight",
+                "c. To make the robot more colorful",
+                "d. To market the robot"
+            ],
+            "correct": "a",
+            "explanation": "Testing is important to ensure that the robot performs as expected and meets all operational requirements."
+        },
+        {
+            "title": "Question 12: What is unit testing in the context of robotics software?",
+            "options": [
+                "a. Testing individual components of the robot",
+                "b. Testing the entire robot system",
+                "c. Testing the robot's physical durability",
+                "d. Testing the marketing strategy"
+            ],
+            "correct": "a",
+            "explanation": "Unit testing involves testing individual components of the robot to ensure they function correctly."
+        }
+    ]
+}
