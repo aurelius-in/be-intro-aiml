@@ -6,7 +6,7 @@
         "Explore the principles of soft robotics and cognitive robotics.",
         "Gain insights into bio-inspired robotics and its future potential."
     ],
-    "modules": [
+    "content": [
         {
             "title": "Chapter 1: Swarm Robotics",
             "link": "robotics-module-9-chapter-1.json"
