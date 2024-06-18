@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <a href="index.html"><img src="logo-1x1.svg" alt="BEST Logo" class="logo"></a>
+    </header>
+    <main>
+        <div id="content">
+            <h1 id="quizTitle">Loading...</h1>
+            <form id="quizForm">
+                <div id="questionsList"></div>
+                <button type="button" onclick="submitQuiz()">Submit</button>
+                <button type="button" onclick="saveProgress()">Save Progress</button>
+            </form>
+            <div id="results" style="display:none;">
+                <h2>Results</h2>
+                <p id="score"></p>
+                <p id="status"></p>
+                <div id="explanations"></div>
+            </div>
+        </div>
+    </main>
+    <script>
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const quizFile = urlParams.get('quiz');
+
+        if (quizFile) {
+            fetch(quizFile)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    document.getElementById('quizTitle').innerText = data.quizTitle;
+                    const questionsList = document.getElementById('questionsList');
+                    data.questions.forEach((question, index) => {
+                        const questionDiv = document.createElement('div');
+                        questionDiv.classList.add('question');
+
+                        const questionText = document.createElement('p');
+                        questionText.innerText = question.question;
+                        questionDiv.appendChild(questionText);
+
+                        question.options.forEach(option => {
+                            const optionLabel = document.createElement('label');
+                            const optionInput = document.createElement('input');
+                            optionInput.type = 'radio';
+                            optionInput.name = `question-${index}`;
+                            optionInput.value = option;
+                            optionLabel.appendChild(optionInput);
+                            optionLabel.appendChild(document.createTextNode(option));
+                            questionDiv.appendChild(optionLabel);
+                            questionDiv.appendChild(document.createElement('br'));
+                        });
+
+                        questionsList.appendChild(questionDiv);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error loading the JSON file:', error);
+                    document.getElementById('content').innerText = 'Failed to load content. Please try again later.';
+                });
+        } else {
+            console.error('No quiz parameter provided in the URL');
+            document.getElementById('content').innerText = 'Failed to load content. Please try again later.';
+        }
+
+        function submitQuiz() {
+            const form = document.getElementById('quizForm');
+            const formData = new FormData(form);
+            const results = [];
+            let correctCount = 0;
+
+            fetch(quizFile)
+                .then(response => response.json())
+                .then(data => {
+                    data.questions.forEach((question, index) => {
+                        const selectedOption = formData.get(`question-${index}`);
+                        const isCorrect = selectedOption === question.answer;
+                        results.push({
+                            question: question.question,
+                            selectedOption: selectedOption,
+                            correctOption: question.answer,
+                            isCorrect: isCorrect,
+                            explanation: `Explanation: ${question.answer}`
+                        });
+                        if (isCorrect) {
+                            correctCount++;
+                        }
+                    });
+
+                    const score = (correctCount / data.questions.length) * 100;
+                    document.getElementById('score').innerText = `Score: ${score.toFixed(2)}%`;
+                    document.getElementById('status').innerText = score >= 75 ? 'Status: Pass' : 'Status: Fail';
+
+                    const explanationsDiv = document.getElementById('explanations');
+                    explanationsDiv.innerHTML = '';
+                    results.forEach(result => {
+                        const resultDiv = document.createElement('div');
+                        resultDiv.classList.add(result.isCorrect ? 'correct' : 'incorrect');
+
+                        const questionText = document.createElement('p');
+                        questionText.innerText = result.question;
+                        resultDiv.appendChild(questionText);
+
+                        const selectedOptionText = document.createElement('p');
+                        selectedOptionText.innerText = `Your answer: ${result.selectedOption || 'No answer selected'}`;
+                        resultDiv.appendChild(selectedOptionText);
+
+                        const correctOptionText = document.createElement('p');
+                        correctOptionText.innerText = `Correct answer: ${result.correctOption}`;
+                        resultDiv.appendChild(correctOptionText);
+
+                        const explanationText = document.createElement('p');
+                        explanationText.innerText = result.explanation;
+                        resultDiv.appendChild(explanationText);
+
+                        explanationsDiv.appendChild(resultDiv);
+                    });
+
+                    document.getElementById('results').style.display = 'block';
+                });
+        }
+
+        function saveProgress() {
+            const form = document.getElementById('quizForm');
+            const formData = new FormData(form);
+            const progress = {};
+            for (const [key, value] of formData.entries()) {
+                progress[key] = value;
+            }
+            localStorage.setItem(quizFile, JSON.stringify(progress));
+            alert('Progress saved.');
+        }
+
+        function loadProgress() {
+            const savedProgress = JSON.parse(localStorage.getItem(quizFile));
+            if (savedProgress) {
+                for (const [key, value] of Object.entries(savedProgress)) {
+                    const input = document.querySelector(`input[name="${key}"][value="${value}"]`);
+                    if (input) {
+                        input.checked = true;
+                    }
+                }
+            }
+        }
+
+        window.onload = loadProgress;
+    </script>
+</body>
+</html>
