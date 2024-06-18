@@ -53,11 +53,15 @@ h2 {
 }
 
 .responsive-image {  
+    display: block;  
+    margin-left: auto;  
+    margin-right: auto;  
     max-width: 100%;  
     height: auto;  
     object-fit: contain;  
     max-height: 200px;  
 }  
+
 
 .search-container {
     margin: 2rem 0;
