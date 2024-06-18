@@ -37,7 +37,7 @@
                     // Signed in
                     var user = userCredential.user;
                     console.log("User logged in: ", user);
-                    window.location.href = "progress-test.html";
+                    window.location.href = "index.html";
                 })
                 .catch((error) => {
                     var errorCode = error.code;
@@ -57,7 +57,7 @@
                     // Signed in 
                     var user = userCredential.user;
                     console.log("User signed up: ", user);
-                    window.location.href = "progress-test.html";
+                    window.location.href = "index.html";
                 })
                 .catch((error) => {
                     var errorCode = error.code;
@@ -66,6 +66,13 @@
                     document.getElementById("error-message").textContent = errorMessage;
                 });
         }
+
+        // Check if the user is already logged in and redirect to index.html if they are
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                window.location.href = "index.html";
+            }
+        });
     </script>
 </head>
 <body>
