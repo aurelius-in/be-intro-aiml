@@ -1,1 +1,138 @@
+{
+    "title": "Module 7 Quiz",
+    "questions": [
+        {
+            "title": "Question 1: What is a primary benefit of using robots in manufacturing?",
+            "options": [
+                "a. Increased labor costs",
+                "b. Enhanced safety and precision",
+                "c. Slower production times",
+                "d. Increased manual labor"
+            ],
+            "correct": "b",
+            "explanation": "Using robots in manufacturing enhances safety and precision, leading to more efficient and accurate production processes."
+        },
+        {
+            "title": "Question 2: Which type of robot is commonly used for welding in manufacturing?",
+            "options": [
+                "a. Medical robot",
+                "b. Agricultural robot",
+                "c. Industrial robot",
+                "d. Service robot"
+            ],
+            "correct": "c",
+            "explanation": "Industrial robots are commonly used for welding and other repetitive tasks in manufacturing due to their precision and reliability."
+        },
+        {
+            "title": "Question 3: What is a challenge of integrating robotics into manufacturing?",
+            "options": [
+                "a. Low initial costs",
+                "b. Simple programming",
+                "c. High initial investment and technical complexity",
+                "d. Abundant skilled labor"
+            ],
+            "correct": "c",
+            "explanation": "Integrating robotics into manufacturing involves high initial investment and technical complexity, requiring specialized knowledge and skills."
+        },
+        {
+            "title": "Question 4: How do robots enhance healthcare?",
+            "options": [
+                "a. By replacing all human healthcare workers",
+                "b. By providing high precision in surgeries and assisting in patient care",
+                "c. By increasing healthcare costs",
+                "d. By reducing the need for medical education"
+            ],
+            "correct": "b",
+            "explanation": "Robots enhance healthcare by providing high precision in surgeries, assisting in patient care, and supporting healthcare professionals."
+        },
+        {
+            "title": "Question 5: What is a common application of robots in surgery?",
+            "options": [
+                "a. Gardening",
+                "b. Construction",
+                "c. Minimally invasive procedures",
+                "d. Cooking"
+            ],
+            "correct": "c",
+            "explanation": "Robots are commonly used in minimally invasive procedures, providing high precision and reducing patient recovery times."
+        },
+        {
+            "title": "Question 6: Which type of robot assists patients in rehabilitation?",
+            "options": [
+                "a. Industrial robot",
+                "b. Exoskeleton robot",
+                "c. Agricultural robot",
+                "d. Autonomous vehicle"
+            ],
+            "correct": "b",
+            "explanation": "Exoskeleton robots assist patients in rehabilitation by providing support and aiding in the recovery of mobility and strength."
+        },
+        {
+            "title": "Question 7: What is the role of robots in agriculture?",
+            "options": [
+                "a. Enhancing manual labor",
+                "b. Monitoring crops and automating tasks like planting and harvesting",
+                "c. Increasing pesticide use",
+                "d. Reducing crop yields"
+            ],
+            "correct": "b",
+            "explanation": "Robots in agriculture monitor crops and automate tasks such as planting and harvesting, improving efficiency and reducing the need for manual labor."
+        },
+        {
+            "title": "Question 8: Which type of robot is used for precise weeding in agriculture?",
+            "options": [
+                "a. Surgical robot",
+                "b. Weeding robot",
+                "c. Warehouse robot",
+                "d. Entertainment robot"
+            ],
+            "correct": "b",
+            "explanation": "Weeding robots are used in agriculture to precisely identify and remove weeds, reducing the need for chemical herbicides."
+        },
+        {
+            "title": "Question 9: How do drones assist in agriculture?",
+            "options": [
+                "a. By cooking food",
+                "b. By monitoring crop health and soil conditions from the air",
+                "c. By transporting patients",
+                "d. By welding structures"
+            ],
+            "correct": "b",
+            "explanation": "Drones assist in agriculture by providing aerial monitoring of crop health and soil conditions, helping farmers make informed decisions."
+        },
+        {
+            "title": "Question 10: What is a primary benefit of using robots in construction?",
+            "options": [
+                "a. Reduced precision",
+                "b. Increased construction time",
+                "c. Enhanced safety and efficiency",
+                "d. Increased manual labor"
+            ],
+            "correct": "c",
+            "explanation": "Using robots in construction enhances safety and efficiency by performing tasks that are dangerous or difficult for human workers."
+        },
+        {
+            "title": "Question 11: Which type of robot is used for bricklaying in construction?",
+            "options": [
+                "a. Medical robot",
+                "b. Agricultural robot",
+                "c. Bricklaying robot",
+                "d. Service robot"
+            ],
+            "correct": "c",
+            "explanation": "Bricklaying robots are used in construction to automate the process of laying bricks, improving speed and precision."
+        },
+        {
+            "title": "Question 12: How do robots contribute to construction site safety?",
+            "options": [
+                "a. By replacing all human workers",
+                "b. By performing dangerous tasks such as demolition and heavy lifting",
+                "c. By increasing the number of accidents",
+                "d. By reducing the need for safety regulations"
+            ],
+            "correct": "b",
+            "explanation": "Robots contribute to construction site safety by performing dangerous tasks such as demolition and heavy lifting, reducing the risk of injury to human workers."
+        }
+    ]
+}
 
