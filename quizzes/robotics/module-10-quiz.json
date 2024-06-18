@@ -1,0 +1,137 @@
+{
+    "title": "Module 10 Quiz",
+    "questions": [
+        {
+            "title": "Question 1: What is the primary function of a mobile robot's chassis?",
+            "options": [
+                "a. To house the sensors",
+                "b. To provide structure and support for all components",
+                "c. To control the robot's movements",
+                "d. To process data"
+            ],
+            "correct": "b",
+            "explanation": "The chassis provides structure and support for all the components of a mobile robot."
+        },
+        {
+            "title": "Question 2: Which component is considered the brain of a mobile robot?",
+            "options": [
+                "a. Sensors",
+                "b. Motors",
+                "c. Microcontroller",
+                "d. Chassis"
+            ],
+            "correct": "c",
+            "explanation": "The microcontroller processes sensor data and controls the robot's movements, making it the brain of the robot."
+        },
+        {
+            "title": "Question 3: What is the primary role of sensors in a mobile robot?",
+            "options": [
+                "a. Provide power to the robot",
+                "b. Move the robot",
+                "c. Detect and measure environmental conditions",
+                "d. Support the chassis"
+            ],
+            "correct": "c",
+            "explanation": "Sensors detect and measure various environmental conditions, providing essential data for the robot's operation."
+        },
+        {
+            "title": "Question 4: What is inverse kinematics used for in a robotic arm?",
+            "options": [
+                "a. Calculating the position of the end effector",
+                "b. Determining the joint angles needed to place the end effector at a specific position",
+                "c. Measuring the force applied by the robot",
+                "d. Controlling the speed of the motors"
+            ],
+            "correct": "b",
+            "explanation": "Inverse kinematics is used to determine the joint angles required to move the end effector to a specified position."
+        },
+        {
+            "title": "Question 5: What is the purpose of a gripper on a robotic arm?",
+            "options": [
+                "a. To sense environmental conditions",
+                "b. To provide power to the robot",
+                "c. To grasp and manipulate objects",
+                "d. To control the robot's movements"
+            ],
+            "correct": "c",
+            "explanation": "A gripper is an end effector used by a robotic arm to grasp and manipulate objects."
+        },
+        {
+            "title": "Question 6: Which type of motor is commonly used for precise control of robotic joints?",
+            "options": [
+                "a. DC motor",
+                "b. Stepper motor",
+                "c. Servo motor",
+                "d. Hydraulic motor"
+            ],
+            "correct": "c",
+            "explanation": "Servo motors are commonly used for precise control of robotic joints."
+        },
+        {
+            "title": "Question 7: What is the main function of a vision system in robotics?",
+            "options": [
+                "a. To provide power to the robot",
+                "b. To process visual data and enable the robot to perceive its environment",
+                "c. To control the robot's movements",
+                "d. To sense touch and force"
+            ],
+            "correct": "b",
+            "explanation": "A vision system processes visual data and enables the robot to perceive its environment."
+        },
+        {
+            "title": "Question 8: Which library is commonly used for image processing in vision systems?",
+            "options": [
+                "a. NumPy",
+                "b. TensorFlow",
+                "c. OpenCV",
+                "d. SciPy"
+            ],
+            "correct": "c",
+            "explanation": "OpenCV is a popular library for image processing and computer vision applications."
+        },
+        {
+            "title": "Question 9: What is the purpose of object detection algorithms in vision systems?",
+            "options": [
+                "a. To move the robot",
+                "b. To detect and identify objects in images or video frames",
+                "c. To provide power to the robot",
+                "d. To sense touch and force"
+            ],
+            "correct": "b",
+            "explanation": "Object detection algorithms are used to detect and identify objects in images or video frames."
+        },
+        {
+            "title": "Question 10: What does AI integration in robotics enable?",
+            "options": [
+                "a. Simple task execution",
+                "b. Human intervention for all tasks",
+                "c. Autonomous behavior and decision-making",
+                "d. Manual control"
+            ],
+            "correct": "c",
+            "explanation": "Integrating AI with robotics enables autonomous behavior and decision-making in robots."
+        },
+        {
+            "title": "Question 11: What is reinforcement learning used for in robotics?",
+            "options": [
+                "a. To provide power to the robot",
+                "b. To train robots to make decisions by rewarding desired behaviors",
+                "c. To sense touch and force",
+                "d. To control the speed of the motors"
+            ],
+            "correct": "b",
+            "explanation": "Reinforcement learning involves training robots to make decisions by rewarding desired behaviors."
+        },
+        {
+            "title": "Question 12: Which AI technique is crucial for natural language interaction with robots?",
+            "options": [
+                "a. Machine learning",
+                "b. Neural networks",
+                "c. Natural language processing (NLP)",
+                "d. Computer vision"
+            ],
+            "correct": "c",
+            "explanation": "Natural language processing (NLP) enables robots to understand and generate human language, facilitating human-robot interaction."
+        }
+    ]
+}
