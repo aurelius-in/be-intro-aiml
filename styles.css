@@ -16,14 +16,14 @@ header {
     color: #004c99;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     padding: 1rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 header .logo {
     width: 200px;
-    height: 200px;
+    height: auto;
 }
 
 main {
@@ -51,16 +51,6 @@ h2 {
     margin-top: 3rem;
     font-weight: 500;
 }
-
-.responsive-image {  
-    display: block;  
-    margin-left: auto;  
-    margin-right: auto;  
-    max-width: 100%;  
-    height: auto;  
-    object-fit: contain;  
-    max-height: 200px;  
-}  
 
 .search-container {
     margin: 2rem 0;
@@ -276,57 +266,15 @@ footer p {
     margin-top: 10px;
 }
 
-/* New styles for quiz feedback */
-.quiz-result {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #004c99;
-    text-align: center;
-    margin-top: 1rem;
-}
-
-/* Navigation buttons */
-.nav-buttons {
+/* Ensure responsive images are centered and maintain their aspect ratio */
+.responsive-image {
     display: flex;
-    justify-content: space-between;
-    margin-top: 2rem;
-}
-
-.nav-button {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    padding: 1rem 2rem;
-    background: #004c99;
-    border: 2px solid #004c99;
-    border-radius: 30px;
-    transition: background 0.3s, color 0.3s;
-    display: inline-block;
-    text-align: center;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.nav-button:hover {
-    background: white;
-    color: #004c99;
-}
-
-/* Back arrow button */
-.back-arrow {
-    display: inline-block;
-    padding: 1rem 2rem;
-    font-size: 1.2rem;
-    color: #004c99;
-    border: none;
-    background: none;
-    cursor: pointer;
-    text-decoration: none;
-    display: flex;
+    justify-content: center;
     align-items: center;
+    margin: 2rem auto;
 }
 
-.back-arrow::before {
-    content: '←';
-    margin-right: 0.5rem;
-    font-size: 1.2rem;
+.responsive-image img {
+    max-width: 100%;
+    height: auto;
 }
