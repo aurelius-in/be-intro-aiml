@@ -3,63 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blue Eagle School of Technology (BEST)</title>
+    <title>BEST - Home</title>
     <link rel="stylesheet" href="styles.css">
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDPBH5ifyna8jYilqjneh9sRlWg6Z1kS0Y",
+            authDomain: "best-6bc96.firebaseapp.com",
+            projectId: "best-6bc96",
+            storageBucket: "best-6bc96.appspot.com",
+            messagingSenderId: "835354586616",
+            appId: "1:835354586616:web:931af2d81b25c287dcba0d",
+            measurementId: "G-7TQN3QPPTX"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth();
+        const db = getFirestore(app);
+
+        window.onload = function() {
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    document.getElementById('loginButton').style.display = 'none';
+                    document.getElementById('loggedInText').style.display = 'block';
+                } else {
+                    document.getElementById('loginButton').style.display = 'block';
+                    document.getElementById('loggedInText').style.display = 'none';
+                }
+            });
+
+            document.getElementById('loginButton').addEventListener('click', () => {
+                document.getElementById('overlay').style.display = 'block';
+                document.getElementById('loginPopup').style.display = 'block';
+            });
+
+            document.getElementById('signupLink').addEventListener('click', () => {
+                document.getElementById('loginPopup').style.display = 'none';
+                document.getElementById('signupPopup').style.display = 'block';
+            });
+
+            document.getElementById('loginSubmit').addEventListener('click', login);
+            document.getElementById('signupSubmit').addEventListener('click', signUp);
+
+            document.getElementById('overlay').addEventListener('click', () => {
+                document.getElementById('overlay').style.display = 'none';
+                document.getElementById('loginPopup').style.display = 'none';
+                document.getElementById('signupPopup').style.display = 'none';
+            });
+        };
+
+        function login() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    document.getElementById('overlay').style.display = 'none';
+                    document.getElementById('loginPopup').style.display = 'none';
+                    window.location.href = "index.html";
+                })
+                .catch((error) => {
+                    document.getElementById('loginError').textContent = error.message;
+                });
+        }
+
+        function signUp() {
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    document.getElementById('overlay').style.display = 'none';
+                    document.getElementById('signupPopup').style.display = 'none';
+                    window.location.href = "index.html";
+                })
+                .catch((error) => {
+                    document.getElementById('signupError').textContent = error.message;
+                });
+        }
+    </script>
 </head>
 <body>
     <header>
-        <img src="logo-1x1.svg" alt="BEST Logo" class="logo">
+        <a href="index.html"><img src="logo-1x1.svg" alt="BEST Logo" class="logo"></a>
+        <button id="loginButton">Login</button>
+        <div id="loggedInText">Logged In</div>
     </header>
     <main>
-        <img src="graphic-1.jpg" alt="Graphic 1" class="responsive-image">
-        <h1>Welcome to Blue Eagle School of Technology (BEST)</h1>
-        <p>
-            At Blue Eagle School of Technology (BEST), we specialize in providing comprehensive AI and ML education tailored to various professional fields, including engineering, leadership, data science, business, and marketing. Our mission is to deliver high-quality AI knowledge and certifications from beginner to advanced levels, equipping professionals across all industries with the skills needed to thrive in Industry 4.0.
-        </p>
-        <img src="graphic-2.jpg" alt="Graphic 2" class="responsive-image">
-       <h2>Specialized AI Technology Programs and Professional Certifications for:</h2>
-        <div class="button-container">
-            <a href="program.html?type=robotics" class="category-button">Robotics</a>
-            <a href="program.html?type=engineers-developers" class="category-button">Engineers & Developers</a>
-            <a href="program.html?type=leaders-managers" class="category-button">Leaders & Managers</a>
-            <a href="program.html?type=data-scientists-researchers" class="category-button">Data Scientists & Researchers</a>
-            <a href="program.html?type=business-marketing" class="category-button">Business & Marketing</a>
-        </div>
-        <div id="certificateList" class="certificate-list">
-            <!-- Certificate list will be here -->
-        </div>
+        <!-- Your main content here -->
     </main>
     <footer>
         <p>&copy; 2024 Blue Eagle School of Technology. All rights reserved.</p>
     </footer>
-    <script>
-        function filterCertificates() {
-            const input = document.getElementById('searchInput');
-            const filter = input.value.toLowerCase();
-            const certificateList = document.getElementById('certificateList');
-            const categories = certificateList.getElementsByClassName('certificate-category');
 
-            Array.from(categories).forEach(category => {
-                const certificates = category.getElementsByTagName('li');
-                let displayCategory = false;
+    <div id="overlay"></div>
+    
+    <div class="popup" id="loginPopup">
+        <h2>Login</h2>
+        <input type="email" id="loginEmail" placeholder="Email">
+        <input type="password" id="loginPassword" placeholder="Password">
+        <button id="loginSubmit">Login</button>
+        <div id="loginError" style="color: red;"></div>
+        <div class="signup-link" id="signupLink">Sign Up</div>
+    </div>
 
-                Array.from(certificates).forEach(certificate => {
-                    const text = certificate.textContent || certificate.innerText;
-                    if (text.toLowerCase().includes(filter)) {
-                        certificate.style.display = '';
-                        displayCategory = true;
-                    } else {
-                        certificate.style.display = 'none';
-                    }
-                });
-
-                if (displayCategory) {
-                    category.style.display = '';
-                } else {
-                    category.style.display = 'none';
-                }
-            });
-        }
-    </script>
+    <div class="popup" id="signupPopup">
+        <h2>Sign Up</h2>
+        <input type="email" id="signupEmail" placeholder="Email">
+        <input type="password" id="signupPassword" placeholder="Password">
+        <button id="signupSubmit">Sign Up</button>
+        <div id="signupError" style="color: red;"></div>
+    </div>
 </body>
 </html>
