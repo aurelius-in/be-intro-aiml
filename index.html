@@ -27,8 +27,10 @@
         window.onload = function() {
             onAuthStateChanged(auth, (user) => {
                 if (user) {
+                    const username = user.email.split('@')[0];
                     document.getElementById('loginButton').style.display = 'none';
                     document.getElementById('loggedInText').style.display = 'block';
+                    document.getElementById('loggedInText').textContent = `Logged in as ${username}`;
                 } else {
                     document.getElementById('loginButton').style.display = 'block';
                     document.getElementById('loggedInText').style.display = 'none';
@@ -88,10 +90,39 @@
     <header>
         <a href="index.html"><img src="logo-1x1.svg" alt="BEST Logo" class="logo"></a>
         <button id="loginButton">Login</button>
-        <div id="loggedInText">Logged In</div>
+        <div id="loggedInText"></div>
     </header>
     <main>
-        <!-- Your main content here -->
+        <h1>Welcome to Blue Eagle School of Technology</h1>
+        <div class="search-container">
+            <input type="text" placeholder="Search courses...">
+            <button class="search-button"><img src="search-icon.png" alt="Search"></button>
+        </div>
+        <h2>Professional Certificates</h2>
+        <div class="button-container">
+            <a href="program.html?program=robotics" class="category-button">Robotics</a>
+            <a href="program.html?program=ai" class="category-button">AI and Machine Learning</a>
+            <a href="program.html?program=cybersecurity" class="category-button">Cybersecurity</a>
+            <a href="program.html?program=data-science" class="category-button">Data Science</a>
+        </div>
+        <div class="certificate-list">
+            <div class="certificate-category">
+                <h2>Leadership Certificates</h2>
+                <ul>
+                    <li><a href="program.html?program=leadership&module=module-1" class="certificate-button">Module 1: Introduction to Leadership</a></li>
+                    <li><a href="program.html?program=leadership&module=module-2" class="certificate-button">Module 2: Leadership Skills</a></li>
+                    <li><a href="program.html?program=leadership&module=module-3" class="certificate-button">Module 3: Strategic Thinking</a></li>
+                </ul>
+            </div>
+            <div class="certificate-category">
+                <h2>Business Certificates</h2>
+                <ul>
+                    <li><a href="program.html?program=business&module=module-1" class="certificate-button">Module 1: Business Fundamentals</a></li>
+                    <li><a href="program.html?program=business&module=module-2" class="certificate-button">Module 2: Financial Management</a></li>
+                    <li><a href="program.html?program=business&module=module-3" class="certificate-button">Module 3: Marketing Strategies</a></li>
+                </ul>
+            </div>
+        </div>
     </main>
     <footer>
         <p>&copy; 2024 Blue Eagle School of Technology. All rights reserved.</p>
