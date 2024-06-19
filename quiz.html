@@ -49,7 +49,7 @@
                     ${question.options.map((option, i) => `
                         <label>
                             <input type="radio" name="question-${index}" value="${String.fromCharCode(97 + i)}">
-                            ${String.fromCharCode(97 + i)}. ${option}
+                            ${option}
                         </label>
                     `).join('<br>')}
                     <div class="explanation" id="explanation-${index}" style="display:none;">${question.explanation}</div>
