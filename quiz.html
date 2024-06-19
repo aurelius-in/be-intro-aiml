@@ -60,11 +60,13 @@
         }
 
         async function saveQuizProgress(userId, program, module, progress) {
+            console.log(`Saving progress for user: ${userId}, program: ${program}, module: ${module}`, progress);
             const docRef = doc(db, `progress/${userId}/quizzes/${program}-${module}`);
             return setDoc(docRef, progress, { merge: true });
         }
 
         async function loadQuizProgress(userId, program, module) {
+            console.log(`Loading progress for user: ${userId}, program: ${program}, module: ${module}`);
             const docRef = doc(db, `progress/${userId}/quizzes/${program}-${module}`);
             const docSnap = await getDoc(docRef);
             return docSnap.exists() ? docSnap.data() : {};
