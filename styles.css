@@ -310,3 +310,23 @@ footer p {
     background: white;
     color: #004c99;
 }
+
+/* Back arrow button */
+.back-arrow {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    color: #004c99;
+    border: none;
+    background: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.back-arrow::before {
+    content: '←';
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
+}
