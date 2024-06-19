@@ -59,7 +59,7 @@
             quizContainer.innerHTML += `<button id="submitQuiz">Submit</button>`;
         }
 
-        function saveQuizProgress(userId, program, module, progress) {
+        async function saveQuizProgress(userId, program, module, progress) {
             const docRef = doc(db, `progress/${userId}/quizzes/${program}-${module}`);
             return setDoc(docRef, progress, { merge: true });
         }
@@ -83,32 +83,30 @@
 
             const quizData = await loadQuizData(program, module);
             const userAnswers = {};
-            quizData.questions.forEach((question, index) => {
-                const selectedOption = document.querySelector(`input[name="question-${index}"]:checked`);
-                userAnswers[`question-${index}`] = selectedOption ? selectedOption.value : 'not answered';
-            });
-
-            await saveQuizProgress(user.uid, program, module, { userAnswers });
-
-            let score = 0;
+            let correctCount = 0;
 
             quizData.questions.forEach((question, index) => {
                 const selectedOption = document.querySelector(`input[name="question-${index}"]:checked`);
-                const explanationElem = document.getElementById(`explanation-${index}`);
-                explanationElem.style.display = 'block';
-                if (selectedOption) {
-                    explanationElem.innerHTML += `<br>Your answer: ${selectedOption.value}`;
-                    if (selectedOption.value === question.correct) {
-                        score++;
-                    } else {
-                        selectedOption.parentElement.style.color = 'red';
-                    }
+                const userAnswer = selectedOption ? selectedOption.value : 'not answered';
+                userAnswers[`question-${index}`] = userAnswer;
+
+                const explanationDiv = document.getElementById(`explanation-${index}`);
+                explanationDiv.style.display = 'block';
+                if (userAnswer === question.correct) {
+                    correctCount++;
+                    explanationDiv.style.color = 'green';
+                    explanationDiv.innerHTML += `<br>Correct! ${question.explanation}`;
                 } else {
-                    explanationElem.innerHTML += `<br>Your answer: not answered`;
+                    explanationDiv.style.color = 'red';
+                    explanationDiv.innerHTML += `<br>Incorrect. ${question.explanation}`;
                 }
             });
 
-            alert(`Your score: ${score} out of ${quizData.questions.length}`);
+            const result = document.createElement('p');
+            result.innerText = `You got ${correctCount} out of ${quizData.questions.length} correct.`;
+            document.getElementById('quiz').appendChild(result);
+
+            await saveQuizProgress(user.uid, program, module, { userAnswers, correctCount, totalQuestions: quizData.questions.length });
         }
 
         async function init() {
