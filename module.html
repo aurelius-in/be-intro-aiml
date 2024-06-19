@@ -25,12 +25,17 @@
                 <h2>Additional Resources</h2>
                 <p id="textbookInfo"></p>
             </section>
+            <section id="quizLinkSection">
+                <h2>Quiz</h2>
+                <a id="quizLink" href="#">Take the Quiz</a>
+            </section>
         </div>
     </main>
     <script>
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         const moduleFile = urlParams.get('module');
+        const program = urlParams.get('program');
 
         if (moduleFile) {
             fetch(moduleFile)
@@ -66,6 +71,11 @@
                         const textbookInfo = document.getElementById('textbookInfo');
                         textbookInfo.innerHTML = `For more in-depth reading and resources, refer to the textbook: <a href="${additionalResources.textbookLink}" target="_blank">${additionalResources.textbookTitle}</a>`;
                     }
+
+                    // Add quiz link
+                    const quizLink = document.getElementById('quizLink');
+                    quizLink.href = `quiz.html?program=${program}&module=${moduleFile.split('.')[0]}`;
+
                 })
                 .catch(error => {
                     console.error('Error loading the JSON file:', error);
