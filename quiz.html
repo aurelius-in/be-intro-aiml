@@ -52,7 +52,7 @@
                             ${option}
                         </label>
                     `).join('<br>')}
-                    <div class="explanation" id="explanation-${index}" style="display:none;"></div>
+                    <div class="explanation" id="explanation-${index}" style="display:none;">${question.explanation}</div>
                 `;
                 quizContainer.appendChild(questionElem);
             });
@@ -95,34 +95,29 @@
                 if (userAnswer === question.correct) {
                     correctCount++;
                     explanationDiv.style.color = 'green';
-                    explanationDiv.innerHTML = `Correct! ${question.explanation}`;
+                    explanationDiv.innerHTML += `<br>Correct! ${question.explanation}`;
                 } else {
                     explanationDiv.style.color = 'red';
-                    explanationDiv.innerHTML = `Incorrect. ${question.explanation}`;
+                    explanationDiv.innerHTML += `<br>Incorrect. ${question.explanation}`;
                 }
-
-                // Disable inputs after submission
-                document.querySelectorAll(`input[name="question-${index}"]`).forEach(input => {
-                    input.disabled = true;
-                });
             });
 
             const result = document.createElement('p');
-            result.classList.add('quiz-result');
-            result.innerHTML = `You got ${correctCount} out of ${quizData.questions.length} correct. <br> ${correctCount / quizData.questions.length >= 0.75 ? 'You Passed' : 'You Failed'}`;
+            result.innerText = `You got ${correctCount} out of ${quizData.questions.length} correct.`;
             document.getElementById('quiz').appendChild(result);
 
-            // Save the progress
-            await saveQuizProgress(user.uid, program, module, { userAnswers, correctCount, totalQuestions: quizData.questions.length });
+            if (correctCount / quizData.questions.length >= 0.75) {
+                result.innerText += ' You Passed!';
+            } else {
+                result.innerText += ' You Failed!';
+            }
 
-            // Add navigation buttons
-            const navContainer = document.createElement('div');
-            navContainer.classList.add('nav-buttons');
-            navContainer.innerHTML = `
-                <a href="index.html" class="nav-button">Home</a>
-                <a href="module.html?module=${program}-${module}" class="nav-button">Back to Module</a>
-            `;
-            document.getElementById('quiz').appendChild(navContainer);
+            const backLink = document.createElement('a');
+            backLink.href = `module.html?program=${program}&module=${module}`;
+            backLink.innerText = 'Back to Module';
+            document.getElementById('quiz').appendChild(backLink);
+
+            await saveQuizProgress(user.uid, program, module, { userAnswers, correctCount, totalQuestions: quizData.questions.length });
         }
 
         async function init() {
@@ -147,6 +142,10 @@
                         document.getElementById('submitQuiz').addEventListener('click', handleQuizSubmit);
                     } catch (error) {
                         document.getElementById('quiz').textContent = 'Error loading quiz: ' + error.message;
+                        if (error.message.includes('permission-denied')) {
+                            alert('To ensure your progress is saved, please sign in again.');
+                            window.location.href = "login.html";
+                        }
                     }
                 } else {
                     document.getElementById('quiz').innerHTML = `
