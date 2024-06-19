@@ -205,7 +205,6 @@ footer p {
     text-decoration: underline; /* Optional: to make it look like a link */
 }
 
-/* Add this to styles.css or inside a <style> tag in index.html */
 #loginButton {
     position: fixed;
     top: 10px;
