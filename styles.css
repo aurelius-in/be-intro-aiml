@@ -205,6 +205,7 @@ footer p {
     text-decoration: underline; /* Optional: to make it look like a link */
 }
 
+/* Add this to styles.css or inside a <style> tag in index.html */
 #loginButton {
     position: fixed;
     top: 10px;
@@ -273,4 +274,39 @@ footer p {
     text-align: center;
     display: block;
     margin-top: 10px;
+}
+
+/* New styles for quiz feedback */
+.quiz-result {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #004c99;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+/* Navigation buttons */
+.nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.nav-button {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding: 1rem 2rem;
+    background: #004c99;
+    border: 2px solid #004c99;
+    border-radius: 30px;
+    transition: background 0.3s, color 0.3s;
+    display: inline-block;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nav-button:hover {
+    background: white;
+    color: #004c99;
 }
