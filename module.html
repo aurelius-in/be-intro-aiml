@@ -35,7 +35,7 @@
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         const moduleFile = urlParams.get('module');
-        const program = urlParams.get('program');
+        const program = moduleFile ? moduleFile.split('-')[0] : null;
 
         if (moduleFile) {
             fetch(moduleFile)
@@ -72,10 +72,10 @@
                         textbookInfo.innerHTML = `For more in-depth reading and resources, refer to the textbook: <a href="${additionalResources.textbookLink}" target="_blank">${additionalResources.textbookTitle}</a>`;
                     }
 
-                    // Add quiz link
+                    // Set the quiz link
+                    const moduleNumber = moduleFile.match(/module-(\d+)/)[1];
                     const quizLink = document.getElementById('quizLink');
-                    quizLink.href = `quiz.html?program=${program}&module=${moduleFile.split('.')[0]}`;
-
+                    quizLink.href = `quiz.html?program=${program}&module=module-${moduleNumber}`;
                 })
                 .catch(error => {
                     console.error('Error loading the JSON file:', error);
