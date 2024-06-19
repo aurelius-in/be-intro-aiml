@@ -113,7 +113,7 @@
             }
 
             const backLink = document.createElement('a');
-            backLink.href = `module.html?program=${program}&module=${module}`;
+            backLink.href = `https://aurelius-in.github.io/be-intro-aiml/module.html?module=${program}-module-${module.split('-')[1]}.json`;
             backLink.innerText = 'Back to Module';
             document.getElementById('quiz').appendChild(backLink);
 
