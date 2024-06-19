@@ -52,7 +52,7 @@
                             ${option}
                         </label>
                     `).join('<br>')}
-                    <div class="explanation" id="explanation-${index}" style="display:none;">${question.explanation}</div>
+                    <div class="explanation" id="explanation-${index}" style="display:none;"></div>
                 `;
                 quizContainer.appendChild(questionElem);
             });
@@ -60,13 +60,11 @@
         }
 
         async function saveQuizProgress(userId, program, module, progress) {
-            console.log(`Saving progress for user: ${userId}, program: ${program}, module: ${module}`, progress);
             const docRef = doc(db, `progress/${userId}/quizzes/${program}-${module}`);
             return setDoc(docRef, progress, { merge: true });
         }
 
         async function loadQuizProgress(userId, program, module) {
-            console.log(`Loading progress for user: ${userId}, program: ${program}, module: ${module}`);
             const docRef = doc(db, `progress/${userId}/quizzes/${program}-${module}`);
             const docSnap = await getDoc(docRef);
             return docSnap.exists() ? docSnap.data() : {};
@@ -97,18 +95,34 @@
                 if (userAnswer === question.correct) {
                     correctCount++;
                     explanationDiv.style.color = 'green';
-                    explanationDiv.innerHTML += `<br>Correct! ${question.explanation}`;
+                    explanationDiv.innerHTML = `Correct! ${question.explanation}`;
                 } else {
                     explanationDiv.style.color = 'red';
-                    explanationDiv.innerHTML += `<br>Incorrect. ${question.explanation}`;
+                    explanationDiv.innerHTML = `Incorrect. ${question.explanation}`;
                 }
+
+                // Disable inputs after submission
+                document.querySelectorAll(`input[name="question-${index}"]`).forEach(input => {
+                    input.disabled = true;
+                });
             });
 
             const result = document.createElement('p');
-            result.innerText = `You got ${correctCount} out of ${quizData.questions.length} correct.`;
+            result.classList.add('quiz-result');
+            result.innerHTML = `You got ${correctCount} out of ${quizData.questions.length} correct. <br> ${correctCount / quizData.questions.length >= 0.75 ? 'You Passed' : 'You Failed'}`;
             document.getElementById('quiz').appendChild(result);
 
+            // Save the progress
             await saveQuizProgress(user.uid, program, module, { userAnswers, correctCount, totalQuestions: quizData.questions.length });
+
+            // Add navigation buttons
+            const navContainer = document.createElement('div');
+            navContainer.classList.add('nav-buttons');
+            navContainer.innerHTML = `
+                <a href="index.html" class="nav-button">Home</a>
+                <a href="module.html?module=${program}-${module}" class="nav-button">Back to Module</a>
+            `;
+            document.getElementById('quiz').appendChild(navContainer);
         }
 
         async function init() {
