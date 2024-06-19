@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BEST - Home</title>
+    <title>Blue Eagle School of Technology</title>
     <link rel="stylesheet" href="styles.css">
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-        import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+        import { getAuth, onAuthStateChanged, signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyDPBH5ifyna8jYilqjneh9sRlWg6Z1kS0Y",
@@ -22,129 +21,119 @@
 
         const app = initializeApp(firebaseConfig);
         const auth = getAuth();
-        const db = getFirestore(app);
+        const provider = new GoogleAuthProvider();
 
-        window.onload = function() {
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginButton = document.getElementById('loginButton');
+            const loggedInText = document.getElementById('loggedInText');
+            const loginPopup = document.getElementById('loginPopup');
+            const overlay = document.getElementById('overlay');
+            const signUpLink = document.getElementById('signUpLink');
+            const signUpPopup = document.getElementById('signUpPopup');
+            const signInButton = document.getElementById('signInButton');
+            const signUpButton = document.getElementById('signUpButton');
+
+            loginButton.addEventListener('click', () => {
+                loginPopup.style.display = 'block';
+                overlay.style.display = 'block';
+            });
+
+            signUpLink.addEventListener('click', () => {
+                loginPopup.style.display = 'none';
+                signUpPopup.style.display = 'block';
+            });
+
+            signInButton.addEventListener('click', () => {
+                const email = document.getElementById('loginEmail').value;
+                const password = document.getElementById('loginPassword').value;
+
+                signInWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        loginPopup.style.display = 'none';
+                        overlay.style.display = 'none';
+                        loginButton.style.display = 'none';
+                        loggedInText.style.display = 'block';
+                        loggedInText.textContent = `Logged in as ${userCredential.user.email.split('@')[0]}`;
+                    })
+                    .catch((error) => {
+                        console.error('Error signing in:', error);
+                    });
+            });
+
+            signUpButton.addEventListener('click', () => {
+                const email = document.getElementById('signupEmail').value;
+                const password = document.getElementById('signupPassword').value;
+
+                createUserWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        signUpPopup.style.display = 'none';
+                        overlay.style.display = 'none';
+                        loginButton.style.display = 'none';
+                        loggedInText.style.display = 'block';
+                        loggedInText.textContent = `Logged in as ${userCredential.user.email.split('@')[0]}`;
+                    })
+                    .catch((error) => {
+                        console.error('Error signing up:', error);
+                    });
+            });
+
+            overlay.addEventListener('click', () => {
+                loginPopup.style.display = 'none';
+                signUpPopup.style.display = 'none';
+                overlay.style.display = 'none';
+            });
+
             onAuthStateChanged(auth, (user) => {
                 if (user) {
-                    const username = user.email.split('@')[0];
-                    document.getElementById('loginButton').style.display = 'none';
-                    document.getElementById('loggedInText').style.display = 'block';
-                    document.getElementById('loggedInText').textContent = `Logged in as ${username}`;
+                    loginButton.style.display = 'none';
+                    loggedInText.style.display = 'block';
+                    loggedInText.textContent = `Logged in as ${user.email.split('@')[0]}`;
                 } else {
-                    document.getElementById('loginButton').style.display = 'block';
-                    document.getElementById('loggedInText').style.display = 'none';
+                    loginButton.style.display = 'block';
+                    loggedInText.style.display = 'none';
                 }
             });
-
-            document.getElementById('loginButton').addEventListener('click', () => {
-                document.getElementById('overlay').style.display = 'block';
-                document.getElementById('loginPopup').style.display = 'block';
-            });
-
-            document.getElementById('signupLink').addEventListener('click', () => {
-                document.getElementById('loginPopup').style.display = 'none';
-                document.getElementById('signupPopup').style.display = 'block';
-            });
-
-            document.getElementById('loginSubmit').addEventListener('click', login);
-            document.getElementById('signupSubmit').addEventListener('click', signUp);
-
-            document.getElementById('overlay').addEventListener('click', () => {
-                document.getElementById('overlay').style.display = 'none';
-                document.getElementById('loginPopup').style.display = 'none';
-                document.getElementById('signupPopup').style.display = 'none';
-            });
-        };
-
-        function login() {
-            const email = document.getElementById('loginEmail').value;
-            const password = document.getElementById('loginPassword').value;
-            signInWithEmailAndPassword(auth, email, password)
-                .then((userCredential) => {
-                    document.getElementById('overlay').style.display = 'none';
-                    document.getElementById('loginPopup').style.display = 'none';
-                    window.location.href = "index.html";
-                })
-                .catch((error) => {
-                    document.getElementById('loginError').textContent = error.message;
-                });
-        }
-
-        function signUp() {
-            const email = document.getElementById('signupEmail').value;
-            const password = document.getElementById('signupPassword').value;
-            createUserWithEmailAndPassword(auth, email, password)
-                .then((userCredential) => {
-                    document.getElementById('overlay').style.display = 'none';
-                    document.getElementById('signupPopup').style.display = 'none';
-                    window.location.href = "index.html";
-                })
-                .catch((error) => {
-                    document.getElementById('signupError').textContent = error.message;
-                });
-        }
+        });
     </script>
 </head>
 <body>
     <header>
         <a href="index.html"><img src="logo-1x1.svg" alt="BEST Logo" class="logo"></a>
         <button id="loginButton">Login</button>
-        <div id="loggedInText"></div>
+        <span id="loggedInText"></span>
     </header>
+    <div id="overlay"></div>
+    <div id="loginPopup" class="popup">
+        <h2>Login</h2>
+        <input type="email" id="loginEmail" placeholder="Email">
+        <input type="password" id="loginPassword" placeholder="Password">
+        <button id="signInButton">Sign In</button>
+        <span id="signUpLink" class="signup-link">Sign Up</span>
+    </div>
+    <div id="signUpPopup" class="popup">
+        <h2>Sign Up</h2>
+        <input type="email" id="signupEmail" placeholder="Email">
+        <input type="password" id="signupPassword" placeholder="Password">
+        <button id="signUpButton">Sign Up</button>
+    </div>
     <main>
         <h1>Welcome to Blue Eagle School of Technology</h1>
-        <div class="search-container">
-            <input type="text" placeholder="Search courses...">
-            <button class="search-button"><img src="search-icon.png" alt="Search"></button>
-        </div>
-        <h2>Professional Certificates</h2>
+        <p>Your gateway to advanced technology education and training.</p>
         <div class="button-container">
             <a href="program.html?program=robotics" class="category-button">Robotics</a>
-            <a href="program.html?program=ai" class="category-button">AI and Machine Learning</a>
-            <a href="program.html?program=cybersecurity" class="category-button">Cybersecurity</a>
+            <a href="program.html?program=ai" class="category-button">Artificial Intelligence</a>
+            <a href="program.html?program=ml" class="category-button">Machine Learning</a>
             <a href="program.html?program=data-science" class="category-button">Data Science</a>
         </div>
-        <div class="certificate-list">
-            <div class="certificate-category">
-                <h2>Leadership Certificates</h2>
-                <ul>
-                    <li><a href="program.html?program=leadership&module=module-1" class="certificate-button">Module 1: Introduction to Leadership</a></li>
-                    <li><a href="program.html?program=leadership&module=module-2" class="certificate-button">Module 2: Leadership Skills</a></li>
-                    <li><a href="program.html?program=leadership&module=module-3" class="certificate-button">Module 3: Strategic Thinking</a></li>
-                </ul>
-            </div>
-            <div class="certificate-category">
-                <h2>Business Certificates</h2>
-                <ul>
-                    <li><a href="program.html?program=business&module=module-1" class="certificate-button">Module 1: Business Fundamentals</a></li>
-                    <li><a href="program.html?program=business&module=module-2" class="certificate-button">Module 2: Financial Management</a></li>
-                    <li><a href="program.html?program=business&module=module-3" class="certificate-button">Module 3: Marketing Strategies</a></li>
-                </ul>
-            </div>
+        <div class="responsive-image">
+            <img src="graphic-1.svg" alt="Graphic 1">
+        </div>
+        <div class="responsive-image">
+            <img src="graphic-2.svg" alt="Graphic 2">
         </div>
     </main>
     <footer>
         <p>&copy; 2024 Blue Eagle School of Technology. All rights reserved.</p>
     </footer>
-
-    <div id="overlay"></div>
-    
-    <div class="popup" id="loginPopup">
-        <h2>Login</h2>
-        <input type="email" id="loginEmail" placeholder="Email">
-        <input type="password" id="loginPassword" placeholder="Password">
-        <button id="loginSubmit">Login</button>
-        <div id="loginError" style="color: red;"></div>
-        <div class="signup-link" id="signupLink">Sign Up</div>
-    </div>
-
-    <div class="popup" id="signupPopup">
-        <h2>Sign Up</h2>
-        <input type="email" id="signupEmail" placeholder="Email">
-        <input type="password" id="signupPassword" placeholder="Password">
-        <button id="signupSubmit">Sign Up</button>
-        <div id="signupError" style="color: red;"></div>
-    </div>
 </body>
 </html>
