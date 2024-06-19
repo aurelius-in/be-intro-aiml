@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BEST - Home</title>
+    <title>Login - BEST</title>
     <link rel="stylesheet" href="styles.css">
     <script type="module">
+        // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
         import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
+        // Your web app's Firebase configuration
         const firebaseConfig = {
             apiKey: "AIzaSyDPBH5ifyna8jYilqjneh9sRlWg6Z1kS0Y",
             authDomain: "best-6bc96.firebaseapp.com",
@@ -20,66 +22,48 @@
             measurementId: "G-7TQN3QPPTX"
         };
 
+        // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const auth = getAuth();
         const db = getFirestore(app);
 
-        window.onload = function() {
-            onAuthStateChanged(auth, (user) => {
-                if (user) {
-                    document.getElementById('loginButton').style.display = 'none';
-                    document.getElementById('loggedInText').style.display = 'block';
-                } else {
-                    document.getElementById('loginButton').style.display = 'block';
-                    document.getElementById('loggedInText').style.display = 'none';
-                }
-            });
+        // Function to handle user login
+        window.login = function() {
+            var email = document.getElementById("loginEmail").value;
+            var password = document.getElementById("loginPassword").value;
 
-            document.getElementById('loginButton').addEventListener('click', () => {
-                document.getElementById('overlay').style.display = 'block';
-                document.getElementById('loginPopup').style.display = 'block';
-            });
-
-            document.getElementById('signupLink').addEventListener('click', () => {
-                document.getElementById('loginPopup').style.display = 'none';
-                document.getElementById('signupPopup').style.display = 'block';
-            });
-
-            document.getElementById('loginSubmit').addEventListener('click', login);
-            document.getElementById('signupSubmit').addEventListener('click', signUp);
-
-            document.getElementById('overlay').addEventListener('click', () => {
-                document.getElementById('overlay').style.display = 'none';
-                document.getElementById('loginPopup').style.display = 'none';
-                document.getElementById('signupPopup').style.display = 'none';
-            });
-        };
-
-        function login() {
-            const email = document.getElementById('loginEmail').value;
-            const password = document.getElementById('loginPassword').value;
             signInWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
-                    document.getElementById('overlay').style.display = 'none';
-                    document.getElementById('loginPopup').style.display = 'none';
+                    // Signed in
+                    var user = userCredential.user;
+                    console.log("User logged in: ", user);
                     window.location.href = "index.html";
                 })
                 .catch((error) => {
-                    document.getElementById('loginError').textContent = error.message;
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    console.error("Error: ", errorMessage);
+                    document.getElementById("error-message").textContent = errorMessage;
                 });
         }
 
-        function signUp() {
-            const email = document.getElementById('signupEmail').value;
-            const password = document.getElementById('signupPassword').value;
+        // Function to handle user sign-up
+        window.signUp = function() {
+            var email = document.getElementById("signupEmail").value;
+            var password = document.getElementById("signupPassword").value;
+
             createUserWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
-                    document.getElementById('overlay').style.display = 'none';
-                    document.getElementById('signupPopup').style.display = 'none';
+                    // Signed in 
+                    var user = userCredential.user;
+                    console.log("User signed up: ", user);
                     window.location.href = "index.html";
                 })
                 .catch((error) => {
-                    document.getElementById('signupError').textContent = error.message;
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    console.error("Error: ", errorMessage);
+                    document.getElementById("error-message").textContent = errorMessage;
                 });
         }
     </script>
@@ -87,33 +71,26 @@
 <body>
     <header>
         <a href="index.html"><img src="logo-1x1.svg" alt="BEST Logo" class="logo"></a>
-        <button id="loginButton">Login</button>
-        <div id="loggedInText">Logged In</div>
     </header>
-    <main>
-        <!-- Your main content here -->
+    <main class="login-container">
+        <h1>Login to BEST</h1>
+        <div id="error-message" style="color: red;"></div>
+        <div>
+            <h2>Login</h2>
+            <input type="email" id="loginEmail" placeholder="Email">
+            <input type="password" id="loginPassword" placeholder="Password">
+            <button onclick="login()">Login</button>
+        </div>
+
+        <div>
+            <h2>Sign Up</h2>
+            <input type="email" id="signupEmail" placeholder="Email">
+            <input type="password" id="signupPassword" placeholder="Password">
+            <button onclick="signUp()">Sign Up</button>
+        </div>
     </main>
     <footer>
         <p>&copy; 2024 Blue Eagle School of Technology. All rights reserved.</p>
     </footer>
-
-    <div id="overlay"></div>
-    
-    <div class="popup" id="loginPopup">
-        <h2>Login</h2>
-        <input type="email" id="loginEmail" placeholder="Email">
-        <input type="password" id="loginPassword" placeholder="Password">
-        <button id="loginSubmit">Login</button>
-        <div id="loginError" style="color: red;"></div>
-        <div class="signup-link" id="signupLink">Sign Up</div>
-    </div>
-
-    <div class="popup" id="signupPopup">
-        <h2>Sign Up</h2>
-        <input type="email" id="signupEmail" placeholder="Email">
-        <input type="password" id="signupPassword" placeholder="Password">
-        <button id="signupSubmit">Sign Up</button>
-        <div id="signupError" style="color: red;"></div>
-    </div>
 </body>
 </html>
