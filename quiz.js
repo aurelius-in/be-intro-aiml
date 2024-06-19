@@ -126,6 +126,7 @@ async function init() {
                 document.getElementById('submitQuiz').addEventListener('click', handleQuizSubmit);
             } catch (error) {
                 document.getElementById('quiz').textContent = 'Error loading quiz: ' + error.message;
+                window.location.href = 'login.html'; 
             }
         } else {
             document.getElementById('quiz').innerHTML = `
@@ -135,6 +136,7 @@ async function init() {
             document.getElementById('signInButton').addEventListener('click', () => {
                 signInWithPopup(auth, provider).catch((error) => {
                     console.error('Error signing in:', error);
+                    window.location.href = 'login.html'; 
                 });
             });
         }
