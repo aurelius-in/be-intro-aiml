@@ -131,10 +131,6 @@
                         document.getElementById('submitQuiz').addEventListener('click', handleQuizSubmit);
                     } catch (error) {
                         document.getElementById('quiz').textContent = 'Error loading quiz: ' + error.message;
-                        if (error.message.includes('permission-denied')) {
-                            alert('To ensure your progress is saved, please sign in again.');
-                            window.location.href = "login.html";
-                        }
                     }
                 } else {
                     document.getElementById('quiz').innerHTML = `
