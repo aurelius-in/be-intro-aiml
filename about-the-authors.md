@@ -1,4 +1,4 @@
-**About the Authors**
+### **About the Authors**
 
 **Douglas Bachelor**
 
